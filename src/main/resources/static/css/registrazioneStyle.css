@@ -1,0 +1,126 @@
+
+.grid-container{
+	display: grid;
+	grid-template-areas:
+	"u u u e e e e e e e e e"
+	"u u u e e e e e e e e e"
+	"f f f f f f f f f f f f";
+	grid-template-rows: 280px 280px 80px;
+	
+}
+
+@media screen and (max-width: 500px){
+	.grid-container{
+		grid-template-areas:
+		"u"
+		"e"
+		"f";
+		grid-template-rows: 140px 420px 40px;
+	}
+	.intro{
+	  display: none;
+	}
+	
+}
+
+@media screen and (max-width: 500px){
+	.enter{
+	grid-area: e;
+	display: flex;
+	flex-direction: columns;
+	justify-content: left;
+	align-items: left;
+}
+}
+
+.grid-item{
+	color: #1877f2;
+	background-color: #ffffff;
+}
+
+.logo{
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 40px;
+	font-weight: bold;
+}
+
+.intro{
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 20px;
+}
+
+.us{
+	grid-area: u;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.enter{
+	grid-area: e;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.fom{
+	border: 1px solid #1877f2;
+	padding: 20px;
+	border-radius: 10px;
+	background-color: #ffffff;
+}
+
+.fom input[type=text],.fom input[type=password],.fom input[type=date]{
+	border: 1px solid GrayText;
+	padding: 15px;
+	width: 150px;
+	margin: 4px;
+	border-radius: 10px;
+	font-size: 17px;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+@media screen and (max-width: 500px){
+	.fom input[type=text],.fom input[type=password],.fom input[type=date]{
+	border: 1px solid GrayText;
+	padding: 15px;
+	width: 100px;
+	margin: 4px;
+	border-radius: 10px;
+	font-size: 17px;
+	font-family: 'Ubuntu', sans-serif;
+}
+}
+
+input[type=radio] {
+  background-color: #ffffff;
+  margin: 0;
+  width: 20px;
+  height: 20px;
+  border: 1px solid GrayText;
+  border-radius: 50%;
+}
+
+label{
+	font-family: 'Ubuntu', sans-serif;
+	color: #1877f2;
+	font-size: 20px;
+}
+
+.pulsanteReg{
+	font-family: 'Ubuntu', sans-serif;
+	background-color: #1877f2;
+	border: none;
+	padding: 10px;
+	width: 150px;
+	border-radius: 5px;
+	font-size: 15px;
+	color: #ffffff;
+	cursor: pointer;
+}
+
+.footer{
+	grid-area: f;
+}

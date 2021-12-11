@@ -1,0 +1,124 @@
+
+.grid-container{
+	display: grid;
+	grid-template-areas:
+	"u u u e e e e e e e e e"
+	"u u u e e e e e e e e e"
+	"f f f f f f f f f f f f";
+	grid-template-rows: 280px 280px 80px;
+	
+}
+
+@media screen and (max-width: 500px){
+	.grid-container{
+		grid-template-areas:
+		"u"
+		"e"
+		"f";
+		grid-template-rows: 200px 280px 140px;
+	}
+	.intro{
+	  display: none;
+	}
+	
+}
+
+@media screen and (max-width: 500px){
+	.enter{
+	grid-area: e;
+	display: flex;
+	flex-direction: columns;
+	justify-content: left;
+	align-items: left;
+}
+}
+
+
+.grid-item{
+	color: #1877f2;
+	background-color: #ffffff;
+}
+
+.logo{
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 40px;
+	font-weight: bold;
+}
+
+.intro{
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 20px;
+}
+
+.us{
+	grid-area: u;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.enter{
+	grid-area: e;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.fom{
+	border: 1px solid #1877f2;
+	padding: 25px;
+	border-radius: 10px;
+	background-color: #ffffff;
+}
+
+.fom input[type=text],.fom input[type=password]{
+	border: 1px solid GrayText;
+	padding: 15px;
+	width: 250px;
+	margin: 4px;
+	border-radius: 10px;
+	font-size: 17px;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+@media screen and (max-width: 500px) {
+	.fom input[type=text],.fom input[type=password]{
+	border: 1px solid GrayText;
+	padding: 15px;
+	width: 210px;
+	margin: 4px;
+	border-radius: 10px;
+	font-size: 17px;
+	font-family: 'Ubuntu', sans-serif;
+}
+}
+
+.entra{
+	font-family: 'Ubuntu', sans-serif;
+	background-color: #1877f2;
+	border: none;
+	padding: 10px;
+	width: 100px;
+	border-radius: 5px;
+	font-size: 15px;
+	color: #ffffff;
+	cursor: pointer;
+}
+
+.reg{
+	font-family: 'Ubuntu', sans-serif;
+	text-decoration: none;
+	color: #ffffff;
+	background-color: #1877f2;
+	padding: 10px 30px;
+	width: 200px;
+	border-radius: 5px;
+	font-size: 15px;
+	margin: 10px;
+}
+
+.footer{
+	grid-area: f;
+}
