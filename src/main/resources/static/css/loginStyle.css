@@ -119,6 +119,22 @@
 	margin: 10px;
 }
 
+.input-group {
+  position:relative;
+  display:inline-block;
+}
+.input-group-text {
+  position: absolute;
+  right:20px;
+  top: 20px;
+}
+
+.bi{
+	font-size: 20px;
+	color: GrayText;
+	cursor: pointer;
+}
+
 .footer{
 	grid-area: f;
 }
