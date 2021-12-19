@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="it-IT">
   <head>
@@ -19,7 +23,8 @@
   <div class="intro">Ti aiutiamo a rimanere in contatto con i tuoi amici.</div>
   </div>
   <div class="grid-item enter">
-  <form class="fom" action="/">
+  <p class="errorReg"><c:if test="${registrazione == 'failure'}">L'username scelto è già stato preso.</c:if>
+  <form class="fom" action="/registraUtente">
   <input type="text" name="nome" placeholder="Nome" required>
   <input type="text" name="cognome" placeholder="Cognome" required><br>
   <input type="text" name="user" placeholder="Username" required>
@@ -29,9 +34,9 @@
   <input type="date" name="dataNascita"
        value="2021-12-11"
        min="1940-01-01" max="2013-12-31" required>
-  <input type="radio" id="uomo" value="uomo" name="sesso" required>
+  <input type="radio" id="uomo" value="uomo" name="sex" required>
   <label for="uomo">Uomo</label>
-  <input type="radio" id="donna" value="donna" name="sesso" required>
+  <input type="radio" id="donna" value="donna" name="sex" required>
   <label for="donna">Donna</label><br><br>
   <input type="submit" value="Registrati" class="pulsanteReg">
   </form> 
