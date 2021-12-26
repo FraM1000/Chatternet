@@ -23,8 +23,8 @@
   <div class="intro">Ti aiutiamo a rimanere in contatto con i tuoi amici.</div>
   </div>
   <div class="grid-item enter">
-  <p class="errorReg"><c:if test="${registrazione == 'failure'}">L'username scelto è già stato preso.</c:if>
-  <form class="fom" action="/registraUtente">
+  <p class="errorReg"><c:if test="${registrazione eq false}">L'username scelto &eacute gi&aacute stato preso.</c:if></p>
+  <form class="fom" action="/registraUtente" method="post">
   <input type="text" name="nome" placeholder="Nome" required>
   <input type="text" name="cognome" placeholder="Cognome" required><br>
   <input type="text" name="user" placeholder="Username" required>
@@ -32,6 +32,7 @@
   <div><span class="input-group-text"><i class="bi bi-eye-slash" id="occhio"></i></span></div>
   </div><br>
   <input type="date" name="dataNascita"
+       pattern="yyyy-MM-dd"
        value="2021-12-11"
        min="1940-01-01" max="2013-12-31" required>
   <input type="radio" id="uomo" value="uomo" name="sex" required>

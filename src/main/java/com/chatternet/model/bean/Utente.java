@@ -10,6 +10,10 @@ import javax.persistence.Id;
 
 import java.sql.Blob;
 import java.util.Date;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class Utente {
@@ -28,6 +32,8 @@ public class Utente {
 	@Column(name = "sesso")
 	private String sesso;
 	
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	@Column(name = "dataNascita")
 	private Date dataNascita;
 	

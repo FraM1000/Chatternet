@@ -23,6 +23,7 @@
   <div class="intro">Ti aiutiamo a rimanere in contatto con i tuoi amici.</div>
   </div>
   <div class="grid-item enter">
+  <p class="succReg"><c:if test="${registrazione eq true}">Registrazione andata a buon fine. Puoi effettuare il login.</c:if></p>
   <form class="fom" action="/login" method="post">
   <input type="text" name="user" placeholder="Username"><br>
   <div class="input-group"><input type="password" name="pass" placeholder="Password" id="password">

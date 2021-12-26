@@ -143,6 +143,14 @@ label{
 	font-size: 20px;
 }
 
+@media screen and (max-width: 500px){
+.errorReg{
+	font-family: 'Ubuntu', sans-serif;
+	color: #f02849;
+	font-size: 15px;
+}
+}
+
 .footer{
 	grid-area: f;
 }

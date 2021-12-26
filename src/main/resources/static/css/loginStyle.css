@@ -15,7 +15,7 @@
 		"u"
 		"e"
 		"f";
-		grid-template-rows: 200px 280px 140px;
+		grid-template-rows: 180px 300px 140px;
 	}
 	.intro{
 	  display: none;
@@ -133,6 +133,20 @@
 	font-size: 20px;
 	color: GrayText;
 	cursor: pointer;
+}
+
+.succReg{
+	font-family: 'Ubuntu', sans-serif;
+	color: #00cc00;
+	font-size: 20px;
+}
+
+@media screen and (max-width: 500px){
+.succReg{
+	font-family: 'Ubuntu', sans-serif;
+	color: #00cc00;
+	font-size: 15px;
+}
 }
 
 .footer{

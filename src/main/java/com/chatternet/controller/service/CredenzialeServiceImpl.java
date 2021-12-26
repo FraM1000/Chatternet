@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.chatternet.model.bean.Credenziale;
 import com.chatternet.model.bean.UsernameEsistenteException;
+import com.chatternet.model.bean.Utente;
 import com.chatternet.model.dao.CredenzialeDAO;
 
 @Service
@@ -16,6 +17,12 @@ public class CredenzialeServiceImpl implements CredenzialeService {
 	@Override
 	public void registraCredenziale(Credenziale credenziale) throws UsernameEsistenteException {
 		credenzialeDAO.registraCredenziale(credenziale);
+		
+	}
+
+	@Override
+	public void inserisciFK(Credenziale credenziale, Utente utente) {
+		credenzialeDAO.inserisciFK(credenziale,utente);
 		
 	}
 
