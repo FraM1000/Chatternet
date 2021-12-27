@@ -41,7 +41,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 		.anyRequest().authenticated()
 		.and()
 		.formLogin()
-		.loginPage("/login").permitAll().usernameParameter("user")
+		.loginPage("/login").permitAll().usernameParameter("user").passwordParameter("pass")
 		.defaultSuccessUrl("/index", true)
 		.and()
 		.logout().logoutUrl("/logout")
