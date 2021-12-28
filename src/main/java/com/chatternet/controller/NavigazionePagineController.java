@@ -9,8 +9,10 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/")
@@ -19,6 +21,13 @@ public class NavigazionePagineController {
 	@GetMapping("/login")
 	public String paginaLogin() {
 		return "login";	
+	}
+	
+	@PostMapping("/loginFailed")
+	public String paginaLoginFailed(RedirectAttributes redirectAttributes) {
+		redirectAttributes.addFlashAttribute("login", false);
+		return "redirect:/login?error";
+		
 	}
 	
 	@GetMapping("/registrazione")

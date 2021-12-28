@@ -11,7 +11,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder.BCryptVe
 import org.springframework.stereotype.Repository;
 
 import com.chatternet.model.bean.Credenziale;
-import com.chatternet.model.bean.UsernameEsistenteException;
 import com.chatternet.model.bean.Utente;
 
 @Repository
@@ -22,13 +21,7 @@ public class CredenzialeDAOImpl implements CredenzialeDAO{
 	
 	@Override
 	@Transactional
-	public void registraCredenziale(Credenziale credenziale) throws UsernameEsistenteException {
-		Query controlloUsern = em.createNativeQuery("SELECT username FROM credenziale WHERE username = ?");
-		controlloUsern.setParameter(1, credenziale.getUsername());
-		int controlloResult = controlloUsern.getFirstResult();
-		if(controlloResult == 1) {
-			throw new UsernameEsistenteException();
-		}else {
+	public void registraCredenziale(Credenziale credenziale) {
 			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(BCryptVersion.$2A,12);
 			String passCryptata = encoder.encode(credenziale.getPassword());
 			Query ins = em.createNativeQuery("INSERT INTO credenziale(username,password) VALUES(?,?)");
@@ -40,9 +33,6 @@ public class CredenzialeDAOImpl implements CredenzialeDAO{
 			}else {
 				System.out.println("credenziali non registrate");
 			}
-		}
-	
-		
 	}
 
 	@Override

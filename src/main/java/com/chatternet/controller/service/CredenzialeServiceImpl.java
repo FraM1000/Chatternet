@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.chatternet.model.bean.Credenziale;
-import com.chatternet.model.bean.UsernameEsistenteException;
 import com.chatternet.model.bean.Utente;
 import com.chatternet.model.dao.CredenzialeDAO;
 
@@ -15,7 +14,7 @@ public class CredenzialeServiceImpl implements CredenzialeService {
 	private CredenzialeDAO credenzialeDAO;
 
 	@Override
-	public void registraCredenziale(Credenziale credenziale) throws UsernameEsistenteException {
+	public void registraCredenziale(Credenziale credenziale) {
 		credenzialeDAO.registraCredenziale(credenziale);
 		
 	}
