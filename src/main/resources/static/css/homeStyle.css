@@ -4,7 +4,12 @@
 	"m c c c c c c c c c s s"
 	"m c c c c c c c c c s s"
 	"a f f f f f f f f f f f";
-	grid-template-rows: 280px 280px 80px;
+	grid-template-rows: 285px 285px 80px;
+}
+
+* {
+	padding: 0px;
+	margin: 0px;
 }
 
 @media screen and (max-width: 500px){
@@ -24,7 +29,7 @@
 		grid-template-areas:
 		"c"
 		"m";
-		grid-template-rows: 705px 100px;
+		grid-template-rows: 715px 100px;
 	}
 }
 
@@ -33,7 +38,7 @@
 		grid-template-areas:
 		"c"
 		"m";
-		grid-template-rows: 630px 90px;
+		grid-template-rows: 640px 90px;
 	}
 }
 
@@ -42,7 +47,7 @@
 		grid-template-areas:
 		"c"
 		"m";
-		grid-template-rows: 575px 80px;
+		grid-template-rows: 585px 80px;
 	}
 }
 
@@ -51,7 +56,7 @@
 		grid-template-areas:
 		"c"
 		"m";
-		grid-template-rows: 550px 80px;
+		grid-template-rows: 565px 80px;
 	}
 }
 
@@ -60,7 +65,7 @@
 		grid-template-areas:
 		"c"
 		"m";
-		grid-template-rows: 490px 70px;
+		grid-template-rows: 510px 70px;
 	}
 }
 
@@ -93,12 +98,17 @@ h1{
 	font-size: 40px;
 	font-weight: bold;
 	position: relative;
-	left: 25px;
+	top: 25px;
+	left: 30px;
 }
 
 .bi {
 	font-size: 25px;
 	color: #1877f2;
+}
+
+.bi:hover {
+  color: black;
 }
 
 .chats{
