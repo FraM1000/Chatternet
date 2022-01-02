@@ -25,4 +25,9 @@ public class CredenzialeServiceImpl implements CredenzialeService {
 		
 	}
 
+	@Override
+	public Object[] ricavaUtenteDaUsername(String username) {
+		return credenzialeDAO.ricavaUtenteDaUsername(username);
+	}
+
 }

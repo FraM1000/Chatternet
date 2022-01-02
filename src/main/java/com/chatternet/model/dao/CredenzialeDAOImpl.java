@@ -56,4 +56,12 @@ public class CredenzialeDAOImpl implements CredenzialeDAO{
 		
 	}
 
+	@Override
+	public Object[] ricavaUtenteDaUsername(String username) {
+		Query stored = em.createNativeQuery("call chatternet.ricavaUtente(?)");
+		stored.setParameter(1, username);
+		Object[] user = (Object[]) stored.getSingleResult();
+		return user;
+	}
+
 }

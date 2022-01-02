@@ -23,6 +23,8 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 	private final AppUserService appUserService;
 	@Autowired
 	private final BCryptPasswordEncoder bCryptPasswordEncoder; 
+	@Autowired
+	private SuccessHandler successHandler;
  
 
 	public ApplicationSecurityConfig(AppUserService appUserService, BCryptPasswordEncoder bCryptPasswordEncoder) {
@@ -42,7 +44,8 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 		.and()
 		.formLogin()
 		.loginPage("/login").permitAll().usernameParameter("user").passwordParameter("pass")
-		.defaultSuccessUrl("/index", true).failureForwardUrl("/loginFailed")
+		.successHandler(successHandler)
+		.failureForwardUrl("/loginFailed")
 		.and()
 		.logout().logoutUrl("/logout")
 		.clearAuthentication(true)

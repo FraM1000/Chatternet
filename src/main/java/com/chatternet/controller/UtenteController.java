@@ -52,6 +52,5 @@ public class UtenteController {
 			return "redirect:/registrazione";
 		}
 		
-		
 	}
 }

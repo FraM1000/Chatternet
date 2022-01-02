@@ -9,4 +9,5 @@ public interface CredenzialeDAO {
 	
 	public void inserisciFK(Credenziale credenziale, Utente utente);
 
+	public Object[] ricavaUtenteDaUsername(String username);
 }

@@ -8,5 +8,7 @@ public interface CredenzialeService {
 	public void registraCredenziale(Credenziale credenziale);
 	
 	public void inserisciFK(Credenziale credenziale, Utente utente);
+	
+	public Object[] ricavaUtenteDaUsername(String username);
 
 }
