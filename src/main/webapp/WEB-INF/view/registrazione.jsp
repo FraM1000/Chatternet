@@ -27,7 +27,7 @@
   <form class="fom" action="/registraUtente" method="post">
   <input type="text" name="nome" placeholder="Nome" required>
   <input type="text" name="cognome" placeholder="Cognome" required><br>
-  <input type="text" name="user" placeholder="Username" required>
+  <input type="text" name="user" placeholder="Username" maxlength="30" required>
   <div class="input-group"><input type="password" name="pass" placeholder="Password" required id="password">
   <div><span class="input-group-text"><i class="bi bi-eye-slash" id="occhio"></i></span></div>
   </div><br>
