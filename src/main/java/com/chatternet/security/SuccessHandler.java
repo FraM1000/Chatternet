@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.Base64;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -45,6 +46,7 @@ public class SuccessHandler extends SimpleUrlAuthenticationSuccessHandler{
 		utente.setUsername(authentication.getName());
 		utente.setNome((String) user[1]);
 		utente.setCognome((String) user[2]);
+		utente.setDataNascita((Date) user[4]);
 		mySession.setAttribute("utente", utente);
 	    super.onAuthenticationSuccess(request, response, authentication);
     }

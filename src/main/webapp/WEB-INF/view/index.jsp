@@ -22,7 +22,7 @@
   <a href="/logout"><i class="bi bi-box-arrow-left"></i></a>
   <a href=""><i class="bi bi-search"></i></a>
   <a href=""><i class="bi bi-chat"></i></a>
-  <a href=""><i class="bi bi-person"></i></a>
+  <a href="/profilo"><i class="bi bi-person"></i></a>
   </div>
   <div class="grid-item chats">
   <h1>Chat</h1>

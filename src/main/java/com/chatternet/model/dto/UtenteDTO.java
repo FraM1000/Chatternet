@@ -1,5 +1,6 @@
 package com.chatternet.model.dto;
 
+import java.util.Date;
 import java.util.Objects;
 
 public class UtenteDTO {
@@ -13,6 +14,8 @@ public class UtenteDTO {
 	private String password;
 	
 	private String foto;
+	
+	private Date dataNascita;
 
 	public String getNome() {
 		return nome;
@@ -54,6 +57,14 @@ public class UtenteDTO {
 		this.foto = foto;
 	}
 
+	public Date getDataNascita() {
+		return dataNascita;
+	}
+
+	public void setDataNascita(Date dataNascita) {
+		this.dataNascita = dataNascita;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -63,16 +74,15 @@ public class UtenteDTO {
 		if (getClass() != obj.getClass())
 			return false;
 		UtenteDTO other = (UtenteDTO) obj;
-		return Objects.equals(cognome, other.cognome) && Objects.equals(foto, other.foto)
-				&& Objects.equals(nome, other.nome) && Objects.equals(password, other.password)
-				&& Objects.equals(username, other.username);
+		return Objects.equals(cognome, other.cognome) && Objects.equals(dataNascita, other.dataNascita)
+				&& Objects.equals(foto, other.foto) && Objects.equals(nome, other.nome)
+				&& Objects.equals(password, other.password) && Objects.equals(username, other.username);
 	}
 
 	@Override
 	public String toString() {
 		return "UtenteDTO [nome=" + nome + ", cognome=" + cognome + ", username=" + username + ", password=" + password
-				+ ", foto=" + foto + "]";
+				+ ", foto=" + foto + ", dataNascita=" + dataNascita + "]";
 	}
 
-	
 }
