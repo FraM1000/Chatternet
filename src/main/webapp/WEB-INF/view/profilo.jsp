@@ -22,18 +22,25 @@
   <a href="/logout"><i class="bi bi-box-arrow-left"></i></a>
   <a href=""><i class="bi bi-search"></i></a>
   <a href=""><i class="bi bi-chat"></i></a>
-  <a href="/profilo"><i class="bi bi-person"></i></a>
+  <a href="/paginaProfilo"><i class="bi bi-person"></i></a>
   </div>
   <div class="grid-item profilo">
   <h1>Profilo</h1><br>
   <div class ="flexContainer">
   <br><br>
+  <c:choose>
+  <c:when test="${foto != null}">
+  <img class="imgProfile" alt="Immagine Profilo" src="${foto}"><br>
+  </c:when>
+  <c:otherwise>
   <img class="imgProfile" alt="Immagine Profilo" src="/User"><br>
+  </c:otherwise>
+  </c:choose>
   <label class="mex" for="avatar"><i class="bi-camera-fill"> Imposta foto</i></label>
   <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
-  <h2>Username</h2>
-  <h3>Nome Cognome</h3>
-  <h3>Età: 18</h3>
+  <h2><c:out value="${username}"/></h2>
+  <h3><c:out value="${nome}"/> <c:out value="${cognome}"/></h3>
+  <h3>Et&aacute: <c:out value="${eta}"/></h3>
   </div>
   </div>
   <div class="grid-item spazio">
