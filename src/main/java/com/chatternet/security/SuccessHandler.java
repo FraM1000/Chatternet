@@ -14,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
-import org.springframework.util.SerializationUtils;
 import com.chatternet.controller.service.CredenzialeService;
 import com.chatternet.model.dto.UtenteDTO;
 
@@ -31,7 +30,7 @@ public class SuccessHandler extends SimpleUrlAuthenticationSuccessHandler{
 		UtenteDTO utente = new UtenteDTO();
 		Object[] user =  credenzialeService.ricavaUtenteDaUsername(authentication.getName());
 		if(user[5] != null) {
-		byte[] fotoByte = SerializationUtils.serialize(user[5]);
+		byte[] fotoByte = (byte[]) user[5];
 		String fotoUser = "data:image/jpeg;base64,"+Base64.getEncoder().encodeToString(fotoByte);
 		utente.setFoto(fotoUser);
 		}

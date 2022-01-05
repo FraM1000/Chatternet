@@ -122,6 +122,20 @@ h1{
 	align-items: center;
 }
 
+img.imgImpProfile{
+	height: 170px;
+	width: 170px;
+	border-radius: 50%;
+}
+
+@media screen and (max-width: 500px){
+img.imgImpProfile{
+	height: 150px;
+	width: 150px;
+	border-radius: 50%;
+}
+}
+
 .imgProfile{
 	height: 160px;
 	width: 170px;

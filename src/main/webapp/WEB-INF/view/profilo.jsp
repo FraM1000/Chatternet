@@ -30,7 +30,7 @@
   <br><br>
   <c:choose>
   <c:when test="${foto != null}">
-  <img class="imgProfile" alt="Immagine Profilo" src="${foto}"><br>
+  <img alt="Immagine Profilo" src="${foto}" class="imgImpProfile"><br>
   </c:when>
   <c:otherwise>
   <img class="imgProfile" alt="Immagine Profilo" src="/User"><br>
