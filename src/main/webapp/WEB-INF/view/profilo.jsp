@@ -37,7 +37,7 @@
   </c:otherwise>
   </c:choose>
   <label class="mex" for="avatar"><i class="bi-camera-fill"> Imposta foto</i></label>
-  <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
+  <input onchange="insImage()" type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
   <h2><c:out value="${username}"/></h2>
   <h3><c:out value="${nome}"/> <c:out value="${cognome}"/></h3>
   <h3>Et&aacute: <c:out value="${eta}"/></h3>
@@ -53,5 +53,21 @@
   
   </div>
   </div>
+  
+  <script>
+  function insImage(){
+  let file = document.getElementById("avatar");
+  if(file.files.length == 0){
+  return false;
+  }else{
+  let formData = new FormData();
+  formData.append('avatar',file.files[0]);
+  let request = new XMLHttpRequest();
+  let url = 'http://localhost:8081/inserisciFoto';
+  request.open('POST',url);
+  request.send(formData);
+  }
+  }
+  </script>
 	</body>
 	</html>

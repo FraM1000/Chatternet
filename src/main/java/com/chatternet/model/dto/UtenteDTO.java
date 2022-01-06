@@ -5,6 +5,8 @@ import java.util.Objects;
 
 public class UtenteDTO {
 	
+	private int id;
+	
 	private String nome;
 	
 	private String cognome;
@@ -16,6 +18,14 @@ public class UtenteDTO {
 	private String foto;
 	
 	private Date dataNascita;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getNome() {
 		return nome;
@@ -75,13 +85,13 @@ public class UtenteDTO {
 			return false;
 		UtenteDTO other = (UtenteDTO) obj;
 		return Objects.equals(cognome, other.cognome) && Objects.equals(dataNascita, other.dataNascita)
-				&& Objects.equals(foto, other.foto) && Objects.equals(nome, other.nome)
+				&& Objects.equals(foto, other.foto) && id == other.id && Objects.equals(nome, other.nome)
 				&& Objects.equals(password, other.password) && Objects.equals(username, other.username);
 	}
 
 	@Override
 	public String toString() {
-		return "UtenteDTO [nome=" + nome + ", cognome=" + cognome + ", username=" + username + ", password=" + password
+		return "UtenteDTO [id=" + id  + ", nome=" + nome + ", cognome=" + cognome + ", username=" + username + ", password=" + password
 				+ ", foto=" + foto + ", dataNascita=" + dataNascita + "]";
 	}
 

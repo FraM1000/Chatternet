@@ -1,5 +1,6 @@
 package com.chatternet.controller;
 
+import java.util.Base64;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.chatternet.controller.service.CredenzialeService;
@@ -80,5 +82,17 @@ public class UtenteController {
 		request.setAttribute("eta", eta);
 		request.setAttribute("foto", foto);
 		return "profilo";
+	}
+	
+	@PostMapping("/inserisciFoto")
+	public String mettiFoto(HttpServletRequest request, @RequestParam("avatar") MultipartFile foto) {
+		HttpSession mySession = request.getSession();
+		UtenteDTO udto = (UtenteDTO) mySession.getAttribute("utente");
+	    int idUtente = udto.getId();
+	    utenteService.inserisciFoto(foto, idUtente);
+	    byte[] fotoPresa = (byte[]) utenteService.prendiFoto(idUtente);
+	    String fotoUser = "data:image/jpeg;base64,"+Base64.getEncoder().encodeToString(fotoPresa);
+	    udto.setFoto(fotoUser);
+		return "redirect:/paginaProfilo";
 	}
 }

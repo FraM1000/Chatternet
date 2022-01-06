@@ -35,6 +35,7 @@ public class SuccessHandler extends SimpleUrlAuthenticationSuccessHandler{
 		utente.setFoto(fotoUser);
 		}
 		utente.setUsername(authentication.getName());
+		utente.setId((int) user[0]);
 		utente.setNome((String) user[1]);
 		utente.setCognome((String) user[2]);
 		utente.setDataNascita((Date) user[4]);
