@@ -1,24 +1,23 @@
 package com.chatternet.controller;
 
-import java.util.Base64;
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import com.chatternet.controller.service.CredenzialeService;
 import com.chatternet.controller.service.UtenteService;
+import com.chatternet.images.ImmagineUploadUtil;
 import com.chatternet.model.bean.Credenziale;
 import com.chatternet.model.bean.Utente;
 import com.chatternet.model.dto.UtenteDTO;
@@ -69,7 +68,7 @@ public class UtenteController {
 		String username = udto.getUsername();
 		String nome = udto.getNome();
 		String cognome = udto.getCognome();
-		String foto = udto.getFoto();
+		String foto = udto.getFotoPath();
 		Date dataNascita = udto.getDataNascita();
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(dataNascita);
@@ -85,14 +84,17 @@ public class UtenteController {
 	}
 	
 	@PostMapping("/inserisciFoto")
-	public String mettiFoto(HttpServletRequest request, @RequestParam("avatar") MultipartFile foto) {
+	public String mettiFoto(HttpServletRequest request, @RequestParam("avatar") MultipartFile foto) throws IOException {
 		HttpSession mySession = request.getSession();
 		UtenteDTO udto = (UtenteDTO) mySession.getAttribute("utente");
-	    int idUtente = udto.getId();
-	    utenteService.inserisciFoto(foto, idUtente);
-	    byte[] fotoPresa = (byte[]) utenteService.prendiFoto(idUtente);
-	    String fotoUser = "data:image/jpeg;base64,"+Base64.getEncoder().encodeToString(fotoPresa);
-	    udto.setFoto(fotoUser);
+		Utente utente = new Utente();
+		utente.setIdUtente(udto.getId());
+		String nomeFoto = StringUtils.cleanPath(foto.getOriginalFilename());
+		utente.setFotoProfilo(nomeFoto);
+	    utenteService.inserisciFoto(utente);
+	    String uploadDir = "user-photos/" + utente.getIdUtente();
+	    ImmagineUploadUtil.saveFile(uploadDir, nomeFoto, foto);
+	    udto.setFoto(nomeFoto);
 		return "redirect:/paginaProfilo";
 	}
 }

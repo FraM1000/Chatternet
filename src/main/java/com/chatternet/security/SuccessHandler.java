@@ -1,11 +1,7 @@
 package com.chatternet.security;
 
-
-
 import java.io.IOException;
-import java.util.Base64;
 import java.util.Date;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -30,9 +26,7 @@ public class SuccessHandler extends SimpleUrlAuthenticationSuccessHandler{
 		UtenteDTO utente = new UtenteDTO();
 		Object[] user =  credenzialeService.ricavaUtenteDaUsername(authentication.getName());
 		if(user[5] != null) {
-		byte[] fotoByte = (byte[]) user[5];
-		String fotoUser = "data:image/jpeg;base64,"+Base64.getEncoder().encodeToString(fotoByte);
-		utente.setFoto(fotoUser);
+		utente.setFoto((String) user[5]);
 		}
 		utente.setUsername(authentication.getName());
 		utente.setId((int) user[0]);

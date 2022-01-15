@@ -2,7 +2,6 @@ package com.chatternet.controller.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 import com.chatternet.model.bean.Utente;
 import com.chatternet.model.dao.UtenteDAO;
 
@@ -19,13 +18,13 @@ public class UtenteServiceImpl implements UtenteService {
 	}
 
 	@Override
-	public void inserisciFoto(MultipartFile foto, int idUtente) {
-		utenteDAO.inserisciFoto(foto, idUtente);
+	public void inserisciFoto(Utente utente) {	
+		utenteDAO.inserisciFoto(utente);
 	}
 
 	@Override
-	public Object prendiFoto(int idUtente) {
-		return utenteDAO.prendiFoto(idUtente);
+	public Object prendiFoto(Utente utente) {
+		return utenteDAO.prendiFoto(utente);
 	}
 	
 	

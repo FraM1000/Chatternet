@@ -5,7 +5,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.multipart.MultipartFile;
 import com.chatternet.model.bean.Utente;
 
 @Repository
@@ -33,10 +32,11 @@ public class UtenteDAOImpl implements UtenteDAO {
 
 	@Override
 	@Transactional
-	public void inserisciFoto(MultipartFile foto, int idUtente) {
+	public void inserisciFoto(Utente utente) {
+		
 		Query upd = em.createNativeQuery("UPDATE utente SET fotoProfilo = ? WHERE idUtente = ?");
-		upd.setParameter(1, foto);
-		upd.setParameter(2, idUtente);
+		upd.setParameter(1, utente.getFotoProfilo());
+		upd.setParameter(2, utente.getIdUtente());
 		int rs = upd.executeUpdate();
 		if(rs == 1) {
 			System.out.println("foto inserita");
@@ -46,9 +46,9 @@ public class UtenteDAOImpl implements UtenteDAO {
 	}
 
 	@Override
-	public Object prendiFoto(int idUtente) {
+	public Object prendiFoto(Utente utente) {
 		Query sel = em.createNativeQuery("SELECT fotoProfilo FROM utente WHERE idUtente = ?");
-		sel.setParameter(1, idUtente);
+		sel.setParameter(1, utente.getIdUtente());
 		Object foto = sel.getSingleResult();
 		return foto;
 	}

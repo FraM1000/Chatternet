@@ -1,18 +1,14 @@
 package com.chatternet.model.bean;
 
 import java.util.Objects;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import java.sql.Blob;
 import java.util.Date;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -38,7 +34,7 @@ public class Utente {
 	private Date dataNascita;
 	
 	@Column(name = "fotoProfilo")
-	private Blob fotoProfilo;
+	private String fotoProfilo;
 	
 	@Column(name = "FKcredenziale")
 	private int FKcredenziale;
@@ -87,11 +83,11 @@ public class Utente {
 		this.dataNascita = dataNascita;
 	}
 
-	public Blob getFotoProfilo() {
+	public String getFotoProfilo() {
 		return fotoProfilo;
 	}
 
-	public void setFotoProfilo(Blob fotoProfilo) {
+	public void setFotoProfilo(String fotoProfilo) {
 		this.fotoProfilo = fotoProfilo;
 	}
 

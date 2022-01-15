@@ -3,6 +3,8 @@ package com.chatternet.model.dto;
 import java.util.Date;
 import java.util.Objects;
 
+import javax.persistence.Transient;
+
 public class UtenteDTO {
 	
 	private int id;
@@ -66,6 +68,13 @@ public class UtenteDTO {
 	public void setFoto(String foto) {
 		this.foto = foto;
 	}
+	
+	@Transient
+    public String getFotoPath() {
+        if (foto == null || id == 0) return null;
+         
+        return "/user-photos/" + id + "/" + foto;
+    }
 
 	public Date getDataNascita() {
 		return dataNascita;
