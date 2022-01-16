@@ -39,7 +39,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 		.authorizeRequests()
 		.requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
 		.antMatchers("/registraUtente").anonymous()
-		.antMatchers("/","/login","/registrazione","/registraUtente","/Icona", "/css/**","/images/**","/static/**").permitAll()
+		.antMatchers("/","/login","/registrazione","/registraUtente","/Icona", "/css/**","/images/**","/js/**","/static/**").permitAll()
 		.anyRequest().authenticated()
 		.and()
 		.formLogin()
