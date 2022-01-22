@@ -4,6 +4,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import com.chatternet.model.bean.Utente;
 
@@ -12,6 +14,7 @@ public class UtenteDAOImpl implements UtenteDAO {
 	
 	@PersistenceContext
 	private EntityManager em;
+	Logger logger = LoggerFactory.getLogger(UtenteDAOImpl.class);
 
 	@Override
 	@Transactional
@@ -23,9 +26,9 @@ public class UtenteDAOImpl implements UtenteDAO {
 		ins.setParameter(4, utente.getDataNascita());
 		int rs = ins.executeUpdate();
 		if(rs == 1) {
-			System.out.println("utente registrato");
+			logger.info("utente registrato");
 		} else {
-			System.out.println("utente non registrato");
+			logger.info("utente non registrato");
 		}
 		
 	}
@@ -39,9 +42,9 @@ public class UtenteDAOImpl implements UtenteDAO {
 		upd.setParameter(2, utente.getIdUtente());
 		int rs = upd.executeUpdate();
 		if(rs == 1) {
-			System.out.println("foto inserita");
+			logger.info("foto inserita");
 		} else {
-			System.out.println("foto non inserita");
+			logger.info("foto non inserita");
 		}
 	}
 

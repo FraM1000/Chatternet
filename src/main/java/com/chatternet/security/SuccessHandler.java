@@ -6,6 +6,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
@@ -18,6 +21,7 @@ public class SuccessHandler extends SimpleUrlAuthenticationSuccessHandler{
 	
 	@Autowired
 	private CredenzialeService credenzialeService;
+	Logger logger = LoggerFactory.getLogger(SuccessHandler.class);
 	
 	@Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
@@ -25,6 +29,7 @@ public class SuccessHandler extends SimpleUrlAuthenticationSuccessHandler{
 		HttpSession mySession = request.getSession();
 		UtenteDTO utente = new UtenteDTO();
 		Object[] user =  credenzialeService.ricavaUtenteDaUsername(authentication.getName());
+		logger.info("l'utente: {} {} ha effettuato l'accesso",user[1],user[2]);
 		if(user[5] != null) {
 		utente.setFoto((String) user[5]);
 		}

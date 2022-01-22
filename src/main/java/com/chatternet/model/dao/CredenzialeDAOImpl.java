@@ -5,11 +5,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder.BCryptVersion;
 import org.springframework.stereotype.Repository;
-
 import com.chatternet.model.bean.Credenziale;
 import com.chatternet.model.bean.Utente;
 
@@ -18,6 +18,7 @@ public class CredenzialeDAOImpl implements CredenzialeDAO{
 
 	@PersistenceContext
 	private EntityManager em;
+	Logger logger = LoggerFactory.getLogger(CredenzialeDAOImpl.class);
 	
 	@Override
 	@Transactional
@@ -29,9 +30,9 @@ public class CredenzialeDAOImpl implements CredenzialeDAO{
 			ins.setParameter(2, passCryptata);
 			int rs = ins.executeUpdate();
 			if(rs == 1) {
-				System.out.println("credenziali registrate");
+				logger.info("credenziali registrate");
 			}else {
-				System.out.println("credenziali non registrate");
+				logger.info("credenziali non registrate");
 			}
 	}
 
@@ -44,14 +45,14 @@ public class CredenzialeDAOImpl implements CredenzialeDAO{
 		System.out.println(FKcredenziale);
 		Query id = em.createNativeQuery("SELECT MAX(idUtente) max FROM utente");
 		Object rs2 = id.getSingleResult();
-		 int idV = (int) rs2;
-		System.out.println(idV);
+		 int idU = (int) rs2;
+		System.out.println(idU);
 		Query upd = em.createNativeQuery("UPDATE utente SET FKcredenziale=? WHERE idUtente = ?");
 		upd.setParameter(1, FKcredenziale);
-		upd.setParameter(2, idV);
+		upd.setParameter(2, idU);
 		int res = upd.executeUpdate();
 		if(res==1) {
-			System.out.println("FKcredenziale settata");
+			logger.info("FKcredenziale: {} settata per utente con id: {}",FKcredenziale,idU);
 		}
 		
 	}
