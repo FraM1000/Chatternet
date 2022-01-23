@@ -8,7 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class ImmagineUploadUtil {
 	
-	static Logger logger = LoggerFactory.getLogger(ImmagineUploadUtil.class);
+	static Logger LOGGER = LoggerFactory.getLogger(ImmagineUploadUtil.class);
 	
 	 public static void saveFile(String uploadDir, String fileName,
 	            MultipartFile multipartFile) throws IOException {
@@ -18,7 +18,7 @@ public class ImmagineUploadUtil {
 	        }
 	        try (InputStream inputStream = multipartFile.getInputStream()) {
 	            Path filePath = uploadPath.resolve(fileName);
-	            logger.info("Inserisco foto nel path: {}",filePath.toFile().getAbsolutePath());
+	            LOGGER.info("Inserisco foto nel path: {}",filePath.toFile().getAbsolutePath());
 	            Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
 	        } catch (IOException ioe) {        
 	            throw new IOException("impossibile salvare immagine: " + fileName, ioe);
