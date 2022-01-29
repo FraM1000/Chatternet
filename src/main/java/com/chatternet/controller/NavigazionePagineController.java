@@ -44,6 +44,11 @@ public class NavigazionePagineController {
 	public String paginaProfilo() {
 		return "profilo";
 	}
+	
+	@GetMapping("/ricerca")
+	public String paginaRicerca() {
+		return "ricerca";
+	}
 	 
 	 @RequestMapping(value = "/Icona", method = RequestMethod.GET,
 	            produces = MediaType.IMAGE_JPEG_VALUE)
