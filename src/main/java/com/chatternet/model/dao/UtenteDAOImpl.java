@@ -67,6 +67,9 @@ public class UtenteDAOImpl implements UtenteDAO {
 		sel.setParameter(1, nomeUtente + "%");
 		sel.setParameter(2, usernameResearcher);
 		List<?> utenti = sel.getResultList();
+		if(utenti.isEmpty()) {
+			logger.info("nessun utente è stato trovato");
+		}
 		return utenti;
 	}
 
