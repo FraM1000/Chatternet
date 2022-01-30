@@ -1,5 +1,6 @@
 package com.chatternet.controller.service;
 
+import java.util.List;
 import com.chatternet.model.bean.Utente;
 
 public interface UtenteService {
@@ -9,6 +10,8 @@ public interface UtenteService {
 	public void inserisciFoto(Utente utente);
 	
 	public Object prendiFoto(Utente utente);
+	
+	public List<?> ricercaUtente(String nomeUtente, String usernameResearcher);
 		
 
 }

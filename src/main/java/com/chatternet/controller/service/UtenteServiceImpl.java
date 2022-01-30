@@ -1,5 +1,6 @@
 package com.chatternet.controller.service;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.chatternet.model.bean.Utente;
@@ -25,6 +26,11 @@ public class UtenteServiceImpl implements UtenteService {
 	@Override
 	public Object prendiFoto(Utente utente) {
 		return utenteDAO.prendiFoto(utente);
+	}
+
+	@Override
+	public List<?> ricercaUtente(String nomeUtente, String usernameResearcher) {
+		return utenteDAO.ricercaUtente(nomeUtente,usernameResearcher);
 	}
 	
 	

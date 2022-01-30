@@ -1,5 +1,7 @@
 package com.chatternet.model.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -36,7 +38,6 @@ public class UtenteDAOImpl implements UtenteDAO {
 	@Override
 	@Transactional
 	public void inserisciFoto(Utente utente) {
-		
 		Query upd = em.createNativeQuery("UPDATE utente SET fotoProfilo = ? WHERE idUtente = ?");
 		upd.setParameter(1, utente.getFotoProfilo());
 		upd.setParameter(2, utente.getIdUtente());
@@ -54,6 +55,19 @@ public class UtenteDAOImpl implements UtenteDAO {
 		sel.setParameter(1, utente.getIdUtente());
 		Object foto = sel.getSingleResult();
 		return foto;
+	}
+
+	@Override
+	public List<?> ricercaUtente(String nomeUtente, String usernameResearcher) {
+		Query sel = em.createNativeQuery("SELECT c.username , u.nome , u.cognome , u.fotoProfilo \r\n"
+				+ "FROM credenziale c , utente u \r\n"
+				+ "WHERE c.username LIKE ? \r\n"
+				+ "AND NOT(c.username = ?) \r\n"
+				+ "AND u.FKcredenziale = c.idCredenziale");
+		sel.setParameter(1, nomeUtente + "%");
+		sel.setParameter(2, usernameResearcher);
+		List<?> utenti = sel.getResultList();
+		return utenti;
 	}
 
 }

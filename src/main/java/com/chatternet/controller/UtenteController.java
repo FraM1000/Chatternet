@@ -97,4 +97,13 @@ public class UtenteController {
 	    udto.setFoto(nomeFoto);
 		return "redirect:/paginaProfilo";
 	}
+	
+	@GetMapping("/cercaUtente")
+	public String cercaUtente(HttpServletRequest request, @RequestParam("nomeUtente") String nomeUtente) {
+		HttpSession mySession = request.getSession();
+		UtenteDTO udto = (UtenteDTO) mySession.getAttribute("utente");
+		String usernameResearcher = udto.getUsername();
+		utenteService.ricercaUtente(nomeUtente, usernameResearcher);
+		return "ricerca";
+	}
 }
