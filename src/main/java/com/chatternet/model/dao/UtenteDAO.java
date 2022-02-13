@@ -11,6 +11,6 @@ public interface UtenteDAO {
 	
 	public Object prendiFoto(Utente utente);
 	
-	public List<?> ricercaUtente(String nomeUtente, String usernameResearcher);
+	public List<Utente[]> ricercaUtente(String nomeUtente, String usernameResearcher);
 
 }

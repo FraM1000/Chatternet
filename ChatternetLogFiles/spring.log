@@ -1,0 +1,79 @@
+2022-02-13 17:31:52.209  INFO 9740 --- [main] com.chatternet.ChatternetApplication     : Starting ChatternetApplication using Java 15.0.2 on francesco with PID 9740 (C:\Users\francesco\Desktop\workspace-spring\chatternet\target\classes started by francesco in C:\Users\francesco\Desktop\workspace-spring\chatternet)
+2022-02-13 17:31:52.216  INFO 9740 --- [main] com.chatternet.ChatternetApplication     : No active profile set, falling back to default profiles: default
+2022-02-13 17:31:53.681  INFO 9740 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-02-13 17:31:53.683  INFO 9740 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-02-13 17:31:53.824  INFO 9740 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 119 ms. Found 1 JPA repository interfaces.
+2022-02-13 17:31:54.297  INFO 9740 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-02-13 17:31:54.298  INFO 9740 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2022-02-13 17:31:54.317  INFO 9740 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.chatternet.model.dao.AppUserRepositoryInterface. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2022-02-13 17:31:54.319  INFO 9740 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 20 ms. Found 0 JDBC repository interfaces.
+2022-02-13 17:31:55.439  INFO 9740 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2022-02-13 17:31:55.459  INFO 9740 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-02-13 17:31:55.460  INFO 9740 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.54]
+2022-02-13 17:31:56.174  INFO 9740 --- [main] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2022-02-13 17:31:56.201  INFO 9740 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-02-13 17:31:56.202  INFO 9740 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3763 ms
+2022-02-13 17:31:56.606  INFO 9740 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-02-13 17:31:57.332  INFO 9740 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-02-13 17:31:57.446  INFO 9740 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-02-13 17:31:57.783  INFO 9740 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.1.Final
+2022-02-13 17:31:58.227  INFO 9740 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-02-13 17:31:58.526  INFO 9740 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-02-13 17:31:59.687  INFO 9740 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-02-13 17:31:59.706  INFO 9740 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-02-13 17:32:00.516  WARN 9740 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-02-13 17:32:00.880  INFO 9740 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@35277c6c, org.springframework.security.web.context.SecurityContextPersistenceFilter@69e8b711, org.springframework.security.web.header.HeaderWriterFilter@50f6ecab, org.springframework.security.web.authentication.logout.LogoutFilter@848d9bc, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@3a359f7c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@d99df7a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@28d16af8, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7a364e1c, org.springframework.security.web.session.SessionManagementFilter@58647985, org.springframework.security.web.access.ExceptionTranslationFilter@7c857e8f, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1d38cdde]
+2022-02-13 17:32:01.301  INFO 9740 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2022-02-13 17:32:01.772  INFO 9740 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2022-02-13 17:32:01.790  INFO 9740 --- [main] com.chatternet.ChatternetApplication     : Started ChatternetApplication in 11.016 seconds (JVM running for 14.658)
+2022-02-13 17:32:25.489  INFO 9740 --- [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-02-13 17:32:25.491  INFO 9740 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-02-13 17:32:25.495  INFO 9740 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2022-02-13 17:32:29.681  WARN 9740 --- [http-nio-8081-exec-1] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [398] milliseconds.
+2022-02-13 17:32:46.012  INFO 9740 --- [http-nio-8081-exec-8] com.chatternet.security.SuccessHandler   : l'utente: vituccio pelato ha effettuato l'accesso
+2022-02-13 17:32:54.604  INFO 9740 --- [RMI TCP Connection(5)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2022-02-13 17:32:54.738  INFO 9740 --- [RMI TCP Connection(5)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-02-13 17:32:54.749  INFO 9740 --- [RMI TCP Connection(5)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-02-13 17:32:54.834  INFO 9740 --- [RMI TCP Connection(5)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-02-13 17:39:05.160  INFO 5872 --- [main] com.chatternet.ChatternetApplication     : Starting ChatternetApplication using Java 15.0.2 on francesco with PID 5872 (C:\Users\francesco\Desktop\workspace-spring\chatternet\target\classes started by francesco in C:\Users\francesco\Desktop\workspace-spring\chatternet)
+2022-02-13 17:39:05.199  INFO 5872 --- [main] com.chatternet.ChatternetApplication     : No active profile set, falling back to default profiles: default
+2022-02-13 17:39:07.144  INFO 5872 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-02-13 17:39:07.146  INFO 5872 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-02-13 17:39:07.344  INFO 5872 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 169 ms. Found 1 JPA repository interfaces.
+2022-02-13 17:39:08.036  INFO 5872 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-02-13 17:39:08.038  INFO 5872 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2022-02-13 17:39:08.102  INFO 5872 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.chatternet.model.dao.AppUserRepositoryInterface. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2022-02-13 17:39:08.104  INFO 5872 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 64 ms. Found 0 JDBC repository interfaces.
+2022-02-13 17:39:09.722  INFO 5872 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2022-02-13 17:39:09.746  INFO 5872 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-02-13 17:39:09.748  INFO 5872 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.54]
+2022-02-13 17:39:10.515  INFO 5872 --- [main] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2022-02-13 17:39:10.545  INFO 5872 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-02-13 17:39:10.546  INFO 5872 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 5045 ms
+2022-02-13 17:39:10.921  INFO 5872 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-02-13 17:39:12.281  INFO 5872 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-02-13 17:39:12.902  INFO 5872 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-02-13 17:39:13.810  INFO 5872 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.1.Final
+2022-02-13 17:39:14.760  INFO 5872 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-02-13 17:39:15.533  INFO 5872 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-02-13 17:39:18.984  INFO 5872 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-02-13 17:39:19.045  INFO 5872 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-02-13 17:39:23.753  WARN 5872 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-02-13 17:39:27.087  INFO 5872 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@29a50a11, org.springframework.security.web.context.SecurityContextPersistenceFilter@d99df7a, org.springframework.security.web.header.HeaderWriterFilter@58647985, org.springframework.security.web.authentication.logout.LogoutFilter@1add3e03, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@279e8bc0, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4b9dc62f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@45648e75, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@74cff17c, org.springframework.security.web.session.SessionManagementFilter@69e8b711, org.springframework.security.web.access.ExceptionTranslationFilter@50f6ecab, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@717b0d81]
+2022-02-13 17:39:30.283  INFO 5872 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2022-02-13 17:39:32.788  INFO 5872 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2022-02-13 17:39:32.826  INFO 5872 --- [main] com.chatternet.ChatternetApplication     : Started ChatternetApplication in 29.249 seconds (JVM running for 32.585)
+2022-02-13 17:39:53.242  INFO 5872 --- [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-02-13 17:39:53.244  INFO 5872 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-02-13 17:39:53.249  INFO 5872 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2022-02-13 17:40:01.518  WARN 5872 --- [http-nio-8081-exec-1] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [230] milliseconds.
+2022-02-13 17:40:01.518  WARN 5872 --- [http-nio-8081-exec-2] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [230] milliseconds.
+2022-02-13 17:40:21.654  INFO 5872 --- [http-nio-8081-exec-10] com.chatternet.security.SuccessHandler   : l'utente: vituccio pelato ha effettuato l'accesso
+2022-02-13 17:40:54.857  INFO 5872 --- [http-nio-8081-exec-1] com.chatternet.model.dao.UtenteDAOImpl   : nessun utente è stato trovato
+2022-02-13 17:40:59.135  INFO 5872 --- [http-nio-8081-exec-7] com.chatternet.model.dao.UtenteDAOImpl   : nessun utente è stato trovato
+2022-02-13 17:41:42.831  INFO 5872 --- [http-nio-8081-exec-6] com.chatternet.model.dao.UtenteDAOImpl   : nessun utente è stato trovato
+2022-02-13 17:41:45.484  INFO 5872 --- [http-nio-8081-exec-7] com.chatternet.model.dao.UtenteDAOImpl   : nessun utente è stato trovato
+2022-02-13 17:43:18.633  INFO 5872 --- [RMI TCP Connection(12)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2022-02-13 17:43:18.759  INFO 5872 --- [RMI TCP Connection(12)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-02-13 17:43:18.787  INFO 5872 --- [RMI TCP Connection(12)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-02-13 17:43:18.837  INFO 5872 --- [RMI TCP Connection(12)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

@@ -3,6 +3,8 @@ package com.chatternet.controller;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -103,7 +105,19 @@ public class UtenteController {
 		HttpSession mySession = request.getSession();
 		UtenteDTO udto = (UtenteDTO) mySession.getAttribute("utente");
 		String usernameResearcher = udto.getUsername();
-		utenteService.ricercaUtente(nomeUtente, usernameResearcher);
+		List<Utente[]> utenti = utenteService.ricercaUtente(nomeUtente, usernameResearcher);
+		UtenteDTO utenteView = new UtenteDTO();
+		for(Object[] utente : utenti) {
+			utenteView.setUsername((String) utente[0]);
+			utenteView.setNome((String) utente[2]);
+			utenteView.setCognome((String) utente[3]);
+			utenteView.setId((int) utente[1]);
+			utenteView.setFoto((String) utente[4]);
+			request.setAttribute("username", utenteView.getUsername());
+			request.setAttribute("nome", utenteView.getNome());
+			request.setAttribute("cognome", utenteView.getCognome());
+			request.setAttribute("foto", utenteView.getFotoPath());
+		}
 		return "ricerca";
 	}
 }

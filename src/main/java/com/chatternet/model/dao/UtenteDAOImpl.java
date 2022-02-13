@@ -58,15 +58,15 @@ public class UtenteDAOImpl implements UtenteDAO {
 	}
 
 	@Override
-	public List<?> ricercaUtente(String nomeUtente, String usernameResearcher) {
-		Query sel = em.createNativeQuery("SELECT c.username , u.nome , u.cognome , u.fotoProfilo \r\n"
+	public List<Utente[]> ricercaUtente(String nomeUtente, String usernameResearcher) {
+		Query sel = em.createNativeQuery("SELECT c.username , u.idUtente , u.nome , u.cognome , u.fotoProfilo \r\n"
 				+ "FROM credenziale c , utente u \r\n"
 				+ "WHERE c.username LIKE ? \r\n"
 				+ "AND NOT(c.username = ?) \r\n"
 				+ "AND u.FKcredenziale = c.idCredenziale");
 		sel.setParameter(1, nomeUtente + "%");
 		sel.setParameter(2, usernameResearcher);
-		List<?> utenti = sel.getResultList();
+		List<Utente[]> utenti = sel.getResultList();
 		if(utenti.isEmpty()) {
 			logger.info("nessun utente è stato trovato");
 		}

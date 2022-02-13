@@ -29,7 +29,7 @@ public class UtenteServiceImpl implements UtenteService {
 	}
 
 	@Override
-	public List<?> ricercaUtente(String nomeUtente, String usernameResearcher) {
+	public List<Utente[]> ricercaUtente(String nomeUtente, String usernameResearcher) {
 		return utenteDAO.ricercaUtente(nomeUtente,usernameResearcher);
 	}
 	

@@ -154,6 +154,51 @@
 }
 }
 
+.results{
+	position: relative;
+	top: 50px;
+	left: 70px;
+}
+
+@media screen and (max-width: 500px){
+	.results{
+	position: relative;
+	top: 50px;
+	left: 30px;
+}
+}
+
+h1{
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 25px;
+}
+
+h2{
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 15px;
+}
+
+.resmex{
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 20px;
+}
+
+.imgUser{
+	height: 50px;
+	width: 50px;
+}
+
+.imgExistUser{
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+}
+
+.userOfResult{
+	position: absolute;
+	left: 60px;
+}
+
 .bi {
 	font-size: 25px;
 	color: #1877f2;
