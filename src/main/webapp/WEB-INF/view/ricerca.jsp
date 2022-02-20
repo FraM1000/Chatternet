@@ -31,20 +31,25 @@
   </div>
   <div class="results">
   <c:choose>
-  <c:when test="${username == null}">
+  <c:when test="${listaUtenti == null}">
   <p class="resmex">Nessun utente &eacute stato trovato.
   </c:when>
   <c:otherwise>
+  <c:forEach var="utente" items="${listaUtenti}">
+  <div>
   <c:choose>
-  <c:when test="${foto != null}">
-  <img alt="Immagine Profilo" src="${foto}" class="imgExistUser">
+  <c:when test="${utente.foto != null}">
+  <img alt="Immagine Profilo" src="${utente.fotoPath}" class="imgExistUser">
   </c:when>
   <c:otherwise>
   <img class="imgUser" alt="Immagine Profilo" src="/User">
   </c:otherwise>
   </c:choose>
-  <span class="userOfResult"><h1><c:out value="${username}"/></h1>
-  <h2><c:out value="${nome}"/> <c:out value="${cognome}"/></h2></span>
+  <span class="userOfResult"><h1><c:out value="${utente.username}"/></h1>
+  <h2><c:out value="${utente.nome}"/> <c:out value="${utente.cognome}"/></h2></span>
+  <hr>
+  </div>
+  </c:forEach>
   </c:otherwise>
   </c:choose>
   </div>

@@ -1,6 +1,7 @@
 package com.chatternet.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -106,17 +107,20 @@ public class UtenteController {
 		UtenteDTO udto = (UtenteDTO) mySession.getAttribute("utente");
 		String usernameResearcher = udto.getUsername();
 		List<Utente[]> utenti = utenteService.ricercaUtente(nomeUtente, usernameResearcher);
-		UtenteDTO utenteView = new UtenteDTO();
-		for(Object[] utente : utenti) {
-			utenteView.setUsername((String) utente[0]);
-			utenteView.setNome((String) utente[2]);
-			utenteView.setCognome((String) utente[3]);
-			utenteView.setId((int) utente[1]);
-			utenteView.setFoto((String) utente[4]);
-			request.setAttribute("username", utenteView.getUsername());
-			request.setAttribute("nome", utenteView.getNome());
-			request.setAttribute("cognome", utenteView.getCognome());
-			request.setAttribute("foto", utenteView.getFotoPath());
+		if (utenti.isEmpty()) {
+			request.setAttribute("listaUtenti", null);
+		} else {
+			ArrayList<UtenteDTO> lista = new ArrayList<UtenteDTO>();
+			for (Object[] utente : utenti) {
+				UtenteDTO utenteView = new UtenteDTO();
+				utenteView.setUsername((String) utente[0]);
+				utenteView.setNome((String) utente[2]);
+				utenteView.setCognome((String) utente[3]);
+				utenteView.setId((int) utente[1]);
+				utenteView.setFoto((String) utente[4]);
+				lista.add(utenteView);
+			}
+			request.setAttribute("listaUtenti", lista);
 		}
 		return "ricerca";
 	}

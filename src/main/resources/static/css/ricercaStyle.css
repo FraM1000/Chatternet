@@ -199,6 +199,20 @@ h2{
 	left: 60px;
 }
 
+hr{
+	width: 33%;
+	color: GrayText;
+	background-color: GrayText;
+}
+
+@media screen and (max-width: 500px){
+hr{
+	width: 75%;
+	color: GrayText;
+	background-color: GrayText;
+}
+}
+
 .bi {
 	font-size: 25px;
 	color: #1877f2;
