@@ -41,6 +41,18 @@
   <h2><c:out value="${username}"/></h2>
   <h3><c:out value="${nome}"/> <c:out value="${cognome}"/></h3>
   <h3>Et&aacute: <c:out value="${eta}"/></h3>
+  <a class="passButton" id="passButt">Modifica password</a>
+  </div>
+   <div class="overlay" id="pop">
+  <div class="popup">
+  <span id="closePopup"><i class="bi bi-x-lg"></i></span><br><br><br>
+  <form class="fom" action="/modificaPassword" method="post">
+  <p id="errMex"> </p><br>
+  <input type="password" name="pass" placeholder="Nuova password" id="password1"><br>
+  <input type="password" name="passFinale" placeholder="Digita nuovamente la password" id="password2"><br><br>
+  <input onclick="return checkPassword()" type="submit" value="Modifica" class="modifica">
+  </form>
+  </div>
   </div>
   </div>
   <div class="grid-item spazio">
@@ -55,5 +67,6 @@
   </div>
   
   <script type="text/javascript" src="../js/caricaFoto.js"></script>
+  <script type="text/javascript" src="../js/modificaPassword.js"></script>
 	</body>
 	</html>
