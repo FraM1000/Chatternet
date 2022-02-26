@@ -65,4 +65,27 @@ public class CredenzialeDAOImpl implements CredenzialeDAO{
 		return user;
 	}
 
+	@Override
+	@Transactional
+	public void modificaPass(Credenziale credenziale) {
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(BCryptVersion.$2A,12);
+		String passwordCryptata = encoder.encode(credenziale.getPassword());
+		Query upd = em.createNativeQuery("UPDATE credenziale SET password = ? WHERE idCredenziale = ?");
+		upd.setParameter(1, passwordCryptata);
+		upd.setParameter(2, credenziale.getIdCredenziale());
+		int res = upd.executeUpdate();
+		if(res == 1) logger.info("password modificata con successo");
+	}
+
+	@Override
+	public int ricavaIdCredenziale(int idUtente) {
+		Query sel = em.createNativeQuery("SELECT idCredenziale \r\n"
+				+ "FROM credenziale c , utente u \r\n"
+				+ "WHERE u.idUtente = ? \r\n"
+				+ "AND u.FKcredenziale = c.idCredenziale");
+		sel.setParameter(1, idUtente);
+		Object idCredenziale = sel.getSingleResult();
+		return (int) idCredenziale;
+	}
+
 }

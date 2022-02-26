@@ -10,5 +10,8 @@ public interface CredenzialeService {
 	public void inserisciFK(Credenziale credenziale, Utente utente);
 	
 	public Object[] ricavaUtenteDaUsername(String username);
-
+	
+	public void modificaPass(Credenziale credenziale);
+	
+	public int ricavaIdCredenziale(int idUtente);
 }

@@ -30,4 +30,14 @@ public class CredenzialeServiceImpl implements CredenzialeService {
 		return credenzialeDAO.ricavaUtenteDaUsername(username);
 	}
 
+	@Override
+	public void modificaPass(Credenziale credenziale) {
+		credenzialeDAO.modificaPass(credenziale);
+	}
+
+	@Override
+	public int ricavaIdCredenziale(int idUtente) {
+		return credenzialeDAO.ricavaIdCredenziale(idUtente);
+	}
+
 }

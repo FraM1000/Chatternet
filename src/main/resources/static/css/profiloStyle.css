@@ -186,6 +186,12 @@ input[type=file]{
 	margin: 5px;
 }
 
+.succMod {
+	font-family: 'Ubuntu', sans-serif;
+	color: #00cc00;
+	font-size: 20px;
+}
+
 .popup{
 	width: 250px;
 	height: 350px;

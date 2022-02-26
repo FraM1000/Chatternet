@@ -42,6 +42,7 @@
   <h3><c:out value="${nome}"/> <c:out value="${cognome}"/></h3>
   <h3>Et&aacute: <c:out value="${eta}"/></h3>
   <a class="passButton" id="passButt">Modifica password</a>
+  <p class="succMod"><c:if test="${passwordModificata eq true}">La password &eacute stata modificata con successo.</c:if></p>
   </div>
    <div class="overlay" id="pop">
   <div class="popup">
