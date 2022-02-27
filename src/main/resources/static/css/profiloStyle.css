@@ -192,6 +192,14 @@ input[type=file]{
 	font-size: 20px;
 }
 
+@media screen and (max-width: 500px){
+.succMod {
+	font-family: 'Ubuntu', sans-serif;
+	color: #00cc00;
+	font-size: 15px;
+}
+}
+
 .popup{
 	width: 250px;
 	height: 350px;

@@ -36,7 +36,7 @@
   </c:when>
   <c:otherwise>
   <c:forEach var="utente" items="${listaUtenti}">
-  <div>
+  <div class="user">
   <c:choose>
   <c:when test="${utente.foto != null}">
   <img alt="Immagine Profilo" src="${utente.fotoPath}" class="imgExistUser">
@@ -47,8 +47,7 @@
   </c:choose>
   <span class="userOfResult"><h1><c:out value="${utente.username}"/></h1>
   <h2><c:out value="${utente.nome}"/> <c:out value="${utente.cognome}"/></h2></span>
-  <hr>
-  </div>
+  </div><br>
   </c:forEach>
   </c:otherwise>
   </c:choose>

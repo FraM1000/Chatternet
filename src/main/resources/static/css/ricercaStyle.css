@@ -194,23 +194,27 @@ h2{
 	border-radius: 50%;
 }
 
-.userOfResult{
-	position: absolute;
-	left: 60px;
-}
-
-hr{
-	width: 33%;
-	color: GrayText;
-	background-color: GrayText;
+.user{
+	display: inline-block;
+	border: 1px solid #ccc;
+	padding: 5px;
+	width: 330px;
+	border-radius: 10px;
 }
 
 @media screen and (max-width: 500px){
-hr{
-	width: 75%;
-	color: GrayText;
-	background-color: GrayText;
+.user{
+	display: inline-block;
+	border: 1px solid #ccc;
+	padding: 5px;
+	width: 250px;
+	border-radius: 10px;
 }
+}
+
+.userOfResult{
+	display: inline-block;
+	left: 10px;
 }
 
 .bi {
