@@ -158,6 +158,8 @@
 	position: relative;
 	top: 50px;
 	left: 70px;
+	overflow-y: auto;
+	height: 450px;
 }
 
 @media screen and (max-width: 500px){
@@ -165,7 +167,14 @@
 	position: relative;
 	top: 50px;
 	left: 30px;
+	overflow-y: auto;
+	height: 380px;
 }
+}
+
+#usLink{
+	text-decoration: none;
+	color: inherit;
 }
 
 h1{

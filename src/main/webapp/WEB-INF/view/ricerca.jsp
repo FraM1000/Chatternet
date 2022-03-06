@@ -37,6 +37,7 @@
   <c:otherwise>
   <c:forEach var="utente" items="${listaUtenti}">
   <div class="user">
+  <a href="/mostraChat?id=<c:out value="${utente.id}"/>" id="usLink">
   <c:choose>
   <c:when test="${utente.foto != null}">
   <img alt="Immagine Profilo" src="${utente.fotoPath}" class="imgExistUser">
@@ -47,6 +48,7 @@
   </c:choose>
   <span class="userOfResult"><h1><c:out value="${utente.username}"/></h1>
   <h2><c:out value="${utente.nome}"/> <c:out value="${utente.cognome}"/></h2></span>
+  </a>
   </div><br>
   </c:forEach>
   </c:otherwise>
