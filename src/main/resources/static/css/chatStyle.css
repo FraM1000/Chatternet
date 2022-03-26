@@ -1,0 +1,591 @@
+.grid-container{
+	display: grid;
+	grid-template-areas:	
+	"m c c c c c c c c c s s"
+	"m c c c c c c c c c s s";
+	grid-template-rows: 325px 325px;
+}
+
+* {
+	padding: 0px;
+	margin: 0px;
+}
+
+@media screen and (max-width: 500px) and (max-height: 915px){
+	.grid-container{
+		grid-template-areas:
+		"a"
+		"m"
+		"i";
+		grid-template-rows: 100px 700px 100px;
+	}
+}
+
+@media screen and (max-width: 500px) and (max-height: 860px){
+	.grid-container{
+		grid-template-areas:
+		"a"
+		"m"
+		"i";
+		grid-template-rows: 90px 660px 90px;
+	}
+}
+
+@media screen and (max-width: 500px) and (max-height: 846px){
+	.grid-container{
+		grid-template-areas:
+		"a"
+		"m"
+		"i";
+		grid-template-rows: 85px 650px 85x;
+	}
+}
+
+@media screen and (max-width: 500px) and (max-height: 750px){
+	.grid-container{
+		grid-template-areas:
+		"a"
+		"m"
+		"i";
+		grid-template-rows: 80px 585px 75px;
+	}
+}
+
+@media screen and (max-width: 500px) and (max-height: 670px){
+	.grid-container{
+		grid-template-areas:
+		"a"
+		"m"
+		"i";
+		grid-template-rows: 70px 520px 65px;
+	}
+}
+
+@media screen and (max-width: 500px) and (max-height: 580px){
+	.grid-container{
+		grid-template-areas:
+		"a"
+		"m"
+		"i";
+		grid-template-rows: 65px 485px 60px;
+	}
+}
+
+.grid-item{
+	background-color: #ffffff;
+}
+
+.menu{
+	grid-area: m;
+	background-color: #e6e6e6;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+.aUser{
+	position: absolute;
+	top: 10px;
+	left: 240px;
+	border: 2px solid #1877f2;
+	padding: 10px;
+	border-radius: 10px 10px 0px 0px;
+	width: 520px;
+	background-color: #ffffff;
+}
+
+.bi-arrow-left{
+	position: relative;
+	bottom: 11px;
+	right: 8px;
+	left: 8px;
+}
+
+.imgUser{
+	position: relative;
+	left: 25px;
+	height: 50px;
+	width: 60px;
+}
+
+.posUsNam{
+	display: inline-block;
+	position: relative;
+	bottom: 13px;
+	left: 30px;
+}
+
+h2{
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 25px;
+}
+
+@media screen and (max-width: 500px) and (max-height: 920px){
+.bi-arrow-left{
+	position: relative;
+	bottom: 6px;
+	right: 6px;
+	left: 8px;
+}
+
+.imgUser{
+	position: relative;
+	top: 13px;
+	left: 22px;
+	height: 65px;
+	width: 75px;
+}
+
+.posUsNam{
+	display: inline-block;
+	position: relative;
+	bottom: 5px;
+	left: 30px;
+}
+
+h2{
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 30px;
+}
+}
+
+@media screen and (max-width: 500px) and (max-height: 900px){
+.bi-arrow-left{
+	position: relative;
+	bottom: 6px;
+	right: 6px;
+	left: 8px;
+}
+
+.imgUser{
+	position: relative;
+	top: 13px;
+	left: 22px;
+	height: 65px;
+	width: 75px;
+}
+
+.posUsNam{
+	display: inline-block;
+	position: relative;
+	bottom: 5px;
+	left: 30px;
+}
+
+h2{
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 30px;
+}
+}
+
+@media screen and (max-width: 500px) and (max-height: 860px){
+.bi-arrow-left{
+	position: relative;
+	bottom: 3px;
+	right: 6px;
+	left: 8px;
+}
+
+.imgUser{
+	position: relative;
+	top: 12px;
+	left: 22px;
+	height: 60px;
+	width: 70px;
+}
+
+.posUsNam{
+	display: inline-block;
+	position: relative;
+	bottom: 3px;
+	left: 30px;
+}
+
+h2{
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 30px;
+}
+}
+
+@media screen and (max-width: 500px) and (max-height: 750px){
+.bi-arrow-left{
+	position: relative;
+	bottom: 1px;
+	right: 6px;
+	left: 8px;
+}
+
+.imgUser{
+	position: relative;
+	top: 11px;
+	left: 22px;
+	height: 50px;
+	width: 60px;
+}
+
+.posUsNam{
+	display: inline-block;
+	position: relative;
+	bottom: 2px;
+	left: 30px;
+}
+}
+
+@media screen and (max-width: 500px) and (max-height: 670px){
+.bi-arrow-left{
+	position: relative;
+	bottom: 8px;
+	right: 6px;
+	left: 8px;
+}
+
+.imgUser{
+	position: relative;
+	top: 6px;
+	left: 22px;
+	height: 50px;
+	width: 60px;
+}
+
+.posUsNam{
+	display: inline-block;
+	position: relative;
+	bottom: 8px;
+	left: 28px;
+}
+
+h2{
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 25px;
+}
+}
+
+@media screen and (max-width: 500px) and (max-height: 660px){
+.bi-arrow-left{
+	position: relative;
+	bottom: 4px;
+	right: 5px;
+	left: 7px;
+}
+
+.imgUser{
+	position: relative;
+	top: 8px;
+	left: 16px;
+	height: 45px;
+	width: 55px;
+}
+
+.posUsNam{
+	display: inline-block;
+	position: relative;
+	bottom: 5px;
+	left: 21px;
+}
+h2{
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 20px;
+}
+}
+
+.mexSpace{
+	position: absolute;
+	top: 89px;
+	left: 240px;
+	border: 2px solid #1877f2;
+	padding: 10px;
+	width: 520px;
+	overflow-y: auto;
+	height: 470px;
+	background-color: #ffffff;
+}
+
+.inviaMex{
+	position: absolute;
+	top: 581px;
+	left: 240px;
+	border: 2px solid #1877f2;
+	padding: 5px;
+	width: 530px;
+	background-color: #ffffff;
+}
+
+#inviaBar{
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 20px;
+	width: 515px;
+	height: 35px;
+	padding: 5px;
+	
+}
+
+input{
+	border: 0;
+	outline: 0;
+}
+
+input:focus{
+	outline: none!important;
+}
+
+.inviaButton{
+	cursor: pointer;
+	position: absolute;
+	right: 20px;
+	top: 17px;
+}
+
+@media screen and (max-width: 500px) and (max-height: 920px){
+#inviaBar{
+	position: relative;
+	top: 13px;
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 25px;
+	width: 345px;
+	height: 55px;
+	padding: 5px;
+	
+}
+input{
+	border: 1px solid GrayText;
+	border-radius: 15px;
+}
+.inviaButton{
+	cursor: pointer;
+	position: absolute;
+	top: 832px;
+	right: 17px;
+}
+.bi {
+	font-size: 30px;
+	color: #1877f2;
+}
+.mexSpaceMob{
+	overflow-y: auto;
+	height: 700px;
+}
+}
+
+@media screen and (max-width: 500px) and (max-height: 900px){
+#inviaBar{
+	position: relative;
+	top: 11px;
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 25px;
+	width: 345px;
+	height: 50px;
+	padding: 5px;
+	
+}
+input{
+	border: 1px solid GrayText;
+	border-radius: 15px;
+}
+.inviaButton{
+	cursor: pointer;
+	position: absolute;
+	top: 827px;
+	right: 17px;
+}
+.bi {
+	font-size: 30px;
+	color: #1877f2;
+}
+.mexSpaceMob{
+	overflow-y: auto;
+	height: 700px;
+}
+}
+
+
+@media screen and (max-width: 500px) and (max-height: 860px){
+#inviaBar{
+	position: relative;
+	top: 9px;
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 20px;
+	width: 330px;
+	height: 45px;
+	padding: 5px;
+	
+}
+input{
+	border: 1px solid GrayText;
+	border-radius: 15px;
+}
+.inviaButton{
+	cursor: pointer;
+	position: absolute;
+	top: 777px;
+	right: 15px;
+}
+.bi {
+	font-size: 25px;
+	color: #1877f2;
+}
+.mexSpaceMob{
+	overflow-y: auto;
+	height: 650px;
+}
+}
+
+@media screen and (max-width: 500px) and (max-height: 750px){
+#inviaBar{
+	position: relative;
+	top: 6px;
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 20px;
+	width: 305px;
+	height: 40px;
+	padding: 5px;
+	
+}
+input{
+	border: 1px solid GrayText;
+	border-radius: 15px;
+}
+.inviaButton{
+	cursor: pointer;
+	position: absolute;
+	top: 686px;
+	right: 11px;
+}
+.bi {
+	font-size: 25px;
+	color: #1877f2;
+}
+.mexSpaceMob{
+	overflow-y: auto;
+	height: 585px;
+}
+}
+
+@media screen and (max-width: 500px) and (max-height: 670px){
+#inviaBar{
+	position: relative;
+	top: 6px;
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 20px;
+	width: 320px;
+	height: 40px;
+	padding: 5px;
+	
+}
+input{
+	border: 1px solid GrayText;
+	border-radius: 15px;
+}
+.inviaButton{
+	cursor: pointer;
+	position: absolute;
+	top: 611px;
+	right: 12px;
+}
+.bi {
+	font-size: 25px;
+	color: #1877f2;
+}
+.mexSpaceMob{
+	overflow-y: auto;
+	height: 520px;
+}
+}
+
+@media screen and (max-width: 500px) and (max-height: 660px){
+#inviaBar{
+	position: relative;
+	top: 6px;
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 20px;
+	width: 225px;
+	height: 38px;
+	padding: 5px;
+	
+}
+input{
+	border: 1px solid GrayText;
+	border-radius: 15px;
+}
+.inviaButton{
+	cursor: pointer;
+	position: absolute;
+	top: 611px;
+	right: 12px;
+}
+.bi {
+	font-size: 25px;
+	color: #1877f2;
+}
+.mexSpaceMob{
+	overflow-y: auto;
+	height: 520px;
+}
+}
+
+@media screen and (min-width: 650px){
+.bi {
+	font-size: 25px;
+	color: #1877f2;
+}
+}
+
+.bi:hover {
+  color: black;
+}
+
+.overlay{
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0,0,0,0.5); /* colore sfondo e opcità */
+	display: block;
+}
+
+.chat{
+	grid-area: c;
+}
+
+.spazio{
+	grid-area: s;
+}
+
+@media screen and (max-width: 500px){
+	.menu{
+		display: none;
+	}
+	.spazio{
+		display: none;
+	}
+	.chat{
+		display: none;
+	}
+}
+
+.aUserMob{
+        grid-area: a;
+		border-bottom: 1px solid #1877f2;
+}
+	
+.mexSpaceMob{
+		grid-area: m;
+}
+	
+.inviaMexMob{
+		grid-area: i;
+		border-top: 1px solid #1877f2;
+}
+
+@media screen and (min-width: 650px){
+	.aUserMob{
+		display: none;
+	}
+	.mexSpaceMob{
+		display: none;
+	}
+	.inviaMexMob{
+		display: none;
+	}
+}
