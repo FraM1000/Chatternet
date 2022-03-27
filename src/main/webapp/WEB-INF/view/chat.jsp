@@ -29,8 +29,15 @@
   <div>
   <div class="aUser">
   <a href=""><i class="bi bi-arrow-left"></i></a>
+  <c:choose>
+  <c:when test="${utente.foto != null}">
+  <img alt="Immagine" src="${utente.fotoPath}" class="imgExistUser">
+  </c:when>
+  <c:otherwise>
   <img class="imgUser" alt="Immagine" src="/User">
-  <div class="posUsNam"><h2>Username</h2>
+  </c:otherwise>
+  </c:choose>
+  <div class="posUsNam"><h2><c:out value="${utente.username}"/></h2>
   </div>
   </div>
   <div class="mexSpace">
@@ -48,8 +55,15 @@
   </div>
   <div class="aUserMob">
   <a href=""><i class="bi bi-arrow-left"></i></a>
+  <c:choose>
+  <c:when test="${utente.foto != null}">
+  <img alt="Immagine" src="${utente.fotoPath}" class="imgExistUser">
+  </c:when>
+  <c:otherwise>
   <img class="imgUser" alt="Immagine" src="/User">
-  <div class="posUsNam"><h2>Username</h2>
+  </c:otherwise>
+  </c:choose>
+  <div class="posUsNam"><h2><c:out value="${utente.username}"/></h2>
   </div>
   </div>
   <div class="mexSpaceMob">

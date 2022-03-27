@@ -32,9 +32,10 @@ public class UtenteServiceImpl implements UtenteService {
 	public List<Utente[]> ricercaUtente(String nomeUtente, String usernameResearcher) {
 		return utenteDAO.ricercaUtente(nomeUtente,usernameResearcher);
 	}
-	
-	
-	
-	
 
+	@Override
+	public Object[] ricavaUtenteDaId(int id) {
+		return utenteDAO.ricavaUtenteDaId(id);
+	}
+	
 }

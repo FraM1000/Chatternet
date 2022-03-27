@@ -109,6 +109,14 @@
 	width: 60px;
 }
 
+.imgExistUser{
+	position: relative;
+	left: 25px;
+	height: 50px;
+	width: 60px;
+	border-radius: 50%;
+}
+
 .posUsNam{
 	display: inline-block;
 	position: relative;
@@ -135,6 +143,15 @@ h2{
 	left: 22px;
 	height: 65px;
 	width: 75px;
+}
+
+.imgExistUser{
+	position: relative;
+	top: 13px;
+	left: 22px;
+	height: 65px;
+	width: 75px;
+	border-radius: 50%;
 }
 
 .posUsNam{
@@ -166,6 +183,15 @@ h2{
 	width: 75px;
 }
 
+.imgExistUser{
+	position: relative;
+	top: 13px;
+	left: 22px;
+	height: 65px;
+	width: 75px;
+	border-radius: 50%;
+}
+
 .posUsNam{
 	display: inline-block;
 	position: relative;
@@ -193,6 +219,15 @@ h2{
 	left: 22px;
 	height: 60px;
 	width: 70px;
+}
+
+.imgExistUser{
+	position: relative;
+	top: 12px;
+	left: 22px;
+	height: 60px;
+	width: 70px;
+	border-radius: 50%;
 }
 
 .posUsNam{
@@ -224,6 +259,15 @@ h2{
 	width: 60px;
 }
 
+.imgExistUser{
+	position: relative;
+	top: 11px;
+	left: 22px;
+	height: 50px;
+	width: 60px;
+	border-radius: 50%;
+}
+
 .posUsNam{
 	display: inline-block;
 	position: relative;
@@ -246,6 +290,15 @@ h2{
 	left: 22px;
 	height: 50px;
 	width: 60px;
+}
+
+.imgExistUser{
+	position: relative;
+	top: 6px;
+	left: 22px;
+	height: 50px;
+	width: 60px;
+	border-radius: 50%;
 }
 
 .posUsNam{
@@ -275,6 +328,15 @@ h2{
 	left: 16px;
 	height: 45px;
 	width: 55px;
+}
+
+.imgExistUser{
+	position: relative;
+	top: 8px;
+	left: 16px;
+	height: 45px;
+	width: 55px;
+	border-radius: 50%;
 }
 
 .posUsNam{

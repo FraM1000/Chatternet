@@ -73,4 +73,17 @@ public class UtenteDAOImpl implements UtenteDAO {
 		return utenti;
 	}
 
+	@Override
+	public Object[] ricavaUtenteDaId(int id) {
+		Query sel = em.createNativeQuery("SELECT c.username , u.fotoProfilo FROM credenziale c , utente u \r\n"
+				+ "WHERE u.idUtente = ? \r\n"
+				+ "AND u.FKcredenziale = c.idCredenziale");
+		sel.setParameter(1, id);
+		Object[] utente = (Object[]) sel.getSingleResult();
+		if(utente == null) {
+			logger.error("utente con id {} non trovato", id);
+		}
+		return utente;
+	}
+
 }
