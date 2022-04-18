@@ -28,7 +28,7 @@
   <div class="overlay">
   <div>
   <div class="aUser">
-  <a href="" onclick="history.back()"><i class="bi bi-arrow-left"></i></a>
+  <a href="#" onclick="history.back()"><i class="bi bi-arrow-left"></i></a>
   <c:choose>
   <c:when test="${utente.foto != null}">
   <img alt="Immagine" src="${utente.fotoPath}" class="imgExistUser">
@@ -54,7 +54,7 @@
   
   </div>
   <div class="aUserMob">
-  <a href="" onclick="history.back()"><i class="bi bi-arrow-left"></i></a>
+  <a href="#" onclick="history.back()"><i class="bi bi-arrow-left"></i></a>
   <c:choose>
   <c:when test="${utente.foto != null}">
   <img alt="Immagine" src="${utente.fotoPath}" class="imgExistUser">
