@@ -13,6 +13,12 @@ public class Chat {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idChat")
 	private int idChat;
+	
+	@Column(name = "FKutenteUno")
+	private int FKutenteUno;
+	
+	@Column(name = "FKutenteDue")
+	private int FKutenteDue;
 
 	public Chat() {
 		
@@ -24,6 +30,39 @@ public class Chat {
 
 	public void setIdChat(int idChat) {
 		this.idChat = idChat;
+	}
+
+	public int getFKutenteUno() {
+		return FKutenteUno;
+	}
+
+	public void setFKutenteUno(int fKutenteUno) {
+		FKutenteUno = fKutenteUno;
+	}
+
+	public int getFKutenteDue() {
+		return FKutenteDue;
+	}
+
+	public void setFKutenteDue(int fKutenteDue) {
+		FKutenteDue = fKutenteDue;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Chat other = (Chat) obj;
+		return FKutenteDue == other.FKutenteDue && FKutenteUno == other.FKutenteUno && idChat == other.idChat;
+	}
+
+	@Override
+	public String toString() {
+		return "Chat [idChat=" + idChat + ", FKutenteUno=" + FKutenteUno + ", FKutenteDue=" + FKutenteDue + "]";
 	}
 	
 }
