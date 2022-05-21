@@ -11,10 +11,9 @@ public class ChatServiceImpl implements ChatService {
 	private ChatDAO chatDAO;
 	
 	@Override
-	public boolean cercaChatTraUtenti(int idInviante, int idRicevente) {
-		int chatTrovata = chatDAO.cercaChatTraUtenti(idInviante, idRicevente);
-		boolean result = chatTrovata == 1 ? true : false;
-		return result;
+	public int cercaChatTraUtenti(int idInviante, int idRicevente) {
+		int idChat = chatDAO.cercaChatTraUtenti(idInviante, idRicevente);
+		return idChat;
 	}
 
 }
