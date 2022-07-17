@@ -1,15 +1,11 @@
 package com.chatternet.model.bean;
 
-import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class Messaggio {
@@ -22,10 +18,8 @@ public class Messaggio {
 	@Column(name = "testo", length = 65535, columnDefinition="TEXT")
 	private String testo;
 	
-	@Temporal(TemporalType.TIMESTAMP)
-	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
 	@Column(name = "ora")
-	private Date ora;
+	private String ora;
 	
 	@Column(name = "FKutente")
 	private int FKutente;
@@ -35,6 +29,13 @@ public class Messaggio {
 	
 	public Messaggio() {
 		
+	}
+
+	public Messaggio(String testo, String ora, int fKutente, int fKchat) {
+		this.testo = testo;
+		this.ora = ora;
+		FKutente = fKutente;
+		FKchat = fKchat;
 	}
 
 	public int getIdMessaggio() {
@@ -53,11 +54,11 @@ public class Messaggio {
 		this.testo = testo;
 	}
 
-	public Date getOra() {
+	public String getOra() {
 		return ora;
 	}
 
-	public void setOra(Date ora) {
+	public void setOra(String ora) {
 		this.ora = ora;
 	}
 

@@ -16,4 +16,10 @@ public class ChatServiceImpl implements ChatService {
 		return idChat;
 	}
 
+	@Override
+	public int cercaChatTraUtentiSenzaCrearla(int idInviante, int idRicevente) {
+		return chatDAO.cercaChatTraUtentiSenzaCrearla(idInviante, idRicevente);
+		
+	}
+
 }

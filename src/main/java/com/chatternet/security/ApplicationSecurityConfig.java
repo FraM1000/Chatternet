@@ -10,7 +10,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
 import com.chatternet.controller.service.AppUserService;
 
 
@@ -25,6 +24,8 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 	private final BCryptPasswordEncoder bCryptPasswordEncoder; 
 	@Autowired
 	private SuccessHandler successHandler;
+	@Autowired
+	private CustomLogoutHandler logoutHandler;
  
 
 	public ApplicationSecurityConfig(AppUserService appUserService, BCryptPasswordEncoder bCryptPasswordEncoder) {
@@ -47,7 +48,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 		.successHandler(successHandler)
 		.failureForwardUrl("/loginFailed")
 		.and()
-		.logout().logoutUrl("/logout")
+		.logout().logoutUrl("/logout").addLogoutHandler(logoutHandler)
 		.clearAuthentication(true)
 		.invalidateHttpSession(true)
 	    .deleteCookies("JSESSIONID")

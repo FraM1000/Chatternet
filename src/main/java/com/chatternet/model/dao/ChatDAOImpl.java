@@ -46,4 +46,23 @@ public class ChatDAOImpl implements ChatDAO {
 		cercaChatTraUtenti(idInviante, idRicevente);
 	}
 
+	@Override
+	public int cercaChatTraUtentiSenzaCrearla(int idInviante, int idRicevente) {
+		int idChat = 0;
+		Query sel = em.createNativeQuery("SELECT idChat FROM chat \r\n"
+	            + "WHERE FKutenteUno = ? AND FKutenteDue = ? \r\n" 
+				+ "OR FKutenteUno = ? AND FKutenteDue = ?;");
+		sel.setParameter(1, idInviante);
+		sel.setParameter(2, idRicevente);
+		sel.setParameter(3, idRicevente);
+		sel.setParameter(4, idInviante);
+		try {
+			Object idChatTrovato = sel.getSingleResult();
+			idChat = (Integer) idChatTrovato;
+		} catch (NoResultException e) {
+			
+		}
+		return idChat;
+	}
+
 }

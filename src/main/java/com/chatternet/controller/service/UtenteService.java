@@ -1,6 +1,7 @@
 package com.chatternet.controller.service;
 
 import java.util.List;
+import com.chatternet.model.bean.UserStatus;
 import com.chatternet.model.bean.Utente;
 
 public interface UtenteService {
@@ -14,4 +15,6 @@ public interface UtenteService {
 	public List<Utente[]> ricercaUtente(String nomeUtente, String usernameResearcher);
 		
     public Object[] ricavaUtenteDaId(int id);
+    
+    public void aggiornaStato(UserStatus stato, int id);
 }

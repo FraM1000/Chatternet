@@ -17,6 +17,11 @@
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
   </head>
   <body>
+  <script>
+  const loggedUserId = '${loggedUserId}';
+  const userToChatWithId = '${utenteConCuiChattare.id}';
+  </script>
+ 
   <div class="grid-container">
   <div class="grid-item menu">
   <a href=""><i class="bi bi-box-arrow-left"></i></a>
@@ -30,21 +35,45 @@
   <div class="aUser">
   <a href="#" onclick="history.back()"><i class="bi bi-arrow-left"></i></a>
   <c:choose>
-  <c:when test="${utente.foto != null}">
-  <img alt="Immagine" src="${utente.fotoPath}" class="imgExistUser">
+  <c:when test="${utenteConCuiChattare.foto != null}">
+  <img alt="Immagine" src="${utenteConCuiChattare.fotoPath}" class="imgExistUser">
   </c:when>
   <c:otherwise>
   <img class="imgUser" alt="Immagine" src="/User">
   </c:otherwise>
   </c:choose>
-  <div class="posUsNam"><h2><c:out value="${utente.username}"/></h2>
+  <div class="posUsNam"><h2><c:out value="${utenteConCuiChattare.username}"/></h2>
   </div>
+  <c:if test="${statoOnline eq true}"><span class="onlineDot"></span></c:if>
   </div>
-  <div class="mexSpace">
-  
+  <div class="mexSpace" id="mexSpace">
+  <c:if test="${listaMessaggi != null}">
+  <c:forEach var="messaggio" items="${listaMessaggi}">
+  <c:choose>
+  <c:when test="${messaggio.utenteInviante != loggedUserId}">
+  <div class="mexageReceived">
+  <div class="mexageTextReceived">
+  <c:out value="${messaggio.testo}"/>
+  <br><small class="mexageDate">
+  <c:out value="${messaggio.ora}"/>
+  </small>
+  </div></div>
+  </c:when>
+  <c:otherwise>
+  <div class="mexageSended">
+  <div class="mexageTextSended">
+  <c:out value="${messaggio.testo}"/>
+  <br><small class="mexageDate">
+  <c:out value="${messaggio.ora}"/>
+  </small>
+  </div></div>
+  </c:otherwise>
+  </c:choose>
+  </c:forEach>
+  </c:if>
   </div>
   <div class="inviaMex">
-  <input type="text" placeholder="Messaggio" id="inviaBar">
+  <input type="text" placeholder="Messaggio" id="inviaBarDskt">
   <div><span class="inviaButton"><a href="" id="inviaMexBt"><i class="bi bi-send"></i></a></span></div>
   </div>
   </div>
@@ -56,24 +85,51 @@
   <div class="aUserMob">
   <a href="#" onclick="history.back()"><i class="bi bi-arrow-left"></i></a>
   <c:choose>
-  <c:when test="${utente.foto != null}">
-  <img alt="Immagine" src="${utente.fotoPath}" class="imgExistUser">
+  <c:when test="${utenteConCuiChattare.foto != null}">
+  <img alt="Immagine" src="${utenteConCuiChattare.fotoPath}" class="imgExistUser">
   </c:when>
   <c:otherwise>
   <img class="imgUser" alt="Immagine" src="/User">
   </c:otherwise>
   </c:choose>
-  <div class="posUsNam"><h2><c:out value="${utente.username}"/></h2>
+  <div class="posUsNam"><h2><c:out value="${utenteConCuiChattare.username}"/></h2>
   </div>
+  <c:if test="${statoOnline eq true}"><span class="onlineDot"></span></c:if>
   </div>
-  <div class="mexSpaceMob">
-   
+  <div class="mexSpaceMob" id="mexSpaceMob">
+  <c:if test="${listaMessaggi != null}">
+  <c:forEach var="messaggio" items="${listaMessaggi}">
+  <c:choose>
+  <c:when test="${messaggio.utenteInviante != loggedUserId}">
+  <div class="mexageReceived">
+  <div class="mexageTextReceived">
+  <c:out value="${messaggio.testo}"/>
+  <br><small class="mexageDate">
+  <c:out value="${messaggio.ora}"/>
+  </small>
+  </div></div>
+  </c:when>
+  <c:otherwise>
+  <div class="mexageSended">
+  <div class="mexageTextSended">
+  <c:out value="${messaggio.testo}"/>
+  <br><small class="mexageDate">
+  <c:out value="${messaggio.ora}"/>
+  </small>
+  </div></div>
+  </c:otherwise>
+  </c:choose>
+  </c:forEach>
+  </c:if>
   </div>
   <div class="inviaMexMob">
   <input type="text" placeholder="Messaggio" id="inviaBar">
-  <span class="inviaButton"><a href="" id="inviaMexBt"><i class="bi bi-send"></i></a></span>
+  <span class="inviaButton"><a href="" id="inviaMexBtMob"><i class="bi bi-send"></i></a></span>
   </div>
   </div>
  
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+ <script type="text/javascript" src="../js/chat.js"></script>
   </body>
 </html>

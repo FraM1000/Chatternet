@@ -36,6 +36,9 @@ public class Utente {
 	@Column(name = "fotoProfilo")
 	private String fotoProfilo;
 	
+	@Column(name = "stato")
+	private UserStatus stato;
+	
 	@Column(name = "FKcredenziale")
 	private int FKcredenziale;
 

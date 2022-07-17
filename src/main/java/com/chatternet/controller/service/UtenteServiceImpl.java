@@ -3,6 +3,8 @@ package com.chatternet.controller.service;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.chatternet.model.bean.UserStatus;
 import com.chatternet.model.bean.Utente;
 import com.chatternet.model.dao.UtenteDAO;
 
@@ -36,6 +38,11 @@ public class UtenteServiceImpl implements UtenteService {
 	@Override
 	public Object[] ricavaUtenteDaId(int id) {
 		return utenteDAO.ricavaUtenteDaId(id);
+	}
+
+	@Override
+	public void aggiornaStato(UserStatus stato, int id) {
+		utenteDAO.aggiornaStato(stato,id);
 	}
 	
 }

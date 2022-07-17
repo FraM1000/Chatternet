@@ -1,7 +1,6 @@
 package com.chatternet.model.dao;
 
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -9,6 +8,7 @@ import javax.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
+import com.chatternet.model.bean.UserStatus;
 import com.chatternet.model.bean.Utente;
 
 @Repository
@@ -75,7 +75,7 @@ public class UtenteDAOImpl implements UtenteDAO {
 
 	@Override
 	public Object[] ricavaUtenteDaId(int id) {
-		Query sel = em.createNativeQuery("SELECT c.username , u.fotoProfilo FROM credenziale c , utente u \r\n"
+		Query sel = em.createNativeQuery("SELECT c.username , u.fotoProfilo, u.stato FROM credenziale c , utente u \r\n"
 				+ "WHERE u.idUtente = ? \r\n"
 				+ "AND u.FKcredenziale = c.idCredenziale");
 		sel.setParameter(1, id);
@@ -84,6 +84,15 @@ public class UtenteDAOImpl implements UtenteDAO {
 			logger.error("utente con id {} non trovato", id);
 		}
 		return utente;
+	}
+
+	@Override
+	@Transactional
+	public void aggiornaStato(UserStatus stato, int id) {
+		Query upd = em.createNativeQuery("UPDATE utente SET stato = ? WHERE idUtente = ?");
+		upd.setParameter(1, stato.toString());
+		upd.setParameter(2, id);
+		upd.executeUpdate();
 	}
 
 }

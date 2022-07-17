@@ -1,5 +1,7 @@
 package com.chatternet.model.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -22,6 +24,15 @@ public class MessaggioDAOImpl implements MessaggioDAO {
 		ins.setParameter(3, messaggio.getFKutente());
 		ins.setParameter(4, messaggio.getFKchat());
 		ins.executeUpdate();
+	}
+
+	@Override
+	public List<Messaggio[]> cercaMessaggi(int idChat) {
+		Query sel = em.createNativeQuery("SELECT testo , ora , FKutente FROM messaggio WHERE FKchat = ? \r\n"
+				+ "ORDER BY str_to_date(ora, '%Y-%m-%d %T')");
+		sel.setParameter(1, idChat);
+		List<Messaggio[]> messaggi = sel.getResultList();
+		return messaggi;
 	}
 
 }
