@@ -8,5 +8,7 @@ public interface MessaggioService {
 	public void salvaMessaggio(Messaggio messaggio);
 	
 	public List<Messaggio[]> cercaMessaggi(int idChat);
+	
+	public void eliminaMessaggiNellaChat(int idChat);
 
 }

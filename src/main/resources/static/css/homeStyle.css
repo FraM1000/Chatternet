@@ -104,13 +104,76 @@
 }
 }
 
-h1{
+.titoloPagina{
 	font-family: 'Ubuntu', sans-serif;
 	font-size: 40px;
 	font-weight: bold;
 	position: relative;
 	top: 25px;
 	left: 30px;
+}
+
+.results{
+	position: relative;
+	top: 50px;
+	left: 70px;
+	overflow-y: auto;
+	height: 450px;
+}
+
+@media screen and (max-width: 500px){
+	.results{
+	position: relative;
+	top: 50px;
+	left: 30px;
+	overflow-y: auto;
+	height: 380px;
+}
+}
+
+#usLink{
+	text-decoration: none;
+	color: inherit;
+}
+
+.imgUser{
+	height: 50px;
+	width: 50px;
+}
+
+.imgExistUser{
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+}
+
+.user{
+	position: relative;
+	display: inline-block;
+	border: 1px solid #ccc;
+	padding: 5px;
+	width: 330px;
+	border-radius: 10px;
+}
+
+@media screen and (max-width: 500px){
+.user{
+	position: relative;
+	display: inline-block;
+	border: 1px solid #ccc;
+	padding: 5px;
+	width: 250px;
+	border-radius: 10px;
+}
+}
+
+h1{
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 25px;
+	display: inline-block;
+	position: relative;
+	left: 10px;
+	bottom: 14px;
 }
 
 .bi {
@@ -120,6 +183,28 @@ h1{
 
 .bi:hover {
   color: black;
+}
+
+.bi-trash{
+	color: #ff0000;
+	display: inline-block;
+	position: absolute;
+	left: 280px;
+	bottom: 15px;
+}
+
+@media screen and (max-width: 500px){
+.bi-trash{
+	color: #ff0000;
+	display: inline-block;
+	position: absolute;
+	left: 220px;
+	bottom: 15px;
+}
+}
+
+.bi-trash:hover{
+	color: #ff9999;
 }
 
 .chats{

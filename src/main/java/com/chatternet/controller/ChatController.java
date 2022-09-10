@@ -8,9 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import com.chatternet.controller.service.ChatService;
 import com.chatternet.controller.service.MessaggioService;
 import com.chatternet.controller.service.UtenteService;
@@ -40,7 +42,7 @@ public class ChatController {
 		utente.setId(id);
 		utente.setUsername((String) utenteTrovato[0]);
 		utente.setFoto((String) utenteTrovato[1]);
-		if(utenteTrovato[2] == UserStatus.ONLINE.toString()) {
+		if(utenteTrovato[2] != null && utenteTrovato[2].equals(UserStatus.ONLINE.toString())) {
 			request.setAttribute("statoOnline", true);
 		}
 		UtenteDTO loggedUser = (UtenteDTO) mySession.getAttribute("utente");
@@ -62,6 +64,37 @@ public class ChatController {
 		request.setAttribute("utenteConCuiChattare", utente);
 		request.setAttribute("loggedUserId", loggedUser.getId());
 		return "chat";
+	}
+	
+	@GetMapping("/paginaChat")
+	public String paginaChat(HttpServletRequest request) {
+		HttpSession mySession = request.getSession();
+		UtenteDTO loggedUser = (UtenteDTO) mySession.getAttribute("utente");
+		List<Integer> chatRicavate = chatService.ricavaChatDaUsername(loggedUser.getUsername());
+		ArrayList<UtenteDTO> listaChat = new ArrayList<UtenteDTO>();
+		if(!chatRicavate.isEmpty()) {
+			chatRicavate.forEach(idUtenteConCuiAbbiamoChattato -> {
+				Object[] utenteConCuiAbbiamoChattato = utenteService.ricavaUtenteDaId(idUtenteConCuiAbbiamoChattato);
+				UtenteDTO utenteView = new UtenteDTO();
+				utenteView.setId(idUtenteConCuiAbbiamoChattato);
+				utenteView.setUsername((String) utenteConCuiAbbiamoChattato[0]);
+				utenteView.setFoto((String) utenteConCuiAbbiamoChattato[1]);
+				listaChat.add(utenteView);
+			});
+		}
+		request.setAttribute("listaChat", listaChat);
+		return "index";
+	}
+	
+	@DeleteMapping("/eliminaChat")
+	@ResponseBody
+	public String eliminaChat(HttpServletRequest request, @RequestParam("idUtenteConCuiAbbiamoChattato") int idUtente) {
+		HttpSession mySession = request.getSession();
+		UtenteDTO loggedUser = (UtenteDTO) mySession.getAttribute("utente");
+		int idChat = chatService.cercaChatTraUtentiSenzaCrearla(loggedUser.getId(), idUtente);
+		messaggioService.eliminaMessaggiNellaChat(idChat);
+		chatService.eliminaChat(idChat);
+		return "redirect:/paginaChat";
 	}
 	
 }

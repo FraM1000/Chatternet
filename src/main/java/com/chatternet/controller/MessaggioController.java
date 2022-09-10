@@ -3,6 +3,7 @@ package com.chatternet.controller;
 import org.slf4j.LoggerFactory;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import javax.persistence.NoResultException;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
@@ -31,7 +32,13 @@ public class MessaggioController {
 	@MessageMapping("/chat")
 	public void processaMessaggio(@Payload MessaggioDTO messaggioDto) {
 		logger.info("l'utente con id {} ha inviato un messaggio all'utente con id {}", messaggioDto.getUtenteInviante(), messaggioDto.getUtenteRicevente());
-		int idChat = chatService.cercaChatTraUtenti(messaggioDto.getUtenteInviante(), messaggioDto.getUtenteRicevente());
+		int idChat = 0;
+		try {
+			idChat = chatService.cercaChatTraUtenti(messaggioDto.getUtenteInviante(), messaggioDto.getUtenteRicevente());
+		} catch (NoResultException e) {
+			logger.info("nessuna chat trovata tra utente con id {} e utente con id {}", messaggioDto.getUtenteInviante(), messaggioDto.getUtenteRicevente());
+			idChat = chatService.creaChat(messaggioDto.getUtenteInviante(), messaggioDto.getUtenteRicevente());
+		}
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 		LocalDateTime dataOra = messaggioDto.getOra();
 		String oraStringa = dataOra.format(formatter);

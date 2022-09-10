@@ -42,11 +42,11 @@ public class CredenzialeDAOImpl implements CredenzialeDAO{
 		Query idC = em.createNativeQuery("SELECT MAX(idCredenziale) max FROM credenziale");
 		Object rs = idC.getSingleResult();
 		int FKcredenziale = (int) rs;
-		System.out.println(FKcredenziale);
+		logger.debug("" + FKcredenziale);
 		Query id = em.createNativeQuery("SELECT MAX(idUtente) max FROM utente");
 		Object rs2 = id.getSingleResult();
-		 int idU = (int) rs2;
-		System.out.println(idU);
+		int idU = (int) rs2;
+		logger.debug("" + idU);
 		Query upd = em.createNativeQuery("UPDATE utente SET FKcredenziale=? WHERE idUtente = ?");
 		upd.setParameter(1, FKcredenziale);
 		upd.setParameter(2, idU);

@@ -16,16 +16,36 @@
    <link rel="stylesheet" type="text/css" href="../css/homeStyle.css">
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
   </head>
-  <body>
+  <body>  
   <div class="grid-container">
   <div class="grid-item menu">
   <a href="/logout"><i class="bi bi-box-arrow-left"></i></a>
   <a href="/ricerca"><i class="bi bi-search"></i></a>
-  <a href=""><i class="bi bi-chat"></i></a>
+  <a href="/paginaChat"><i class="bi bi-chat"></i></a>
   <a href="/paginaProfilo"><i class="bi bi-person"></i></a>
   </div>
   <div class="grid-item chats">
-  <h1>Chat</h1>
+  <span class="titoloPagina">Chat</span><br>
+  <div class="results" id= "resultId">
+  <c:if test="${!listaChat.isEmpty()}"> 
+  <c:forEach var="user" items="${listaChat}">
+  <div class="user">
+  <a href="/mostraChat?id=<c:out value="${user.id}"/>" id="usLink">
+  <c:choose>
+  <c:when test="${user.foto != null}">
+  <img alt="Immagine Profilo" src="${user.fotoPath}" class="imgExistUser">
+  </c:when>
+  <c:otherwise>
+  <img class="imgUser" alt="Immagine Profilo" src="/User">
+  </c:otherwise>
+  </c:choose>
+  <h1><c:out value="${user.username}"/></h1>
+  <a href="" onclick="deleteChat(${user.id})"><i class="bi bi-trash"></i></a>
+  </a>
+  </div><br>
+  </c:forEach>
+  </c:if>
+  </div>
   </div>
   <div class="grid-item spazio">
   </div>
@@ -33,6 +53,8 @@
   </div>
   <div class="grid-item footer">
   </div>
-  </div>
+  </div>  
+  
+  <script type="text/javascript" src="../js/eliminaChat.js"></script>
 	</body>
 	</html>

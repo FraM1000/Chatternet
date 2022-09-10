@@ -23,4 +23,9 @@ public class MessaggioServiceImpl implements MessaggioService {
 		return messaggioDAO.cercaMessaggi(idChat);
 	}
 
+	@Override
+	public void eliminaMessaggiNellaChat(int idChat) {
+		messaggioDAO.eliminaMessaggiNellaChat(idChat);
+	}
+
 }
