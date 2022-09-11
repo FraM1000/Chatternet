@@ -18,12 +18,7 @@
   </head>
   <body>
   <div class="grid-container">
-  <div class="grid-item menu">
-  <a href="/logout"><i class="bi bi-box-arrow-left"></i></a>
-  <a href="/ricerca"><i class="bi bi-search"></i></a>
-  <a href="/paginaChat"><i class="bi bi-chat"></i></a>
-  <a href="/paginaProfilo"><i class="bi bi-person"></i></a>
-  </div>
+  <jsp:include page="/WEB-INF/view/components/menu.jsp"></jsp:include>
   <div class="grid-item profilo">
   <h1>Profilo</h1><br>
   <div class ="flexContainer">

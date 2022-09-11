@@ -23,12 +23,7 @@
   </script>
  
   <div class="grid-container">
-  <div class="grid-item menu">
-  <a href=""><i class="bi bi-box-arrow-left"></i></a>
-  <a href=""><i class="bi bi-search"></i></a>
-  <a href=""><i class="bi bi-chat"></i></a>
-  <a href=""><i class="bi bi-person"></i></a>
-  </div>
+  <jsp:include page="/WEB-INF/view/components/menu.jsp"></jsp:include>
   <div class="grid-item chat">
   <div class="overlay">
   <div>
