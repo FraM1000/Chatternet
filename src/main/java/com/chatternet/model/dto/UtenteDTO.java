@@ -2,7 +2,6 @@ package com.chatternet.model.dto;
 
 import java.util.Date;
 import java.util.Objects;
-
 import javax.persistence.Transient;
 
 public class UtenteDTO {

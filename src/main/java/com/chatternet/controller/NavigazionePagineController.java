@@ -1,9 +1,7 @@
 package com.chatternet.controller;
 
 import java.io.IOException;
-
 import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
