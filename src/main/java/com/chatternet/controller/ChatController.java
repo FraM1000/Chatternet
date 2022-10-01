@@ -70,13 +70,17 @@ public class ChatController {
 	public String paginaChat(HttpServletRequest request) {
 		HttpSession mySession = request.getSession();
 		UtenteDTO loggedUser = (UtenteDTO) mySession.getAttribute("utente");
-		List<Integer> chatRicavate = chatService.ricavaChatDaUsername(loggedUser.getUsername());
+		List<Object[]> chatRicavate = chatService.ricavaChatDaUsername(loggedUser.getUsername());
 		ArrayList<UtenteDTO> listaChat = new ArrayList<UtenteDTO>();
 		if(!chatRicavate.isEmpty()) {
-			chatRicavate.forEach(idUtenteConCuiAbbiamoChattato -> {
-				Object[] utenteConCuiAbbiamoChattato = utenteService.ricavaUtenteDaId(idUtenteConCuiAbbiamoChattato);
+			/* chat è un Object[] di lunghezza 2,
+			   Object[0] = idUtenteConCuiAbbiamoChattato,
+			   Object[1] = dataUltimoMessaggioInviato
+			 */
+			chatRicavate.forEach(chat -> {
+				Object[] utenteConCuiAbbiamoChattato = utenteService.ricavaUtenteDaId((int) chat[0]);
 				UtenteDTO utenteView = new UtenteDTO();
-				utenteView.setId(idUtenteConCuiAbbiamoChattato);
+				utenteView.setId((int) chat[0]);
 				utenteView.setUsername((String) utenteConCuiAbbiamoChattato[0]);
 				utenteView.setFoto((String) utenteConCuiAbbiamoChattato[1]);
 				listaChat.add(utenteView);

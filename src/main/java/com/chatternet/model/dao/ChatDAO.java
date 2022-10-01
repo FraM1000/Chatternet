@@ -9,10 +9,11 @@ public interface ChatDAO {
 	
 	public int cercaChatTraUtentiSenzaCrearla(int idInviante, int idRicevente);
 	
-	public int creaChat(int idInviante, int idRicevente);
+	public int creaChat(int idInviante, int idRicevente, String dataPrimoMessaggioInviato);
 	
-	public List<Integer> ricavaChatDaUsername(String username);
+	public List<Object[]> ricavaChatDaUsername(String username);
 	
 	public void eliminaChat(int idChat);
 
+	public void aggiornaDataUltimoMessaggioDellaChat(int idChat, String dataUltimoMessaggio);
 }

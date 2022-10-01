@@ -43,9 +43,11 @@ document.getElementById('inviaMexBtMob').onclick = (e) => {
 }
 
 function inviaMessaggio(messaggio) {
+	var now = new Date();
+	now.setHours(now.getHours() + 2);
 	const ilMessaggio = {
 		testo: messaggio,
-		ora: new Date(),
+		ora: now,
 		utenteInviante: loggedUserId,
 		utenteRicevente: userToChatWithId
 	};

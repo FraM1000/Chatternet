@@ -2,6 +2,7 @@ package com.chatternet.controller;
 
 import org.slf4j.LoggerFactory;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import javax.persistence.NoResultException;
 import org.slf4j.Logger;
@@ -33,17 +34,22 @@ public class MessaggioController {
 	public void processaMessaggio(@Payload MessaggioDTO messaggioDto) {
 		logger.info("l'utente con id {} ha inviato un messaggio all'utente con id {}", messaggioDto.getUtenteInviante(), messaggioDto.getUtenteRicevente());
 		int idChat = 0;
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 		try {
 			idChat = chatService.cercaChatTraUtenti(messaggioDto.getUtenteInviante(), messaggioDto.getUtenteRicevente());
 		} catch (NoResultException e) {
 			logger.info("nessuna chat trovata tra utente con id {} e utente con id {}", messaggioDto.getUtenteInviante(), messaggioDto.getUtenteRicevente());
-			idChat = chatService.creaChat(messaggioDto.getUtenteInviante(), messaggioDto.getUtenteRicevente());
+			LocalDateTime dataPrimoMessaggioInviato = LocalDateTime.now(ZoneId.of("Europe/Paris"));
+			String dataPrimoMessaggioInviatoStringa = dataPrimoMessaggioInviato.format(formatter);
+			idChat = chatService.creaChat(messaggioDto.getUtenteInviante(), messaggioDto.getUtenteRicevente(), dataPrimoMessaggioInviatoStringa);
 		}
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 		LocalDateTime dataOra = messaggioDto.getOra();
 		String oraStringa = dataOra.format(formatter);
 		Messaggio messaggio = new Messaggio(messaggioDto.getTesto(), oraStringa, messaggioDto.getUtenteInviante(), idChat);
 		messaggioService.salvaMessaggio(messaggio);
+		LocalDateTime dataPrimoMessaggioInviato = LocalDateTime.now(ZoneId.of("Europe/Paris"));
+		String dataPrimoMessaggioInviatoStringa = dataPrimoMessaggioInviato.format(formatter);
+		chatService.aggiornaDataUltimoMessaggioDellaChat(idChat, dataPrimoMessaggioInviatoStringa);
 		messagingTemplate.convertAndSendToUser(String.valueOf(messaggioDto.getUtenteRicevente()), "/queue/messages", messaggioDto);
 	}
 

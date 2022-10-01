@@ -38,10 +38,11 @@ public class ChatDAOImpl implements ChatDAO {
 	
 	@Override
 	@Transactional
-	public int creaChat(int idInviante, int idRicevente) {
-		Query ins = em.createNativeQuery("INSERT INTO chat(FKutenteUno,FKutenteDue) VALUES(?,?)");
+	public int creaChat(int idInviante, int idRicevente, String dataPrimoMessaggioInviato) {
+		Query ins = em.createNativeQuery("INSERT INTO chat(FKutenteUno,FKutenteDue,dataUltimoMessaggio) VALUES(?,?,?)");
 		ins.setParameter(1, idInviante);
 		ins.setParameter(2, idRicevente);
+		ins.setParameter(3, dataPrimoMessaggioInviato);
 		int rs = ins.executeUpdate();
 		if(rs == 1) logger.info("chat creata tra utente con id {} e utente con id {}", idInviante, idRicevente);
 		int idChat = cercaChatTraUtenti(idInviante, idRicevente);
@@ -68,31 +69,27 @@ public class ChatDAOImpl implements ChatDAO {
 	}
 
 	@Override
-	public List<Integer> ricavaChatDaUsername(String username) {
-		Query sel1 = em.createNativeQuery("SELECT c.FKutenteDue FROM chat c, utente u \r\n"
+	public List<Object[]> ricavaChatDaUsername(String username) {
+		Query sel = em.createNativeQuery("SELECT c.FKutenteDue, c.dataUltimoMessaggio \r\n"
+				+ "FROM chat c, utente u \r\n"
 				+ "WHERE c.FKutenteUno = (SELECT u.idUtente \r\n"
 				+ "FROM credenziale c,utente u \r\n"
 				+ "WHERE c.username = ? \r\n"
 				+ "AND u.FKcredenziale = c.idCredenziale) \r\n"
-				+ "AND c.FKutenteUno = u.idUtente");
-		sel1.setParameter(1, username);
-		List<Integer> partialChats1 = sel1.getResultList();
-		Query sel2 = em.createNativeQuery("SELECT c.FKutenteUno FROM chat c, utente u \r\n"
+				+ "AND c.FKutenteUno = u.idUtente \r\n"
+				+ "UNION \r\n"
+				+ "SELECT c.FKutenteUno, c.dataUltimoMessaggio \r\n"
+				+ "FROM chat c, utente u \r\n"
 				+ "WHERE c.FKutenteDue = (SELECT u.idUtente \r\n"
 				+ "FROM credenziale c,utente u \r\n"
 				+ "WHERE c.username = ? \r\n"
 				+ "AND u.FKcredenziale = c.idCredenziale) \r\n"
-				+ "AND c.FKutenteUno = u.idUtente");
-		sel2.setParameter(1, username);
-		List<Integer> partialChats2 = sel2.getResultList();
-		ArrayList<Integer> allChats = new ArrayList<Integer>();
-		if(!partialChats1.isEmpty()) {
-			allChats.addAll(partialChats1);
-		}
-		if(!partialChats2.isEmpty()) {
-			allChats.addAll(partialChats2);
-		}
-		return allChats;
+				+ "AND c.FKutenteUno = u.idUtente \r\n"
+				+ "ORDER BY str_to_date(dataUltimoMessaggio, '%Y-%m-%d %T') DESC");
+		sel.setParameter(1, username);
+		sel.setParameter(2, username);
+		List<Object[]> chatResults = sel.getResultList();
+		return chatResults;
 	}
 
 	@Override
@@ -102,6 +99,15 @@ public class ChatDAOImpl implements ChatDAO {
 		del.setParameter(1, idChat);
 		int rs = del.executeUpdate();
 		if(rs == 1) logger.info("chat con id {} eliminata", idChat);
+	}
+
+	@Override
+	@Transactional
+	public void aggiornaDataUltimoMessaggioDellaChat(int idChat, String dataUltimoMessaggio) {
+		Query upd = em.createNativeQuery("UPDATE chat SET dataUltimoMessaggio = ? WHERE idChat = ?");
+		upd.setParameter(1, dataUltimoMessaggio);
+		upd.setParameter(2, idChat);
+		upd.executeUpdate();
 	}
 
 }

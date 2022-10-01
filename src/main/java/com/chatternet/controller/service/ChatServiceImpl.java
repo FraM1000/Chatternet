@@ -25,18 +25,23 @@ public class ChatServiceImpl implements ChatService {
 	}
 	
 	@Override
-	public int creaChat(int idInviante, int idRicevente) {
-		return chatDAO.creaChat(idInviante, idRicevente);
+	public int creaChat(int idInviante, int idRicevente, String dataPrimoMessaggioInviato) {
+		return chatDAO.creaChat(idInviante, idRicevente, dataPrimoMessaggioInviato);
 	}
 
 	@Override
-	public List<Integer> ricavaChatDaUsername(String username) {
+	public List<Object[]> ricavaChatDaUsername(String username) {
 		return chatDAO.ricavaChatDaUsername(username);
 	}
 
 	@Override
 	public void eliminaChat(int idChat) {
 		chatDAO.eliminaChat(idChat);
+	}
+
+	@Override
+	public void aggiornaDataUltimoMessaggioDellaChat(int idChat, String dataUltimoMessaggio) {
+		chatDAO.aggiornaDataUltimoMessaggioDellaChat(idChat, dataUltimoMessaggio);
 	}
 
 }

@@ -36,11 +36,11 @@ public class SuccessHandler extends SimpleUrlAuthenticationSuccessHandler{
 	
 	@Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
-        Authentication authentication) throws IOException, ServletException {
+    		Authentication authentication) throws IOException, ServletException {
 		HttpSession mySession = request.getSession();
 		UtenteDTO utente = new UtenteDTO();
 		Object[] user =  credenzialeService.ricavaUtenteDaUsername(authentication.getName());
-		List<Integer> chatRicavate = chatService.ricavaChatDaUsername(authentication.getName());
+		List<Object[]> chatRicavate = chatService.ricavaChatDaUsername(authentication.getName());
 		logger.info("l'utente: {} {} ha effettuato l'accesso",user[1],user[2]);
 		utenteService.aggiornaStato(UserStatus.ONLINE, (int) user[0]);
 		if(user[5] != null) {
@@ -54,10 +54,14 @@ public class SuccessHandler extends SimpleUrlAuthenticationSuccessHandler{
 		mySession.setAttribute("utente", utente);
 		ArrayList<UtenteDTO> listaChat = new ArrayList<UtenteDTO>();
 		if(!chatRicavate.isEmpty()) {
-			chatRicavate.forEach(idUtenteConCuiAbbiamoChattato -> {
-				Object[] utenteConCuiAbbiamoChattato = utenteService.ricavaUtenteDaId(idUtenteConCuiAbbiamoChattato);
+			/* chat è un Object[] di lunghezza 2,
+			   Object[0] = idUtenteConCuiAbbiamoChattato,
+			   Object[1] = dataUltimoMessaggioInviato
+			 */
+			chatRicavate.forEach(chat -> {
+				Object[] utenteConCuiAbbiamoChattato = utenteService.ricavaUtenteDaId((int) chat[0]);
 				UtenteDTO utenteView = new UtenteDTO();
-				utenteView.setId(idUtenteConCuiAbbiamoChattato);
+				utenteView.setId((int) chat[0]);
 				utenteView.setUsername((String) utenteConCuiAbbiamoChattato[0]);
 				utenteView.setFoto((String) utenteConCuiAbbiamoChattato[1]);
 				listaChat.add(utenteView);

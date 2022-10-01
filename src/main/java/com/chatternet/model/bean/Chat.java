@@ -1,5 +1,7 @@
 package com.chatternet.model.bean;
 
+import java.util.Objects;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,6 +21,9 @@ public class Chat {
 	
 	@Column(name = "FKutenteDue")
 	private int FKutenteDue;
+	
+	@Column(name = "dataUltimoMessaggio")
+	private String dataUltimoMessaggio;
 
 	public Chat() {
 		
@@ -48,6 +53,14 @@ public class Chat {
 		FKutenteDue = fKutenteDue;
 	}
 
+	public String getDataUltimoMessaggio() {
+		return dataUltimoMessaggio;
+	}
+
+	public void setDataUltimoMessaggio(String dataUltimoMessaggio) {
+		this.dataUltimoMessaggio = dataUltimoMessaggio;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -57,12 +70,13 @@ public class Chat {
 		if (getClass() != obj.getClass())
 			return false;
 		Chat other = (Chat) obj;
-		return FKutenteDue == other.FKutenteDue && FKutenteUno == other.FKutenteUno && idChat == other.idChat;
+		return FKutenteDue == other.FKutenteDue && FKutenteUno == other.FKutenteUno
+				&& Objects.equals(dataUltimoMessaggio, other.dataUltimoMessaggio) && idChat == other.idChat;
 	}
 
 	@Override
 	public String toString() {
-		return "Chat [idChat=" + idChat + ", FKutenteUno=" + FKutenteUno + ", FKutenteDue=" + FKutenteDue + "]";
+		return "Chat [idChat=" + idChat + ", FKutenteUno=" + FKutenteUno + ", FKutenteDue=" + FKutenteDue + ", dataUltimoMessaggio=" + dataUltimoMessaggio + "]";
 	}
 	
 }
