@@ -176,6 +176,16 @@ h1{
 	bottom: 14px;
 }
 
+.alertNewMexs {
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 15px;
+	color: #f02849;
+	display: inline-block;
+	position: absolute;
+	left: 70px;
+	bottom: 1px;
+}
+
 .bi {
 	font-size: 25px;
 	color: #1877f2;

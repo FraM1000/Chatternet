@@ -48,6 +48,7 @@ public class ChatController {
 		UtenteDTO loggedUser = (UtenteDTO) mySession.getAttribute("utente");
 		int idChat = chatService.cercaChatTraUtentiSenzaCrearla(loggedUser.getId(), id);
 		if(idChat != 0) {
+			messaggioService.aggiornaStatoMessaggiRicevutiNonLetti(idChat, id);
 			List<Messaggio[]> messaggi = messaggioService.cercaMessaggi(idChat);
 			ArrayList<MessaggioDTO> lista = new ArrayList<MessaggioDTO>();
 			for(Object[] messaggio : messaggi) {
@@ -73,16 +74,19 @@ public class ChatController {
 		List<Object[]> chatRicavate = chatService.ricavaChatDaUsername(loggedUser.getUsername());
 		ArrayList<UtenteDTO> listaChat = new ArrayList<UtenteDTO>();
 		if(!chatRicavate.isEmpty()) {
-			/* chat è un Object[] di lunghezza 2,
+			/* chat è un Object[] di lunghezza 3,
 			   Object[0] = idUtenteConCuiAbbiamoChattato,
-			   Object[1] = dataUltimoMessaggioInviato
+			   Object[1] = dataUltimoMessaggioInviato,
+			   Object[2] = idChat
 			 */
 			chatRicavate.forEach(chat -> {
+				Object numMessRicNonLet = messaggioService.numeroMessaggiRicevutiNonLetti((int) chat[2], (int) chat[0]);
 				Object[] utenteConCuiAbbiamoChattato = utenteService.ricavaUtenteDaId((int) chat[0]);
 				UtenteDTO utenteView = new UtenteDTO();
 				utenteView.setId((int) chat[0]);
 				utenteView.setUsername((String) utenteConCuiAbbiamoChattato[0]);
 				utenteView.setFoto((String) utenteConCuiAbbiamoChattato[1]);
+				utenteView.setMessaggiRicevutiNonLetti(numMessRicNonLet);
 				listaChat.add(utenteView);
 			});
 		}

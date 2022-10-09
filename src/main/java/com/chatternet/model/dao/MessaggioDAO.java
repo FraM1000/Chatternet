@@ -11,4 +11,7 @@ public interface MessaggioDAO {
 	
 	public void eliminaMessaggiNellaChat(int idChat);
 
+	public void aggiornaStatoMessaggiRicevutiNonLetti(int idChat, int idUtenteConCuiAbbiamoChattato);
+	
+	public Object numeroMessaggiRicevutiNonLetti(int idChat, int idUtenteConCuiAbbiamoChattato);
 }

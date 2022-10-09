@@ -27,15 +27,19 @@ public class Messaggio {
 	@Column(name = "FKchat")
 	private int FKchat;
 	
+	@Column(name = "stato")
+	private MessageStatus stato;
+	
 	public Messaggio() {
 		
 	}
 
-	public Messaggio(String testo, String ora, int fKutente, int fKchat) {
+	public Messaggio(String testo, String ora, int fKutente, int fKchat, MessageStatus stato) {
 		this.testo = testo;
 		this.ora = ora;
 		FKutente = fKutente;
 		FKchat = fKchat;
+		this.stato = stato;
 	}
 
 	public int getIdMessaggio() {
@@ -76,6 +80,14 @@ public class Messaggio {
 
 	public void setFKchat(int fKchat) {
 		FKchat = fKchat;
+	}
+
+	public MessageStatus getStato() {
+		return stato;
+	}
+
+	public void setStato(MessageStatus stato) {
+		this.stato = stato;
 	}
 
 	@Override

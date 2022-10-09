@@ -69,7 +69,7 @@ public class ChatDAOImpl implements ChatDAO {
 
 	@Override
 	public List<Object[]> ricavaChatDaUsername(String username) {
-		Query sel = em.createNativeQuery("SELECT c.FKutenteDue, c.dataUltimoMessaggio \r\n"
+		Query sel = em.createNativeQuery("SELECT c.FKutenteDue, c.dataUltimoMessaggio, c.idChat \r\n"
 				+ "FROM chat c, utente u \r\n"
 				+ "WHERE c.FKutenteUno = (SELECT u.idUtente \r\n"
 				+ "FROM credenziale c,utente u \r\n"
@@ -77,7 +77,7 @@ public class ChatDAOImpl implements ChatDAO {
 				+ "AND u.FKcredenziale = c.idCredenziale) \r\n"
 				+ "AND c.FKutenteUno = u.idUtente \r\n"
 				+ "UNION \r\n"
-				+ "SELECT c.FKutenteUno, c.dataUltimoMessaggio \r\n"
+				+ "SELECT c.FKutenteUno, c.dataUltimoMessaggio, c.idChat \r\n"
 				+ "FROM chat c, utente u \r\n"
 				+ "WHERE c.FKutenteDue = (SELECT u.idUtente \r\n"
 				+ "FROM credenziale c,utente u \r\n"

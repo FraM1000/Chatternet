@@ -16,6 +16,7 @@ import org.springframework.security.web.authentication.SimpleUrlAuthenticationSu
 import org.springframework.stereotype.Component;
 import com.chatternet.controller.service.ChatService;
 import com.chatternet.controller.service.CredenzialeService;
+import com.chatternet.controller.service.MessaggioService;
 import com.chatternet.controller.service.UtenteService;
 import com.chatternet.model.bean.UserStatus;
 import com.chatternet.model.dto.UtenteDTO;
@@ -31,6 +32,9 @@ public class SuccessHandler extends SimpleUrlAuthenticationSuccessHandler{
 	
 	@Autowired
 	private ChatService chatService;
+	
+	@Autowired
+	private MessaggioService messaggioService;
 	
 	Logger logger = LoggerFactory.getLogger(SuccessHandler.class);
 	
@@ -54,16 +58,19 @@ public class SuccessHandler extends SimpleUrlAuthenticationSuccessHandler{
 		mySession.setAttribute("utente", utente);
 		ArrayList<UtenteDTO> listaChat = new ArrayList<UtenteDTO>();
 		if(!chatRicavate.isEmpty()) {
-			/* chat è un Object[] di lunghezza 2,
+			/* chat è un Object[] di lunghezza 3,
 			   Object[0] = idUtenteConCuiAbbiamoChattato,
-			   Object[1] = dataUltimoMessaggioInviato
+			   Object[1] = dataUltimoMessaggioInviato,
+			   Object[2] = idChat
 			 */
 			chatRicavate.forEach(chat -> {
+				Object numMessRicNonLet = messaggioService.numeroMessaggiRicevutiNonLetti((int) chat[2], (int) chat[0]);
 				Object[] utenteConCuiAbbiamoChattato = utenteService.ricavaUtenteDaId((int) chat[0]);
 				UtenteDTO utenteView = new UtenteDTO();
 				utenteView.setId((int) chat[0]);
 				utenteView.setUsername((String) utenteConCuiAbbiamoChattato[0]);
 				utenteView.setFoto((String) utenteConCuiAbbiamoChattato[1]);
+				utenteView.setMessaggiRicevutiNonLetti(numMessRicNonLet);
 				listaChat.add(utenteView);
 			});
 		}

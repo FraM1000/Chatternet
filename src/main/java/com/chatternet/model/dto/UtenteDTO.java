@@ -19,6 +19,8 @@ public class UtenteDTO {
 	private String foto;
 	
 	private Date dataNascita;
+	
+	private Object messaggiRicevutiNonLetti;
 
 	public int getId() {
 		return id;
@@ -81,6 +83,14 @@ public class UtenteDTO {
 
 	public void setDataNascita(Date dataNascita) {
 		this.dataNascita = dataNascita;
+	}
+
+	public Object getMessaggiRicevutiNonLetti() {
+		return messaggiRicevutiNonLetti;
+	}
+
+	public void setMessaggiRicevutiNonLetti(Object numMessRicNonLet) {
+		this.messaggiRicevutiNonLetti = numMessRicNonLet;
 	}
 
 	@Override

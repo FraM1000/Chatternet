@@ -13,6 +13,7 @@ import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 import com.chatternet.controller.service.ChatService;
 import com.chatternet.controller.service.MessaggioService;
+import com.chatternet.model.bean.MessageStatus;
 import com.chatternet.model.bean.Messaggio;
 import com.chatternet.model.dto.MessaggioDTO;
 
@@ -45,7 +46,7 @@ public class MessaggioController {
 		}
 		LocalDateTime dataOra = messaggioDto.getOra();
 		String oraStringa = dataOra.format(formatter);
-		Messaggio messaggio = new Messaggio(messaggioDto.getTesto(), oraStringa, messaggioDto.getUtenteInviante(), idChat);
+		Messaggio messaggio = new Messaggio(messaggioDto.getTesto(), oraStringa, messaggioDto.getUtenteInviante(), idChat, MessageStatus.NONLETTO);
 		messaggioService.salvaMessaggio(messaggio);
 		LocalDateTime dataPrimoMessaggioInviato = LocalDateTime.now(ZoneId.of("Europe/Paris"));
 		String dataPrimoMessaggioInviatoStringa = dataPrimoMessaggioInviato.format(formatter);

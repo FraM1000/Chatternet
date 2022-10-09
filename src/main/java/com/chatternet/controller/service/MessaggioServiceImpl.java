@@ -28,4 +28,14 @@ public class MessaggioServiceImpl implements MessaggioService {
 		messaggioDAO.eliminaMessaggiNellaChat(idChat);
 	}
 
+	@Override
+	public void aggiornaStatoMessaggiRicevutiNonLetti(int idChat, int idUtenteConCuiAbbiamoChattato) {
+		messaggioDAO.aggiornaStatoMessaggiRicevutiNonLetti(idChat, idUtenteConCuiAbbiamoChattato);
+	}
+
+	@Override
+	public Object numeroMessaggiRicevutiNonLetti(int idChat, int idUtenteConCuiAbbiamoChattato) {
+		return messaggioDAO.numeroMessaggiRicevutiNonLetti(idChat, idUtenteConCuiAbbiamoChattato);
+	}
+
 }
