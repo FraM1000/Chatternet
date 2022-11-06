@@ -20,6 +20,7 @@ import com.chatternet.model.bean.Messaggio;
 import com.chatternet.model.bean.UserStatus;
 import com.chatternet.model.dto.MessaggioDTO;
 import com.chatternet.model.dto.UtenteDTO;
+import com.chatternet.security.RememberMeSingleton;
 
 @Controller
 @RequestMapping("/")
@@ -45,7 +46,12 @@ public class ChatController {
 		if(utenteTrovato[2] != null && utenteTrovato[2].equals(UserStatus.ONLINE.toString())) {
 			request.setAttribute("statoOnline", true);
 		}
-		UtenteDTO loggedUser = (UtenteDTO) mySession.getAttribute("utente");
+		UtenteDTO loggedUser;
+		loggedUser = (UtenteDTO) mySession.getAttribute("utente");
+		if(loggedUser == null) {
+			RememberMeSingleton rememberMeToken = RememberMeSingleton.getToken();
+			loggedUser = (UtenteDTO) rememberMeToken.getTokenDatas().get("utente");
+		}
 		int idChat = chatService.cercaChatTraUtentiSenzaCrearla(loggedUser.getId(), id);
 		if(idChat != 0) {
 			messaggioService.aggiornaStatoMessaggiRicevutiNonLetti(idChat, id);
@@ -70,7 +76,12 @@ public class ChatController {
 	@GetMapping("/paginaChat")
 	public String paginaChat(HttpServletRequest request) {
 		HttpSession mySession = request.getSession();
-		UtenteDTO loggedUser = (UtenteDTO) mySession.getAttribute("utente");
+		UtenteDTO loggedUser;
+		loggedUser = (UtenteDTO) mySession.getAttribute("utente");
+		if(loggedUser == null) {
+			RememberMeSingleton rememberMeToken = RememberMeSingleton.getToken();
+			loggedUser = (UtenteDTO) rememberMeToken.getTokenDatas().get("utente");
+		}
 		List<Object[]> chatRicavate = chatService.ricavaChatDaUsername(loggedUser.getUsername());
 		ArrayList<UtenteDTO> listaChat = new ArrayList<UtenteDTO>();
 		if(!chatRicavate.isEmpty()) {
@@ -98,7 +109,12 @@ public class ChatController {
 	@ResponseBody
 	public String eliminaChat(HttpServletRequest request, @RequestParam("idUtenteConCuiAbbiamoChattato") int idUtente) {
 		HttpSession mySession = request.getSession();
-		UtenteDTO loggedUser = (UtenteDTO) mySession.getAttribute("utente");
+		UtenteDTO loggedUser;
+		loggedUser = (UtenteDTO) mySession.getAttribute("utente");
+		if(loggedUser == null) {
+			RememberMeSingleton rememberMeToken = RememberMeSingleton.getToken();
+			loggedUser = (UtenteDTO) rememberMeToken.getTokenDatas().get("utente");
+		}
 		int idChat = chatService.cercaChatTraUtentiSenzaCrearla(loggedUser.getId(), idUtente);
 		messaggioService.eliminaMessaggiNellaChat(idChat);
 		chatService.eliminaChat(idChat);

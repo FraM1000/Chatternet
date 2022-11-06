@@ -23,6 +23,7 @@ import com.chatternet.images.ImmagineUploadUtil;
 import com.chatternet.model.bean.Credenziale;
 import com.chatternet.model.bean.Utente;
 import com.chatternet.model.dto.UtenteDTO;
+import com.chatternet.security.RememberMeSingleton;
 
 @Controller
 @RequestMapping("/")
@@ -66,7 +67,12 @@ public class UtenteController {
 	@GetMapping("/paginaProfilo")
 	public String paginaProfilo(HttpServletRequest request) {
 		HttpSession mySession = request.getSession();
-		UtenteDTO udto = (UtenteDTO) mySession.getAttribute("utente");
+		UtenteDTO udto;
+		udto = (UtenteDTO) mySession.getAttribute("utente");
+		if(udto == null) {
+			RememberMeSingleton rememberMeToken = RememberMeSingleton.getToken();
+			udto = (UtenteDTO) rememberMeToken.getTokenDatas().get("utente");
+		}
 		String username = udto.getUsername();
 		String nome = udto.getNome();
 		String cognome = udto.getCognome();
@@ -88,7 +94,12 @@ public class UtenteController {
 	@PostMapping("/inserisciFoto")
 	public String mettiFoto(HttpServletRequest request, @RequestParam("avatar") MultipartFile foto) throws IOException {
 		HttpSession mySession = request.getSession();
-		UtenteDTO udto = (UtenteDTO) mySession.getAttribute("utente");
+		UtenteDTO udto;
+		udto = (UtenteDTO) mySession.getAttribute("utente");
+		if(udto == null) {
+			RememberMeSingleton rememberMeToken = RememberMeSingleton.getToken();
+			udto = (UtenteDTO) rememberMeToken.getTokenDatas().get("utente");
+		}
 		Utente utente = new Utente();
 		utente.setIdUtente(udto.getId());
 		String nomeFoto = StringUtils.cleanPath(foto.getOriginalFilename());
@@ -103,7 +114,12 @@ public class UtenteController {
 	@GetMapping("/cercaUtente")
 	public String cercaUtente(HttpServletRequest request, @RequestParam("nomeUtente") String nomeUtente) {
 		HttpSession mySession = request.getSession();
-		UtenteDTO udto = (UtenteDTO) mySession.getAttribute("utente");
+		UtenteDTO udto;
+		udto = (UtenteDTO) mySession.getAttribute("utente");
+		if(udto == null) {
+			RememberMeSingleton rememberMeToken = RememberMeSingleton.getToken();
+			udto = (UtenteDTO) rememberMeToken.getTokenDatas().get("utente");
+		}
 		String usernameResearcher = udto.getUsername();
 		List<Utente[]> utenti = utenteService.ricercaUtente(nomeUtente, usernameResearcher);
 		if (utenti.isEmpty()) {

@@ -27,9 +27,16 @@ public class CustomLogoutHandler implements LogoutHandler  {
 	@Override
 	public void logout(HttpServletRequest request, HttpServletResponse response, Authentication authentication) {
 		HttpSession mySession = request.getSession();
-		UtenteDTO loggedUser = (UtenteDTO) mySession.getAttribute("utente");
+		UtenteDTO loggedUser;
+		loggedUser = (UtenteDTO) mySession.getAttribute("utente");
+		RememberMeSingleton rememberMeToken = null;
+		if(loggedUser == null) {
+			rememberMeToken = RememberMeSingleton.getToken();
+			loggedUser = (UtenteDTO) rememberMeToken.getTokenDatas().get("utente");
+		}
 		utenteService.aggiornaStato(UserStatus.OFFLINE, loggedUser.getId());
 		logger.info("l'utente: {} {} si è disconnesso",loggedUser.getNome(),loggedUser.getCognome());
+		if(rememberMeToken != null) rememberMeToken.getTokenDatas().clear();
 	}
 
 }

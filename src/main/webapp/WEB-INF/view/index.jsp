@@ -16,13 +16,17 @@
    <link rel="stylesheet" type="text/css" href="../css/homeStyle.css">
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
   </head>
-  <body>  
+  <body>
+  <script>
+  let nessunaChat = false;
+  </script>  
   <div class="grid-container">
   <jsp:include page="/WEB-INF/view/components/menu.jsp"></jsp:include>
   <div class="grid-item chats">
   <span class="titoloPagina">Chat</span><br>
   <div class="results" id= "resultId">
-  <c:if test="${!listaChat.isEmpty()}"> 
+  <c:choose>
+  <c:when test="${!listaChat.isEmpty()}"> 
   <c:forEach var="user" items="${listaChat}">
   <div class="user">
   <a href="/mostraChat?id=<c:out value="${user.id}"/>" id="usLink">
@@ -40,7 +44,15 @@
   </a>
   </div><br>
   </c:forEach>
-  </c:if>
+  </c:when>
+  <c:otherwise>
+  <pre class="homemex" id="homemex">Ricerca i tuoi amici e inizia
+a chattare con loro.</pre>
+  <script>
+  nessunaChat = true;
+  </script>
+  </c:otherwise>
+  </c:choose>
   </div>
   </div>
   <div class="grid-item spazio">
@@ -52,5 +64,6 @@
   </div>  
   
   <script type="text/javascript" src="../js/eliminaChat.js"></script>
+  <script type="text/javascript" src="../js/messaggioBenvenuto.js"></script>
 	</body>
 	</html>

@@ -29,7 +29,8 @@
   <input type="text" name="user" placeholder="Username"><br>
   <div class="input-group"><input type="password" name="pass" placeholder="Password" id="password">
   <div><span class="input-group-text"><i class="bi bi-eye-slash" id="occhio"></i></span></div>
-  </div><br><br>
+  </div><br>
+  <input type="checkbox" id="remember-me" name="remember-me"><p class="remember-me-text">Rimani collegato</p><br>
   <input type="submit" value="Accedi" class="entra">
   o<a class="reg" href="/registrazione">Registrati</a>
   </form> 

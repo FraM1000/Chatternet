@@ -48,10 +48,14 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 		.successHandler(successHandler)
 		.failureForwardUrl("/loginFailed")
 		.and()
+		.rememberMe().tokenValiditySeconds(86400)
+		.key("uniqueAndSecret").rememberMeParameter("remember-me")
+		.userDetailsService(appUserService)
+		.and()
 		.logout().logoutUrl("/logout").addLogoutHandler(logoutHandler)
 		.clearAuthentication(true)
 		.invalidateHttpSession(true)
-	    .deleteCookies("JSESSIONID")
+	    .deleteCookies("JSESSIONID", "remember-me")
 		.logoutSuccessUrl("/login");
 	}
 	

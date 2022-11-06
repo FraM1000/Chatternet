@@ -95,6 +95,12 @@
 }
 }
 
+.remember-me-text {
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 15px;
+	display:inline-block;
+}
+
 .entra{
 	font-family: 'Ubuntu', sans-serif;
 	background-color: #1877f2;

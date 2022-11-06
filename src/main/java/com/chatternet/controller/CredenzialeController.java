@@ -11,6 +11,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.chatternet.controller.service.CredenzialeService;
 import com.chatternet.model.bean.Credenziale;
 import com.chatternet.model.dto.UtenteDTO;
+import com.chatternet.security.RememberMeSingleton;
 
 @Controller
 @RequestMapping("/")
@@ -26,7 +27,12 @@ public class CredenzialeController {
 			Credenziale credenziale,
 			HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		UtenteDTO udto = (UtenteDTO) session.getAttribute("utente");
+		UtenteDTO udto;
+		udto = (UtenteDTO) session.getAttribute("utente");
+		if(udto == null) {
+			RememberMeSingleton rememberMeToken = RememberMeSingleton.getToken();
+			udto = (UtenteDTO) rememberMeToken.getTokenDatas().get("utente");
+		}
 		int idUtente = udto.getId();
 		if(password1.equals(password2)) {
 			int idCredenziale = credenzialeService.ricavaIdCredenziale(idUtente);

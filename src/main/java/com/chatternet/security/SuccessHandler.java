@@ -56,6 +56,10 @@ public class SuccessHandler extends SimpleUrlAuthenticationSuccessHandler{
 		utente.setCognome((String) user[2]);
 		utente.setDataNascita((Date) user[4]);
 		mySession.setAttribute("utente", utente);
+		if(request.getParameter("remember-me") != null) {
+			RememberMeSingleton rememberMeToken = RememberMeSingleton.getToken();
+			rememberMeToken.getTokenDatas().put("utente", utente);
+		}
 		ArrayList<UtenteDTO> listaChat = new ArrayList<UtenteDTO>();
 		if(!chatRicavate.isEmpty()) {
 			/* chat è un Object[] di lunghezza 3,
