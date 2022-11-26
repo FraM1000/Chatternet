@@ -17,6 +17,10 @@
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
   </head>
   <body>
+  <script>
+  const loggedUserId = '${loggedUserId}';
+  </script>
+  
   <div class="grid-container">
   <jsp:include page="/WEB-INF/view/components/menu.jsp"></jsp:include>
   <div class="grid-item cerca">
@@ -60,6 +64,10 @@
   
   </div>
   </div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
   <script type="text/javascript" src="../js/ricercaUser.js"></script>
+  <script type="text/javascript" src="../js/notifiche.js"></script>
 	</body>
 	</html>

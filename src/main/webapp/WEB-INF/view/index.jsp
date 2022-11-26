@@ -19,7 +19,9 @@
   <body>
   <script>
   let nessunaChat = false;
+  const loggedUserId = '${loggedUserId}';
   </script>  
+
   <div class="grid-container">
   <jsp:include page="/WEB-INF/view/components/menu.jsp"></jsp:include>
   <div class="grid-item chats">
@@ -63,7 +65,10 @@ a chattare con loro.</pre>
   </div>
   </div>  
   
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
   <script type="text/javascript" src="../js/eliminaChat.js"></script>
   <script type="text/javascript" src="../js/messaggioBenvenuto.js"></script>
+  <script type="text/javascript" src="../js/notifiche.js"></script>
 	</body>
 	</html>

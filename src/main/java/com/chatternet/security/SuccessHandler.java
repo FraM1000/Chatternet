@@ -79,6 +79,7 @@ public class SuccessHandler extends SimpleUrlAuthenticationSuccessHandler{
 			});
 		}
 		mySession.setAttribute("listaChat", listaChat);
+		mySession.setAttribute("loggedUserId", utente.getId());
 		super.onAuthenticationSuccess(request, response, authentication);
     }
 }

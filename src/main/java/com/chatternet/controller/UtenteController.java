@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.chatternet.controller.service.CredenzialeService;
@@ -88,6 +89,7 @@ public class UtenteController {
 		request.setAttribute("cognome", cognome);
 		request.setAttribute("eta", eta);
 		request.setAttribute("foto", foto);
+		request.setAttribute("loggedUserId", udto.getId());
 		return "profilo";
 	}
 	
@@ -137,6 +139,17 @@ public class UtenteController {
 			}
 			request.setAttribute("listaUtenti", lista);
 		}
+		request.setAttribute("loggedUserId", udto.getId());
 		return "ricerca";
+	}
+	
+	@GetMapping("/ricercaUtentePerId")
+	@ResponseBody
+	public UtenteDTO cercaDatiUtentePerNotifica(HttpServletRequest request, @RequestParam("idUtente") int idUtente) {
+		Object[] utenteRicercato = utenteService.ricavaUtenteDaId(idUtente);
+		UtenteDTO utente = new UtenteDTO();
+		utente.setUsername((String) utenteRicercato[0]);
+		utente.setFoto((String) utenteRicercato[1]);
+		return utente;
 	}
 }
