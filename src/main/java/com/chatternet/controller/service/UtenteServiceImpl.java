@@ -24,6 +24,11 @@ public class UtenteServiceImpl implements UtenteService {
 	public void inserisciFoto(Utente utente) {	
 		utenteDAO.inserisciFoto(utente);
 	}
+	
+	@Override
+	public void eliminaFoto(Utente utente) {
+		utenteDAO.eliminaFoto(utente);
+	}
 
 	@Override
 	public Object prendiFoto(Utente utente) {

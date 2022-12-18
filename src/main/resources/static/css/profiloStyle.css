@@ -157,6 +157,50 @@ img.imgImpProfile{
 }
 }
 
+.delImgIcon{
+	position: relative;
+	top: -170px;
+	right: -40px;
+	background-color: white;
+	height: 15px;
+	width: 15px;
+	padding: 6px;
+	border-radius: 50%;
+}
+
+.bi-x{
+	position: absolute;
+	left: 1px;
+	top: 1px;
+	color: #ff0000;
+	cursor: pointer;
+}
+
+@media screen and (max-width: 500px){
+.delImgIcon{
+	position: relative;
+	top: -155px;
+	right: -35px;
+	background-color: white;
+	height: 15px;
+	width: 15px;
+	padding: 6px;
+	border-radius: 50%;
+}
+
+.bi-x{
+	position: absolute;
+	left: 0px;
+	top: 3px;
+	color: #ff0000;
+	cursor: pointer;
+}
+}
+
+.bi-x:hover{
+	color: #ff9999;
+}
+
 .mex{
 	font-family: 'Ubuntu', sans-serif;
 	text-decoration: none;

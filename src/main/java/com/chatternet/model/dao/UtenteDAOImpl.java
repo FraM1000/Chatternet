@@ -48,6 +48,15 @@ public class UtenteDAOImpl implements UtenteDAO {
 			logger.info("foto non inserita");
 		}
 	}
+	
+	@Override
+	@Transactional
+	public void eliminaFoto(Utente utente) {
+		Query upd = em.createNativeQuery("UPDATE utente SET fotoProfilo = null WHERE idUtente = ?");
+		upd.setParameter(1, utente.getIdUtente());
+		int rs = upd.executeUpdate();
+		if(rs == 1) logger.info("rimossa immagine profilo dell'utente con id {} ", utente.getIdUtente());
+	}
 
 	@Override
 	public Object prendiFoto(Utente utente) {

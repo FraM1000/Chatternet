@@ -25,4 +25,14 @@ public class ImmagineUploadUtil {
 	        }      
 	    }
 
+	 public static void deleteFile(String imageDir, String imageName) throws IOException {
+		 Path path = Paths.get(imageDir);
+		 Path imagePath = path.resolve(imageName);
+		 try {
+			 LOGGER.info("Elimino foto dal path: {}",imagePath.toFile().getAbsolutePath());
+			 Files.delete(imagePath);
+		 } catch (IOException ioe) {
+			 throw new IOException("impossibile eliminare immagine: " + imageName, ioe);
+		 }
+	 }
 }

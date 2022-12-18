@@ -17,3 +17,19 @@ function insImage() {
 		};
 	}
 }
+
+function delImage() {
+	let elimina = confirm("Vuoi eliminare la tua foto profilo?");
+	if (elimina == true) {
+		let request = new XMLHttpRequest();
+		let url = 'http://localhost:8081/eliminaFoto';
+		request.open('DELETE', url);
+		request.send();
+
+		request.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				window.location.reload();
+			}
+		};
+	}
+}

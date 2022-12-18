@@ -10,6 +10,8 @@ public interface UtenteDAO {
 	
 	public void inserisciFoto(Utente utente);
 	
+	public void eliminaFoto(Utente utente);
+	
 	public Object prendiFoto(Utente utente);
 	
 	public List<Utente[]> ricercaUtente(String nomeUtente, String usernameResearcher);

@@ -29,14 +29,15 @@
 					<br><br>
 					<c:choose>
 						<c:when test="${foto != null}">
-							<img alt="Immagine Profilo" src="${foto}" class="imgImpProfile"><br>
+							<img alt="Immagine Profilo" src="${foto}" class="imgImpProfile">
+							<div class="delImgIcon"><a href="" onclick="delImage()"><i class="bi bi-x"></i></a></div>
 						</c:when>
 						<c:otherwise>
 							<img class="imgProfile" alt="Immagine Profilo" src="/User"><br>
+							<label class="mex" for="avatar"><i class="bi-camera-fill"> Imposta foto</i></label>
+							<input onchange="insImage()" type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
 						</c:otherwise>
 					</c:choose>
-					<label class="mex" for="avatar"><i class="bi-camera-fill"> Imposta foto</i></label>
-					<input onchange="insImage()" type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
 					<h2><c:out value="${username}"/></h2>
 					<h3><c:out value="${nome}"/> <c:out value="${cognome}"/></h3>
 					<h3>Et&aacute: <c:out value="${eta}"/></h3>
@@ -68,7 +69,7 @@
 		
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
-		<script type="text/javascript" src="../js/caricaFoto.js"></script>
+		<script type="text/javascript" src="../js/fotoProfilo.js"></script>
 		<script type="text/javascript" src="../js/modificaPassword.js"></script>
 		<script type="text/javascript" src="../js/notifiche.js"></script>
 	</body>

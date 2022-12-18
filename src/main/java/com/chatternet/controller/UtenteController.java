@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -110,6 +111,27 @@ public class UtenteController {
 	    String uploadDir = "user-photos/" + utente.getIdUtente();
 	    ImmagineUploadUtil.saveFile(uploadDir, nomeFoto, foto);
 	    udto.setFoto(nomeFoto);
+		return "redirect:/paginaProfilo";
+	}
+	
+	@DeleteMapping("/eliminaFoto")
+	@ResponseBody
+	public String eliminaFoto(HttpServletRequest request) throws IOException {
+		HttpSession mySession = request.getSession();
+		UtenteDTO udto;
+		udto = (UtenteDTO) mySession.getAttribute("utente");
+		if(udto == null) {
+			RememberMeSingleton rememberMeToken = RememberMeSingleton.getToken();
+			udto = (UtenteDTO) rememberMeToken.getTokenDatas().get("utente");
+		}
+		udto.setFoto(null);
+		Utente utente = new Utente();
+		utente.setIdUtente(udto.getId());
+		Object fotoProfilo = utenteService.prendiFoto(utente);
+		String fotoProfiloString = fotoProfilo.toString();
+		utenteService.eliminaFoto(utente);
+		String imageDir = "user-photos/" + utente.getIdUtente();
+		ImmagineUploadUtil.deleteFile(imageDir, fotoProfiloString);
 		return "redirect:/paginaProfilo";
 	}
 	

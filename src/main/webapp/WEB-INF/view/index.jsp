@@ -48,11 +48,8 @@
 							</c:forEach>
 						</c:when>
 						<c:otherwise>
-							<pre class="homemex" id="homemex">Ricerca i tuoi amici e inizia
-							a chattare con loro.</pre>
-							<script>
-								nessunaChat = true;
-							</script>
+							<p class="homemex">Ricerca i tuoi amici e inizia</p>
+							<p class="homemex">a chattare con loro.</p>
 						</c:otherwise>
 					</c:choose>
 				</div>
@@ -68,7 +65,6 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
 		<script type="text/javascript" src="../js/eliminaChat.js"></script>
-		<script type="text/javascript" src="../js/messaggioBenvenuto.js"></script>
 		<script type="text/javascript" src="../js/notifiche.js"></script>
 	</body>
 </html>											
