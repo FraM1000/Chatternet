@@ -7,7 +7,7 @@ function insImage() {
 		formData.append('avatar', file.files[0]);
 		let request = new XMLHttpRequest();
 		let url = 'http://localhost:8081/inserisciFoto';
-		request.open('POST', url);
+		request.open('PUT', url);
 		request.send(formData);
 
 		request.onreadystatechange = function() {

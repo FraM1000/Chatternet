@@ -14,6 +14,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -94,7 +95,8 @@ public class UtenteController {
 		return "profilo";
 	}
 	
-	@PostMapping("/inserisciFoto")
+	@PutMapping("/inserisciFoto")
+	@ResponseBody
 	public String mettiFoto(HttpServletRequest request, @RequestParam("avatar") MultipartFile foto) throws IOException {
 		HttpSession mySession = request.getSession();
 		UtenteDTO udto;

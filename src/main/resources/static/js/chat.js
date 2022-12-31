@@ -12,7 +12,7 @@ window.onload = () => {
 }
 
 function mostraMessaggiRicevuti(messaggio){
-	let data = formattaData(messaggio.ora);
+	let data = formattaData(new Date(messaggio.ora));
 	const messaggioRicevutoHtml = 
 	`<div class="mexageReceived">
 	<div class="mexageTextReceived">
@@ -30,6 +30,7 @@ document.getElementById('inviaMexBt').onclick = (e) => {
 	if (messaggio.trim() !== "") {
 		inviaMessaggio(messaggio);
 		mostraMessaggiInviati(messaggio);
+		document.getElementById('inviaBarDskt').value = "";
 	}
 }
 
@@ -39,12 +40,13 @@ document.getElementById('inviaMexBtMob').onclick = (e) => {
 	if (messaggio.trim() !== "") {
 		inviaMessaggio(messaggio);
 		mostraMessaggiInviati(messaggio);
+		document.getElementById('inviaBar').value = "";
 	}
 }
 
 function inviaMessaggio(messaggio) {
 	var now = new Date();
-	now.setHours(now.getHours() + 2);
+	now.setHours(now.getHours() + 1);
 	const ilMessaggio = {
 		testo: messaggio,
 		ora: now,
@@ -55,7 +57,9 @@ function inviaMessaggio(messaggio) {
 }
 
 function mostraMessaggiInviati(messaggio){
-	let data = formattaData(new Date());
+	var now = new Date();
+	now.setHours(now.getHours());
+	let data = formattaData(now);
 	const messaggioInviatoHtml = 
 	`<div class="mexageSended">
 	<div class="mexageTextSended">
