@@ -103,7 +103,7 @@ public class ChatController {
 		}
 		request.setAttribute("listaChat", listaChat);
 		request.setAttribute("loggedUserId", loggedUser.getId());
-		return "index";
+		return "homepage";
 	}
 	
 	@DeleteMapping("/eliminaChat")

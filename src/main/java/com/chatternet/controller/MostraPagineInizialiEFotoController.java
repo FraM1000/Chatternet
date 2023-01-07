@@ -14,11 +14,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/")
-public class NavigazionePagineController {
+public class MostraPagineInizialiEFotoController {
 	
 	@GetMapping("/login")
 	public String paginaLogin() {
-		return "login";	
+		return "index";	
 	}
 	
 	@PostMapping("/loginFailed")
@@ -33,24 +33,9 @@ public class NavigazionePagineController {
 		return "registrazione";
 	}
 	
-	@GetMapping("/index")
-	public String paginaHome() {
-		return "index";
-	}
-	
-	@GetMapping("/profilo")
-	public String paginaProfilo() {
-		return "profilo";
-	}
-	
 	@GetMapping("/ricerca")
 	public String paginaRicerca() {
 		return "ricerca";
-	}
-	
-	@GetMapping("/chat")
-	public String paginaChat() {
-		return "chat";
 	}
 	 
 	 @RequestMapping(value = "/Icona", method = RequestMethod.GET,
