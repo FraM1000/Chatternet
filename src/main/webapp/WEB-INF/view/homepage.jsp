@@ -42,7 +42,7 @@
 										</c:choose>
 										<h1><c:out value="${user.username}"/></h1>
 										<c:if test="${user.messaggiRicevutiNonLetti != 0}"><h3 class="alertNewMexs"><c:out value="${user.messaggiRicevutiNonLetti}"/> nuovi messaggi !</h3></c:if>
-										<a href="" onclick="deleteChat(${user.id})"><i class="bi bi-trash"></i></a>
+										<a href="javascript:void(0);" onclick="deleteChat(${user.id}, '${user.username}')"><i class="bi bi-trash"></i></a>
 									</a>
 								</div><br>
 							</c:forEach>

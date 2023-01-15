@@ -19,6 +19,7 @@
 	<body>
 		<div class="grid-container">
 			<div class="grid-item us">
+				<a href="/login"><i class="bi bi-arrow-left"></i></a>
 				<div class="logo"><img src="/Icona" height="35px" width="45px">Chatternet</div>
 				<div class="intro">Ti aiutiamo a rimanere in contatto con i tuoi amici.</div>
 			</div>

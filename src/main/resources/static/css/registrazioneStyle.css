@@ -160,6 +160,24 @@ label{
 	cursor: pointer;
 }
 
+.bi-arrow-left{
+	font-size: 30px;
+	color: #1877f2;
+	position: relative;
+	top: -220px;
+	left: -240px;
+}
+
+@media screen and (max-width: 500px){
+.bi-arrow-left{
+	font-size: 25px;
+	color: #1877f2;
+	position: relative;
+	top: -30px;
+	left: -160px;
+}
+}
+
 .errorReg{
 	font-family: 'Ubuntu', sans-serif;
 	color: #f02849;
