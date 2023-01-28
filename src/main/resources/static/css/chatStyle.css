@@ -11,13 +11,13 @@
 	margin: 0px;
 }
 
-@media screen and (max-width: 500px) and (max-height: 915px){
+@media screen and (max-width: 500px) and (max-height: 920px){
 	.grid-container{
 		grid-template-areas:
 		"a"
 		"m"
 		"i";
-		grid-template-rows: 100px 700px 100px;
+		grid-template-rows: 100px 710px 110px;
 	}
 }
 
@@ -28,16 +28,6 @@
 		"m"
 		"i";
 		grid-template-rows: 90px 660px 90px;
-	}
-}
-
-@media screen and (max-width: 500px) and (max-height: 846px){
-	.grid-container{
-		grid-template-areas:
-		"a"
-		"m"
-		"i";
-		grid-template-rows: 85px 650px 85x;
 	}
 }
 
@@ -58,16 +48,6 @@
 		"m"
 		"i";
 		grid-template-rows: 70px 520px 65px;
-	}
-}
-
-@media screen and (max-width: 500px) and (max-height: 580px){
-	.grid-container{
-		grid-template-areas:
-		"a"
-		"m"
-		"i";
-		grid-template-rows: 65px 485px 60px;
 	}
 }
 
@@ -448,7 +428,7 @@ h2{
 
 .mexageDate{
 	position: relative;
-	left: 46px;
+	left: 36px;
 }
 
 .mexageTextReceived{
@@ -467,7 +447,7 @@ h2{
 	padding: 5px;
 }
 
-@media screen and (max-width: 500px){
+@media screen and (max-width: 500px) and (max-height: 920px){
 .mexageReceived{
 	position: relative;
 	left: 5px;
@@ -476,13 +456,13 @@ h2{
 
 .mexageSended{
 	position: relative;
-	right: -218px;
+	right: -252px;
 	margin: 5px;
 }
 
 .mexageDate{
 	position: relative;
-	left: 26px;
+	left: 16px;
 }
 
 .mexageTextReceived{
@@ -499,6 +479,38 @@ h2{
 	background-color: #74adf7;
 	width: 130px;
 	padding: 5px;
+}
+}
+
+@media screen and (max-width: 500px) and (max-height: 900px) {
+.mexageSended{
+	position: relative;
+	right: -256px;
+	margin: 5px;
+}
+}
+
+@media screen and (max-width: 500px) and (max-height: 860px) {
+.mexageSended{
+	position: relative;
+	right: -238px;
+	margin: 5px;
+}
+}
+
+@media screen and (max-width: 500px) and (max-height: 750px) {
+.mexageSended{
+	position: relative;
+	right: -204px;
+	margin: 5px;
+}
+}
+
+@media screen and (max-width: 500px) and (max-height: 670px) {
+.mexageSended{
+	position: relative;
+	right: -216px;
+	margin: 5px;
 }
 }
 
@@ -555,7 +567,7 @@ input{
 .inviaButton{
 	cursor: pointer;
 	position: absolute;
-	top: 832px;
+	top: 842px;
 	right: 17px;
 }
 .bi {
@@ -586,7 +598,7 @@ input{
 .inviaButton{
 	cursor: pointer;
 	position: absolute;
-	top: 827px;
+	top: 837px;
 	right: 17px;
 }
 .bi {
@@ -603,11 +615,11 @@ input{
 @media screen and (max-width: 500px) and (max-height: 860px){
 #inviaBar{
 	position: relative;
-	top: 9px;
+	top: 12px;
 	font-family: 'Ubuntu', sans-serif;
-	font-size: 20px;
+	font-size: 24px;
 	width: 330px;
-	height: 45px;
+	height: 48px;
 	padding: 5px;
 	
 }
@@ -618,11 +630,11 @@ input{
 .inviaButton{
 	cursor: pointer;
 	position: absolute;
-	top: 777px;
+	top: 780px;
 	right: 15px;
 }
 .bi {
-	font-size: 25px;
+	font-size: 27px;
 	color: #1877f2;
 }
 .mexSpaceMob{
@@ -634,7 +646,7 @@ input{
 @media screen and (max-width: 500px) and (max-height: 750px){
 #inviaBar{
 	position: relative;
-	top: 6px;
+	top: 9px;
 	font-family: 'Ubuntu', sans-serif;
 	font-size: 20px;
 	width: 305px;
@@ -649,7 +661,7 @@ input{
 .inviaButton{
 	cursor: pointer;
 	position: absolute;
-	top: 686px;
+	top: 688px;
 	right: 11px;
 }
 .bi {
@@ -665,7 +677,7 @@ input{
 @media screen and (max-width: 500px) and (max-height: 670px){
 #inviaBar{
 	position: relative;
-	top: 6px;
+	top: 9px;
 	font-family: 'Ubuntu', sans-serif;
 	font-size: 20px;
 	width: 320px;
@@ -680,7 +692,7 @@ input{
 .inviaButton{
 	cursor: pointer;
 	position: absolute;
-	top: 611px;
+	top: 615px;
 	right: 12px;
 }
 .bi {
