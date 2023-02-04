@@ -2,7 +2,6 @@ package com.chatternet.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -80,12 +79,7 @@ public class UtenteController {
 		String nome = udto.getNome();
 		String cognome = udto.getCognome();
 		String foto = udto.getFotoPath();
-		Date dataNascita = udto.getDataNascita();
-		Calendar cal = Calendar.getInstance();
-		cal.setTime(dataNascita);
-		int annoNascita = cal.get(Calendar.YEAR);
-		int annoCorrente = Calendar.getInstance().get(Calendar.YEAR);
-		int eta = annoCorrente - annoNascita;
+		int eta = udto.ottieniEtaDaDataNascita();
 		request.setAttribute("username", username);
 		request.setAttribute("nome", nome);
 		request.setAttribute("cognome", cognome);

@@ -1,5 +1,9 @@
 package com.chatternet.model.dto;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Transient;
@@ -91,6 +95,16 @@ public class UtenteDTO {
 
 	public void setMessaggiRicevutiNonLetti(Object numMessRicNonLet) {
 		this.messaggiRicevutiNonLetti = numMessRicNonLet;
+	}
+	
+	@Transient
+	public int ottieniEtaDaDataNascita() {
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");		
+		String dataNascitaString = dateFormat.format(dataNascita);  
+		LocalDate dataNascita = LocalDate.parse(dataNascitaString);
+		LocalDate dataAttuale = LocalDate.now(); 
+		int eta = Period.between(dataNascita, dataAttuale).getYears();  
+		return eta;
 	}
 
 	@Override

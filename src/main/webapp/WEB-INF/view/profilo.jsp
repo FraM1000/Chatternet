@@ -14,6 +14,7 @@
 		<link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
 		<link rel="icon" type="image/x-icon" href="/Icona">
 		<link rel="stylesheet" type="text/css" href="../css/profiloStyle.css">
+		<link rel="stylesheet" type="text/css" href="../css/menuStyle.css">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 	</head>
 	<body>
