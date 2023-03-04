@@ -71,10 +71,12 @@ public class UtenteDAOImpl implements UtenteDAO {
 		Query sel = em.createNativeQuery("SELECT c.username , u.idUtente , u.nome , u.cognome , u.fotoProfilo \r\n"
 				+ "FROM credenziale c , utente u \r\n"
 				+ "WHERE c.username LIKE ? \r\n"
+				+ "AND c.ruolo = ? \r\n"
 				+ "AND NOT(c.username = ?) \r\n"
 				+ "AND u.FKcredenziale = c.idCredenziale");
 		sel.setParameter(1, nomeUtente + "%");
-		sel.setParameter(2, usernameResearcher);
+		sel.setParameter(2, "user");
+		sel.setParameter(3, usernameResearcher);
 		List<Utente[]> utenti = sel.getResultList();
 		if(utenti.isEmpty()) {
 			logger.info("nessun utente è stato trovato");
