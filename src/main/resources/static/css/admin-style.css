@@ -1,0 +1,87 @@
+.grid-container{
+	display: grid;
+	grid-template-areas:
+	"s t t t t t t t t t t d"
+	"s p p p p p p p p p p d"
+	"s f f f f f f f f f f d";
+	grid-template-rows: 20px 540px 20px;
+}
+
+* {
+	padding: 0px;
+	margin: 0px;
+}
+
+.grid-item{
+	background-color: #ffffff;
+}
+
+.spaziotop{
+	grid-area: t;
+}
+
+.panel{
+	grid-area: p;
+	border-radius: 10px;
+}
+
+.panel-top-bar{
+	position: absolute;
+	border: 2px solid #1877f2;
+	padding: 10px;
+	border-radius: 10px 10px 0px 0px;
+	width: 1028.5px;
+	background-color: #ffffff;
+}
+
+.bi {
+	font-size: 25px;
+	color: #1877f2;
+}
+
+.bi:hover {
+  color: black;
+}
+
+h1{
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 25px;
+	display: inline-block;
+	position: relative;
+	left: 700px;
+}
+
+.chart-panel{
+	position: absolute;
+	top: 71.5px;
+	border: 2px solid #1877f2;
+	padding: 10px;
+	border-radius: 0px 0px 0px 10px;
+	height: 465px;
+	width: 734px;
+	background-color: #ffffff;
+}
+
+.search-panel{
+	position: absolute;
+	top: 71.5px;
+	right: 105.5px;
+	border: 2px solid #1877f2;
+	padding: 10px;
+	border-radius: 0px 0px 10px 0px;
+	height: 465px;
+	width: 279.5px;
+	background-color: #ffffff;
+}
+
+.spaziosx{
+	grid-area: s;
+}
+
+.spaziodx{
+	grid-area: d;
+}
+
+.footer{
+	grid-area: f;
+}

@@ -32,10 +32,6 @@ public class SuccessHandler extends SimpleUrlAuthenticationSuccessHandler{
 	
 	private static final String AUTHADMINSUCCESSURL = "/admin/dashboard";
 	
-	public SuccessHandler() {
-		super(AUTHUSERSUCCESSURL);
-	}
-	
 	@Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
     		Authentication authentication) throws IOException, ServletException {
@@ -60,7 +56,12 @@ public class SuccessHandler extends SimpleUrlAuthenticationSuccessHandler{
 		String utenteRuolo = (String) user[7];
 		if(utenteRuolo.equals("ADMIN")) {
 			setDefaultTargetUrl(AUTHADMINSUCCESSURL);
-			logger.info("l'utente è un ADMIN e sarà reindirizzato alla pagina di admin");
+			logger.info("l'utente è un ADMIN e sarà reindirizzato alla pagina admin");
+		} else if(utenteRuolo.equals("USER")) {
+			if(!getDefaultTargetUrl().equals(AUTHUSERSUCCESSURL)) {
+				setDefaultTargetUrl(AUTHUSERSUCCESSURL);
+			}
+			logger.info("l'utente è un USER e sarà reindirizzato alla pagina homepage");
 		}
 		super.onAuthenticationSuccess(request, response, authentication);
     }

@@ -1,0 +1,37 @@
+.chart{
+	position: relative;
+	top: 15px;
+}
+
+.time-buttons{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+.button{
+	font-family: 'Ubuntu', sans-serif;
+	text-decoration: none;
+	text-align: center;
+	color: #1877f2;
+	background-color: #ffffff;
+	padding: 6px;
+	width: 40px;
+	border: 1px solid #1877f2;
+	border-radius: 5px;
+	font-size: 15px;
+}
+
+.button-clicked{
+	font-family: 'Ubuntu', sans-serif;
+	text-decoration: none;
+	text-align: center;
+	color: #ffffff;
+	background-color: #1877f2;
+	padding: 6px;
+	width: 40px;
+	border: 1px solid #1877f2;
+	border-radius: 5px;
+	font-size: 15px;
+}
