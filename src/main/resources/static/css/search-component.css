@@ -1,4 +1,4 @@
-.searchBar{
+.search-bar{
 	position: relative;
 	top: -12px;
 	left: -12px;
@@ -17,7 +17,7 @@
 	padding: 5px;
 }
 
-.searchButton{
+.search-button{
 	cursor: pointer;
 	position: absolute;
 	right: 20px;
@@ -49,12 +49,12 @@
 	border-radius: 10px;
 }
 
-.imgUser{
+.img-user{
 	height: 45px;
 	width: 45px;
 }
 
-.imgExistUser{
+.img-exist-user{
 	height: 45px;
 	width: 45px;
 	border-radius: 50%;
