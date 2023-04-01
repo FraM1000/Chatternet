@@ -1,6 +1,9 @@
 package com.chatternet.controller;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -46,8 +49,12 @@ public class UtenteController {
 			@RequestParam("dataNascita") @DateTimeFormat(pattern = "yyyy-MM-dd") Date dataNascita,
 			@RequestParam("sex") String sesso,
 			Utente utente, Credenziale credenziale) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+		LocalDateTime dataAttuale = LocalDateTime.now(ZoneId.of("Europe/Paris"));
+		String dataAttualeFormattata = dataAttuale.format(formatter);
 		credenziale.setUsername(username);
 		credenziale.setPassword(password);
+		credenziale.setDataRegistrazione(dataAttualeFormattata);
 		utente.setNome(nome);
 		utente.setCognome(cognome);
 		utente.setSesso(sesso);

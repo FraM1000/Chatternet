@@ -23,17 +23,18 @@ public class CredenzialeDAOImpl implements CredenzialeDAO{
 	@Override
 	@Transactional
 	public void registraCredenziale(Credenziale credenziale) {
-			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(BCryptVersion.$2A,12);
-			String passCryptata = encoder.encode(credenziale.getPassword());
-			Query ins = em.createNativeQuery("INSERT INTO credenziale(username,password) VALUES(?,?)");
-			ins.setParameter(1, credenziale.getUsername());
-			ins.setParameter(2, passCryptata);
-			int rs = ins.executeUpdate();
-			if(rs == 1) {
-				logger.info("credenziali registrate");
-			}else {
-				logger.info("credenziali non registrate");
-			}
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(BCryptVersion.$2A, 12);
+		String passCryptata = encoder.encode(credenziale.getPassword());
+		Query ins = em.createNativeQuery("INSERT INTO credenziale(username,password,dataRegistrazione) VALUES(?,?,?)");
+		ins.setParameter(1, credenziale.getUsername());
+		ins.setParameter(2, passCryptata);
+		ins.setParameter(3, credenziale.getDataRegistrazione());
+		int rs = ins.executeUpdate();
+		if (rs == 1) {
+			logger.info("credenziali registrate");
+		} else {
+			logger.info("credenziali non registrate");
+		}
 	}
 
 	@Override

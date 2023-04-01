@@ -38,6 +38,9 @@ public class Credenziale implements UserDetails {
 	@Column(name = "ruolo")
 	private String ruolo;
 	
+	@Column(name = "dataRegistrazione")
+	private String dataRegistrazione;
+	
 	public Credenziale() {
 		
 	}
@@ -74,6 +77,14 @@ public class Credenziale implements UserDetails {
 		this.ruolo = ruolo;
 	}
 
+	public String getDataRegistrazione() {
+		return dataRegistrazione;
+	}
+
+	public void setDataRegistrazione(String dataRegistrazione) {
+		this.dataRegistrazione = dataRegistrazione;
+	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -83,13 +94,15 @@ public class Credenziale implements UserDetails {
 		if (getClass() != obj.getClass())
 			return false;
 		Credenziale other = (Credenziale) obj;
-		return idCredenziale == other.idCredenziale && Objects.equals(password, other.password)
-				&& Objects.equals(ruolo, other.ruolo) && Objects.equals(username, other.username);
+		return Objects.equals(dataRegistrazione, other.dataRegistrazione) && idCredenziale == other.idCredenziale
+				&& Objects.equals(password, other.password) && Objects.equals(ruolo, other.ruolo)
+				&& Objects.equals(username, other.username);
 	}
 
 	@Override
 	public String toString() {
-		return "Credenziale idCredenziale=" + idCredenziale + ", username=" + username + ", password=" + password + ", ruolo=" + ruolo;
+		return "Credenziale idCredenziale=" + idCredenziale + ", username=" + username + ", password=" + password
+				+ ", ruolo=" + ruolo + ", dataRegistrazione=" + dataRegistrazione;
 	}
 
 	@Override
