@@ -1,6 +1,8 @@
 package com.chatternet.model.dao;
 
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -87,6 +89,19 @@ public class CredenzialeDAOImpl implements CredenzialeDAO{
 		sel.setParameter(1, idUtente);
 		Object idCredenziale = sel.getSingleResult();
 		return (int) idCredenziale;
+	}
+
+	@Override
+	public List<Object[]> countRegisteredUsersFromStartDateToEndDate(String startDate, String endDate) {
+		Query sel = em.createNativeQuery("SELECT str_to_date(c.dataRegistrazione, '%Y-%m-%d') as 'dataRegistrazione', COUNT(c.idCredenziale) as 'utentiIscritti' \r\n"
+				+ "FROM credenziale c \r\n"
+				+ "WHERE c.dataRegistrazione \r\n"
+				+ "BETWEEN ? AND ? \r\n"
+				+ "GROUP BY str_to_date(c.dataRegistrazione, '%Y-%m-%d')");
+		sel.setParameter(1, startDate);
+		sel.setParameter(2, endDate);
+		List<Object[]> registeredUsers = sel.getResultList();
+		return registeredUsers;
 	}
 
 }
