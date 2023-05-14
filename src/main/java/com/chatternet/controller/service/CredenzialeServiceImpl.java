@@ -1,13 +1,14 @@
 package com.chatternet.controller.service;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.chatternet.model.bean.Credenziale;
 import com.chatternet.model.bean.Utente;
 import com.chatternet.model.dao.CredenzialeDAO;
+import com.chatternet.model.dto.MonthlyChartDTO;
+import com.chatternet.model.dto.WeeklyChartDTO;
+import com.chatternet.model.dto.YearlyChartDTO;
 
 @Service
 public class CredenzialeServiceImpl implements CredenzialeService {
@@ -43,25 +44,27 @@ public class CredenzialeServiceImpl implements CredenzialeService {
 	}
 
 	@Override
-	public List<String[]> countRegisteredUsersInThePastYear() {
-		// get startDate and endDate from the calendar, take MessaggioController class as an example
-		String startDate = null, endDate = null;
-		credenzialeDAO.countRegisteredUsersFromStartDateToEndDate(startDate, endDate);
-		return null;
+	public YearlyChartDTO getYearlyChartData() {
+		YearlyChartDTO yearlyChart = new YearlyChartDTO();
+		List<Object[]> registeredUsers = credenzialeDAO.countRegisteredUsersInThePastYear(yearlyChart.getStartDateOfTheChart(), yearlyChart.getEndDateOfTheChart());
+		yearlyChart.fillChartWithRegisteredUsersRetrievedFromDB(registeredUsers);
+		return yearlyChart;
 	}
 
 	@Override
-	public List<String[]> countRegisteredUsersInThePastMonth() {
-		String startDate = null, endDate = null;
-		credenzialeDAO.countRegisteredUsersFromStartDateToEndDate(startDate, endDate);
-		return null;
+	public MonthlyChartDTO getMonthlyChartData() {
+		MonthlyChartDTO monthlyChart = new MonthlyChartDTO();
+		List<Object[]> registeredUsers = credenzialeDAO.countRegisteredUsersFromStartDateToEndDate(monthlyChart.getStartDateOfTheChart(), monthlyChart.getEndDateOfTheChart());
+		monthlyChart.fillChartWithRegisteredUsersRetrievedFromDB(registeredUsers);
+		return monthlyChart;
 	}
 
 	@Override
-	public List<String[]> countRegisteredUsersInThePastWeek() {
-		String startDate = null, endDate = null;
-		credenzialeDAO.countRegisteredUsersFromStartDateToEndDate(startDate, endDate);
-		return null;
+	public WeeklyChartDTO getWeeklyChartData() {
+		WeeklyChartDTO weeklyChart = new WeeklyChartDTO();
+		List<Object[]> registeredUsers = credenzialeDAO.countRegisteredUsersFromStartDateToEndDate(weeklyChart.getStartDateOfTheChart(), weeklyChart.getEndDateOfTheChart());
+		weeklyChart.fillChartWithRegisteredUsersRetrievedFromDB(registeredUsers);
+		return weeklyChart;
 	}
-
+	
 }

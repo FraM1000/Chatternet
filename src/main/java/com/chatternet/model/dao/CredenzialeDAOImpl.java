@@ -104,4 +104,17 @@ public class CredenzialeDAOImpl implements CredenzialeDAO{
 		return registeredUsers;
 	}
 
+	@Override
+	public List<Object[]> countRegisteredUsersInThePastYear(String startDate, String endDate) {
+		Query sel = em.createNativeQuery("SELECT (YEAR(c.dataRegistrazione) * 100) + MONTH(c.dataRegistrazione) as 'dataRegistrazione', COUNT(c.idCredenziale) as 'utentiIscritti' \r\n"
+				+ "FROM credenziale c \r\n"
+				+ "WHERE c.dataRegistrazione \r\n"
+				+ "BETWEEN ? AND ? \r\n"
+				+ "GROUP BY (YEAR(c.dataRegistrazione) * 100) + MONTH(c.dataRegistrazione)");
+		sel.setParameter(1, startDate);
+		sel.setParameter(2, endDate);
+		List<Object[]> registeredUsers = sel.getResultList();
+		return registeredUsers;
+	}
+
 }

@@ -20,14 +20,24 @@
 	</head>
 	<body>
 		<script>
-			const asseXGraficoAnnuale = ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
-			const asseYGraficoAnnuale = [30,50,40,30,50,80,60,130,80,80,90,120];
-		
-			const asseXGraficoMensile = ['01 Mar','02 Mar','03 Mar','04 Mar','05 Mar','06 Mar','07 Mar','08 Mar','09 Mar','10 Mar','11 Mar','12 Mar','13 Mar','14 Mar','15 Mar','16 Mar','17 Mar','18 Mar','19 Mar','20 Mar','21 Mar','22 Mar','23 Mar','24 Mar','25 Mar','26 Mar','27 Mar','28 Mar','29 Mar','30 Mar'];
-			const asseYGraficoMensile = [2,1,1,0,3,2,3,1,2,2,2,1,4,3,2,0,1,0,2,1,3,1,2,2,3,4,2,1,1,2];
-		
-			const asseXGraficoSettimanale = ['01 Lun','02 Mar','03 Mer','04 Gio','05 Ven','06 Sab','07 Dom'];
-			const asseYGraficoSettimanale = [2,1,1,0,3,2,3];
+			let asseXGraficoAnnuale = "${yearlyChartDates}";
+			asseXGraficoAnnuale = asseXGraficoAnnuale.replace('[', '').replace(']', '');
+			asseXGraficoAnnuale = asseXGraficoAnnuale.split(",");
+			let asseYGraficoAnnuale = "${yearlyChartRegisteredUsers}";
+			asseYGraficoAnnuale = asseYGraficoAnnuale.replace('[', '').replace(']', '');
+			asseYGraficoAnnuale = asseYGraficoAnnuale.split(",");
+			let asseXGraficoMensile = "${monthlyChartDates}";
+			asseXGraficoMensile = asseXGraficoMensile.replace('[', '').replace(']', '');
+			asseXGraficoMensile = asseXGraficoMensile.split(",");
+			let asseYGraficoMensile = "${monthlyChartRegisteredUsers}";
+			asseYGraficoMensile = asseYGraficoMensile.replace('[', '').replace(']', '');
+			asseYGraficoMensile = asseYGraficoMensile.split(",");
+			let asseXGraficoSettimanale = "${weeklyChartDates}";
+			asseXGraficoSettimanale = asseXGraficoSettimanale.replace('[', '').replace(']', '');
+			asseXGraficoSettimanale = asseXGraficoSettimanale.split(",");
+			let asseYGraficoSettimanale = "${weeklyChartRegisteredUsers}";
+			asseYGraficoSettimanale = asseYGraficoSettimanale.replace('[', '').replace(']', '');
+			asseYGraficoSettimanale = asseYGraficoSettimanale.split(",");
 		</script> 
 		
 		<div class="grid-container">
@@ -36,7 +46,7 @@
 			<div class="grid-item panel">
 				<div class="panel-top-bar">
 					<a href="/logout"><i class="bi bi-box-arrow-left"></i></a>
-					<h1>Bentornato, Francesco!</h1>
+					<h1>Bentornato, <c:out value="${loggedUserName}"/>!</h1>
 				</div>
 				<jsp:include page="/WEB-INF/view/components/chart.jsp"></jsp:include>
 				<jsp:include page="/WEB-INF/view/components/search.jsp"></jsp:include>

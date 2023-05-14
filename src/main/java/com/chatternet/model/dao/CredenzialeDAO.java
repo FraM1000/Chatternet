@@ -19,4 +19,5 @@ public interface CredenzialeDAO {
 	
 	public List<Object[]> countRegisteredUsersFromStartDateToEndDate(String startDate, String endDate);
 	
+	public List<Object[]> countRegisteredUsersInThePastYear(String startDate, String endDate);
 }

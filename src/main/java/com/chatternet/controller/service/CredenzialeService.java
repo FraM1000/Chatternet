@@ -1,8 +1,10 @@
 package com.chatternet.controller.service;
 
-import java.util.List;
 import com.chatternet.model.bean.Credenziale;
 import com.chatternet.model.bean.Utente;
+import com.chatternet.model.dto.MonthlyChartDTO;
+import com.chatternet.model.dto.WeeklyChartDTO;
+import com.chatternet.model.dto.YearlyChartDTO;
 
 public interface CredenzialeService {
 	
@@ -16,9 +18,10 @@ public interface CredenzialeService {
 	
 	public int ricavaIdCredenziale(int idUtente);
 	
-	public List<String[]> countRegisteredUsersInThePastYear();
+	public YearlyChartDTO getYearlyChartData();
 	
-	public List<String[]> countRegisteredUsersInThePastMonth();
+	public MonthlyChartDTO getMonthlyChartData();
 	
-	public List<String[]> countRegisteredUsersInThePastWeek();
+	public WeeklyChartDTO getWeeklyChartData();
+	
 }
