@@ -66,5 +66,10 @@ public class CredenzialeServiceImpl implements CredenzialeService {
 		weeklyChart.fillChartWithRegisteredUsersRetrievedFromDB(registeredUsers);
 		return weeklyChart;
 	}
+
+	@Override
+	public void lockOrUnlockUserAccount(String username, String accountLockChoice) {
+		credenzialeDAO.lockOrUnlockUserAccount(username, accountLockChoice);
+	}
 	
 }

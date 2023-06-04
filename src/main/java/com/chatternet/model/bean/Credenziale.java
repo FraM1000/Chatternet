@@ -41,6 +41,9 @@ public class Credenziale implements UserDetails {
 	@Column(name = "dataRegistrazione")
 	private String dataRegistrazione;
 	
+	@Column(name = "accountBloccato")
+	private String accountBloccato;
+	
 	public Credenziale() {
 		
 	}
@@ -85,6 +88,14 @@ public class Credenziale implements UserDetails {
 		this.dataRegistrazione = dataRegistrazione;
 	}
 	
+	public String getAccountBloccato() {
+		return accountBloccato;
+	}
+
+	public void setAccountBloccato(String accountBloccato) {
+		this.accountBloccato = accountBloccato;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -102,7 +113,7 @@ public class Credenziale implements UserDetails {
 	@Override
 	public String toString() {
 		return "Credenziale idCredenziale=" + idCredenziale + ", username=" + username + ", password=" + password
-				+ ", ruolo=" + ruolo + ", dataRegistrazione=" + dataRegistrazione;
+				+ ", ruolo=" + ruolo + ", dataRegistrazione=" + dataRegistrazione + ", accountBloccato=" + accountBloccato;
 	}
 
 	@Override
@@ -119,7 +130,7 @@ public class Credenziale implements UserDetails {
 
 	@Override
 	public boolean isAccountNonLocked() {
-		return true;
+		return accountBloccato.equals("N");
 	}
 
 	@Override

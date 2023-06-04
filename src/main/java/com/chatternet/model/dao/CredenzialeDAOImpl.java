@@ -117,4 +117,15 @@ public class CredenzialeDAOImpl implements CredenzialeDAO{
 		return registeredUsers;
 	}
 
+	@Override
+	@Transactional
+	public void lockOrUnlockUserAccount(String username, String accountLockChoice) {
+		Query upd = em.createNativeQuery("UPDATE credenziale SET accountBloccato = ? WHERE username = ?");
+		upd.setParameter(1, accountLockChoice);
+		upd.setParameter(2, username);
+		int res = upd.executeUpdate();
+		if(res == 1) logger.info("l'account dell'utente con username: {} è stato {}", username, 
+				accountLockChoice.equals("Y") ? "bloccato" : "sbloccato");
+	}
+
 }

@@ -68,7 +68,7 @@ public class UtenteDAOImpl implements UtenteDAO {
 
 	@Override
 	public List<Utente[]> ricercaUtente(String nomeUtente, String usernameResearcher) {
-		Query sel = em.createNativeQuery("SELECT c.username , u.idUtente , u.nome , u.cognome , u.fotoProfilo \r\n"
+		Query sel = em.createNativeQuery("SELECT c.username , u.idUtente , u.nome , u.cognome , u.fotoProfilo, c.accountBloccato \r\n"
 				+ "FROM credenziale c , utente u \r\n"
 				+ "WHERE c.username LIKE ? \r\n"
 				+ "AND c.ruolo = ? \r\n"

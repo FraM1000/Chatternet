@@ -24,4 +24,5 @@ public interface CredenzialeService {
 	
 	public WeeklyChartDTO getWeeklyChartData();
 	
+	public void lockOrUnlockUserAccount(String username, String accountLockChoice);
 }

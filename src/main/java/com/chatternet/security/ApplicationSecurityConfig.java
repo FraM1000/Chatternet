@@ -25,6 +25,8 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private SuccessHandler successHandler;
 	@Autowired
+	private FailureHandler failureHandler;
+	@Autowired
 	private CustomLogoutHandler logoutHandler;
  
 
@@ -58,7 +60,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 		.formLogin()
 		.loginPage("/login").permitAll().usernameParameter("user").passwordParameter("pass")
 		.successHandler(successHandler)
-		.failureForwardUrl("/loginFailed")
+		.failureHandler(failureHandler)
 		.and()
 		.rememberMe().tokenValiditySeconds(86400)
 		.key("uniqueAndSecret").rememberMeParameter("remember-me")
