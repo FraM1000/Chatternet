@@ -32,6 +32,88 @@
 	width: 286px;
 }
 
+@media screen and (max-width: 500px) and (max-height: 920px){
+.search-bar{
+	position: relative;
+	top: -16px;
+	left: -15px;
+	border: 2px solid #1877f2;
+	padding: 10px;
+	width: 387px;
+	background-color: #ffffff;
+}
+
+.search{
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 15px;
+	border: 1px solid #1877f2;
+	width: 372px;
+	height: 30px;
+	padding: 5px;
+}
+
+.search-button{
+	cursor: pointer;
+	position: absolute;
+	right: 20px;
+	top: 17px;
+}
+
+.results{
+	position: relative;
+	top: -2px;
+	overflow-y: auto;
+	height: 565px;
+	width: 372px;
+}
+}
+
+@media screen and (max-width: 500px) and (max-height: 670px){
+.search-bar{
+	position: relative;
+	top: -16px;
+	left: -15px;
+	border: 2px solid #1877f2;
+	padding: 10px;
+	width: 349px;
+	background-color: #ffffff;
+}
+
+.search{
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 15px;
+	border: 1px solid #1877f2;
+	width: 334px;
+	height: 30px;
+	padding: 5px;
+}
+
+.search-button{
+	cursor: pointer;
+	position: absolute;
+	right: 20px;
+	top: 17px;
+}
+
+.results{
+	position: relative;
+	top: -2px;
+	overflow-y: auto;
+	height: 420px;
+	width: 334px;
+}
+}
+
+@media screen and (max-width: 500px) and (max-height: 660px) {
+.results{
+	position: relative;
+	top: -2px;
+	overflow-y: auto;
+	height: 535px;
+	width: 334px;
+}
+}
+
 .resmex{
 	font-family: 'Ubuntu', sans-serif;
 	font-size: 15px;
@@ -99,4 +181,144 @@ h2{
 	border: 1px solid #1877f2;
 	border-radius: 5px;
 	font-size: 15px;
+}
+
+@media screen and (max-width: 500px) and (max-height: 920px) {
+.resmex{
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 20px;
+	text-align: center;
+}
+
+.user{
+	margin: 2px;
+	position: relative;
+	display: inline-block;
+	border: 1px solid #ccc;
+	padding: 5px;
+	height: 60px;
+	width: 313px;
+	border-radius: 10px;
+}
+
+.img-user{
+	height: 55px;
+	width: 55px;
+}
+
+.img-exist-user{
+	height: 55px;
+	width: 55px;
+	border-radius: 50%;
+}
+			
+h2{
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 20px;
+	display: inline-block;
+	position: relative;
+	bottom: 20px;
+}
+			
+.blocca-button{
+	position: relative;
+	right: -85px;
+	bottom: 20px;
+	font-family: 'Ubuntu', sans-serif;
+	text-decoration: none;
+	text-align: center;
+	color: #ffffff;
+	background-color: #ff0000;
+	padding: 6px;
+	width: 40px;
+	border: 1px solid #ff0000;
+	border-radius: 5px;
+	font-size: 15px;
+}
+			
+.sblocca-button{
+	position: relative;
+	right: -79px;
+	bottom: 20px;
+	font-family: 'Ubuntu', sans-serif;
+	text-decoration: none;
+	text-align: center;
+	color: #ffffff;
+	background-color: #1877f2;
+	padding: 6px;
+	width: 40px;
+	border: 1px solid #1877f2;
+	border-radius: 5px;
+	font-size: 15px;
+}
+}
+
+@media screen and (max-width: 500px) and (max-height: 670px) {
+.resmex{
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 17px;
+	text-align: center;
+}	
+
+.user{
+	margin: 2px;
+	position: relative;
+	display: inline-block;
+	border: 1px solid #ccc;
+	padding: 5px;
+	height: 50px;
+	width: 293px;
+	border-radius: 10px;
+}
+
+.img-user{
+	height: 50px;
+	width: 50px;
+}
+
+.img-exist-user{
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+}
+			
+h2{
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 19px;
+	display: inline-block;
+	position: relative;
+	bottom: 20px;
+}
+			
+.blocca-button{
+	position: relative;
+	right: -70px;
+	bottom: 20px;
+	font-family: 'Ubuntu', sans-serif;
+	text-decoration: none;
+	text-align: center;
+	color: #ffffff;
+	background-color: #ff0000;
+	padding: 6px;
+	width: 40px;
+	border: 1px solid #ff0000;
+	border-radius: 5px;
+	font-size: 15px;
+}
+			
+.sblocca-button{
+	position: relative;
+	right: -64px;
+	bottom: 20px;
+	font-family: 'Ubuntu', sans-serif;
+	text-decoration: none;
+	text-align: center;
+	color: #ffffff;
+	background-color: #1877f2;
+	padding: 6px;
+	width: 40px;
+	border: 1px solid #1877f2;
+	border-radius: 5px;
+	font-size: 15px;
+}
 }

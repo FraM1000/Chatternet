@@ -50,6 +50,16 @@
 				</div>
 				<jsp:include page="/WEB-INF/view/components/chart.jsp"></jsp:include>
 				<jsp:include page="/WEB-INF/view/components/search.jsp"></jsp:include>
+				<div class="menu-mobile">
+					<div class="menu-buttons">
+						<a href="javascript:void(0);" onclick="displayChartView()" id="chartButton" class="button-clicked">
+						<i class="bi bi-graph-up ic" id="chartIcon"></i>
+						</a>
+						<a href="javascript:void(0);" onclick="displaySearchView()" id="searchButton" class="button">
+						<i class="bi bi-search" id="searchIcon"></i>
+						</a>
+					</div>
+				</div>
 			</div>
 			<div class="grid-item spaziosx">
 			</div>
@@ -63,5 +73,6 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 		<script type="text/javascript" src="../js/grafico.js"></script>
 		<script type="text/javascript" src="../js/ricercaUserAsAnAdmin.js"></script>
+		<script type="text/javascript" src="../js/admin-menu-mobile.js"></script>
 	</body>
 </html>											
