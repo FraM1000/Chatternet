@@ -24,7 +24,7 @@
 			</div>
 			<div class="grid-item enter">
 				<p class="succReg"><c:if test="${registrazione eq true}">Registrazione andata a buon fine. Puoi effettuare il login.</c:if></p>
-				<p class="failLog"><c:if test="${login eq false}">Errore: credenziali inserite errate.</c:if></p>
+				<p class="failLog"><c:if test="${login eq false}"><c:out value="${loginErrorMessage}"/></c:if></p>
 				<form class="fom" action="/login" method="post">
 					<input type="text" name="user" placeholder="Username"><br>
 					<div class="input-group"><input type="password" name="pass" placeholder="Password" id="password">

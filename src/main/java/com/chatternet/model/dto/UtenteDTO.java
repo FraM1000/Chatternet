@@ -25,6 +25,8 @@ public class UtenteDTO {
 	private Date dataNascita;
 	
 	private Object messaggiRicevutiNonLetti;
+	
+	private boolean accountBloccato;
 
 	public int getId() {
 		return id;
@@ -97,6 +99,14 @@ public class UtenteDTO {
 		this.messaggiRicevutiNonLetti = numMessRicNonLet;
 	}
 	
+	public boolean isAccountBloccato() {
+		return accountBloccato;
+	}
+
+	public void setAccountBloccato(boolean accountBloccato) {
+		this.accountBloccato = accountBloccato;
+	}
+
 	@Transient
 	public int ottieniEtaDaDataNascita() {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");		
@@ -123,8 +133,10 @@ public class UtenteDTO {
 
 	@Override
 	public String toString() {
-		return "UtenteDTO [id=" + id  + ", nome=" + nome + ", cognome=" + cognome + ", username=" + username + ", password=" + password
-				+ ", foto=" + foto + ", dataNascita=" + dataNascita + "]";
+		return "UtenteDTO [id=" + id + ", nome=" + nome + ", cognome=" + cognome + ", username=" + username
+				+ ", password=" + password + ", foto=" + foto + ", dataNascita=" + dataNascita
+				+ ", messaggiRicevutiNonLetti=" + messaggiRicevutiNonLetti + ", accountBloccato=" + accountBloccato
+				+ "]";
 	}
 
 }

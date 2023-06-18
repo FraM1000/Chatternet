@@ -1,6 +1,8 @@
 package com.chatternet.model.dao;
 
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -23,17 +25,18 @@ public class CredenzialeDAOImpl implements CredenzialeDAO{
 	@Override
 	@Transactional
 	public void registraCredenziale(Credenziale credenziale) {
-			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(BCryptVersion.$2A,12);
-			String passCryptata = encoder.encode(credenziale.getPassword());
-			Query ins = em.createNativeQuery("INSERT INTO credenziale(username,password) VALUES(?,?)");
-			ins.setParameter(1, credenziale.getUsername());
-			ins.setParameter(2, passCryptata);
-			int rs = ins.executeUpdate();
-			if(rs == 1) {
-				logger.info("credenziali registrate");
-			}else {
-				logger.info("credenziali non registrate");
-			}
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(BCryptVersion.$2A, 12);
+		String passCryptata = encoder.encode(credenziale.getPassword());
+		Query ins = em.createNativeQuery("INSERT INTO credenziale(username,password,dataRegistrazione) VALUES(?,?,?)");
+		ins.setParameter(1, credenziale.getUsername());
+		ins.setParameter(2, passCryptata);
+		ins.setParameter(3, credenziale.getDataRegistrazione());
+		int rs = ins.executeUpdate();
+		if (rs == 1) {
+			logger.info("credenziali registrate");
+		} else {
+			logger.info("credenziali non registrate");
+		}
 	}
 
 	@Override
@@ -86,6 +89,43 @@ public class CredenzialeDAOImpl implements CredenzialeDAO{
 		sel.setParameter(1, idUtente);
 		Object idCredenziale = sel.getSingleResult();
 		return (int) idCredenziale;
+	}
+
+	@Override
+	public List<Object[]> countRegisteredUsersFromStartDateToEndDate(String startDate, String endDate) {
+		Query sel = em.createNativeQuery("SELECT str_to_date(c.dataRegistrazione, '%Y-%m-%d') as 'dataRegistrazione', COUNT(c.idCredenziale) as 'utentiIscritti' \r\n"
+				+ "FROM credenziale c \r\n"
+				+ "WHERE c.dataRegistrazione \r\n"
+				+ "BETWEEN ? AND ? \r\n"
+				+ "GROUP BY str_to_date(c.dataRegistrazione, '%Y-%m-%d')");
+		sel.setParameter(1, startDate);
+		sel.setParameter(2, endDate);
+		List<Object[]> registeredUsers = sel.getResultList();
+		return registeredUsers;
+	}
+
+	@Override
+	public List<Object[]> countRegisteredUsersInThePastYear(String startDate, String endDate) {
+		Query sel = em.createNativeQuery("SELECT (YEAR(c.dataRegistrazione) * 100) + MONTH(c.dataRegistrazione) as 'dataRegistrazione', COUNT(c.idCredenziale) as 'utentiIscritti' \r\n"
+				+ "FROM credenziale c \r\n"
+				+ "WHERE c.dataRegistrazione \r\n"
+				+ "BETWEEN ? AND ? \r\n"
+				+ "GROUP BY (YEAR(c.dataRegistrazione) * 100) + MONTH(c.dataRegistrazione)");
+		sel.setParameter(1, startDate);
+		sel.setParameter(2, endDate);
+		List<Object[]> registeredUsers = sel.getResultList();
+		return registeredUsers;
+	}
+
+	@Override
+	@Transactional
+	public void lockOrUnlockUserAccount(String username, String accountLockChoice) {
+		Query upd = em.createNativeQuery("UPDATE credenziale SET accountBloccato = ? WHERE username = ?");
+		upd.setParameter(1, accountLockChoice);
+		upd.setParameter(2, username);
+		int res = upd.executeUpdate();
+		if(res == 1) logger.info("l'account dell'utente con username: {} è stato {}", username, 
+				accountLockChoice.equals("Y") ? "bloccato" : "sbloccato");
 	}
 
 }

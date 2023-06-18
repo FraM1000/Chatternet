@@ -28,11 +28,9 @@ public class SuccessHandler extends SimpleUrlAuthenticationSuccessHandler{
 	
 	Logger logger = LoggerFactory.getLogger(SuccessHandler.class);
 	
-	private static final String AUTHSUCCESSURL = "/paginaChat";
+	private static final String AUTHUSERSUCCESSURL = "/paginaChat";
 	
-	public SuccessHandler() {
-		super(AUTHSUCCESSURL);
-	}
+	private static final String AUTHADMINSUCCESSURL = "/admin/dashboard";
 	
 	@Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
@@ -40,7 +38,7 @@ public class SuccessHandler extends SimpleUrlAuthenticationSuccessHandler{
 		HttpSession mySession = request.getSession();
 		UtenteDTO utente = new UtenteDTO();
 		Object[] user =  credenzialeService.ricavaUtenteDaUsername(authentication.getName());
-		logger.info("l'utente: {} {} ha effettuato l'accesso",user[1],user[2]);
+		logger.info("l'utente: {} {} con ruolo {} ha effettuato l'accesso", user[1], user[2], user[7]);
 		utenteService.aggiornaStato(UserStatus.ONLINE, (int) user[0]);
 		if(user[5] != null) {
 			utente.setFoto((String) user[5]);
@@ -54,6 +52,16 @@ public class SuccessHandler extends SimpleUrlAuthenticationSuccessHandler{
 		if(request.getParameter("remember-me") != null) {
 			RememberMeSingleton rememberMeToken = RememberMeSingleton.getToken();
 			rememberMeToken.getTokenDatas().put("utente", utente);
+		}
+		String utenteRuolo = (String) user[7];
+		if(utenteRuolo.equals("ADMIN")) {
+			setDefaultTargetUrl(AUTHADMINSUCCESSURL);
+			logger.info("l'utente è un ADMIN e sarà reindirizzato alla pagina admin");
+		} else if(utenteRuolo.equals("USER")) {
+			if(!getDefaultTargetUrl().equals(AUTHUSERSUCCESSURL)) {
+				setDefaultTargetUrl(AUTHUSERSUCCESSURL);
+			}
+			logger.info("l'utente è un USER e sarà reindirizzato alla pagina homepage");
 		}
 		super.onAuthenticationSuccess(request, response, authentication);
     }

@@ -1,5 +1,7 @@
 package com.chatternet.model.dao;
 
+import java.util.List;
+
 import com.chatternet.model.bean.Credenziale;
 import com.chatternet.model.bean.Utente;
 
@@ -15,4 +17,9 @@ public interface CredenzialeDAO {
 	
 	public int ricavaIdCredenziale(int idUtente);
 	
+	public List<Object[]> countRegisteredUsersFromStartDateToEndDate(String startDate, String endDate);
+	
+	public List<Object[]> countRegisteredUsersInThePastYear(String startDate, String endDate);
+	
+	public void lockOrUnlockUserAccount(String username, String accountLockChoice);
 }

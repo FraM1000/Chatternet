@@ -1,8 +1,9 @@
 package com.chatternet.model.bean;
 
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -36,6 +37,12 @@ public class Credenziale implements UserDetails {
 	
 	@Column(name = "ruolo")
 	private String ruolo;
+	
+	@Column(name = "dataRegistrazione")
+	private String dataRegistrazione;
+	
+	@Column(name = "accountBloccato")
+	private String accountBloccato;
 	
 	public Credenziale() {
 		
@@ -73,6 +80,22 @@ public class Credenziale implements UserDetails {
 		this.ruolo = ruolo;
 	}
 
+	public String getDataRegistrazione() {
+		return dataRegistrazione;
+	}
+
+	public void setDataRegistrazione(String dataRegistrazione) {
+		this.dataRegistrazione = dataRegistrazione;
+	}
+	
+	public String getAccountBloccato() {
+		return accountBloccato;
+	}
+
+	public void setAccountBloccato(String accountBloccato) {
+		this.accountBloccato = accountBloccato;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -82,18 +105,22 @@ public class Credenziale implements UserDetails {
 		if (getClass() != obj.getClass())
 			return false;
 		Credenziale other = (Credenziale) obj;
-		return idCredenziale == other.idCredenziale && Objects.equals(password, other.password)
-				&& Objects.equals(ruolo, other.ruolo) && Objects.equals(username, other.username);
+		return Objects.equals(dataRegistrazione, other.dataRegistrazione) && idCredenziale == other.idCredenziale
+				&& Objects.equals(password, other.password) && Objects.equals(ruolo, other.ruolo)
+				&& Objects.equals(username, other.username);
 	}
 
 	@Override
 	public String toString() {
-		return "Credenziale idCredenziale=" + idCredenziale + ", username=" + username + ", password=" + password + ", ruolo=" + ruolo;
+		return "Credenziale idCredenziale=" + idCredenziale + ", username=" + username + ", password=" + password
+				+ ", ruolo=" + ruolo + ", dataRegistrazione=" + dataRegistrazione + ", accountBloccato=" + accountBloccato;
 	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return Collections.singleton(new SimpleGrantedAuthority(this.getRuolo()));
+		List<SimpleGrantedAuthority> authorities = new ArrayList<SimpleGrantedAuthority>();
+		authorities.add(new SimpleGrantedAuthority(ruolo));
+		return authorities;
 	}
 
 	@Override
@@ -103,7 +130,7 @@ public class Credenziale implements UserDetails {
 
 	@Override
 	public boolean isAccountNonLocked() {
-		return true;
+		return accountBloccato.equals("N");
 	}
 
 	@Override

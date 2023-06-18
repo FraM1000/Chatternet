@@ -25,6 +25,8 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private SuccessHandler successHandler;
 	@Autowired
+	private FailureHandler failureHandler;
+	@Autowired
 	private CustomLogoutHandler logoutHandler;
  
 
@@ -41,12 +43,24 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 		.requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
 		.antMatchers("/registraUtente").anonymous()
 		.antMatchers("/","/login","/registrazione","/registraUtente","/Icona", "/css/**","/images/**","/js/**","/static/**").permitAll()
+		.antMatchers("/paginaChat").hasAuthority("USER")
+		.antMatchers("/mostraChat").hasAuthority("USER")
+		.antMatchers("/chat").hasAuthority("USER")
+		.antMatchers("/eliminaChat").hasAuthority("USER")
+		.antMatchers("/ricerca").hasAuthority("USER")
+		.antMatchers("/cercaUtente").hasAuthority("USER")
+		.antMatchers("/ricercaUtentePerId").hasAuthority("USER")
+		.antMatchers("/paginaProfilo").hasAuthority("USER")
+		.antMatchers("/inserisciFoto").hasAuthority("USER")
+		.antMatchers("/eliminaFoto").hasAuthority("USER")
+		.antMatchers("/modificaPassword").hasAuthority("USER")
+		.antMatchers("/admin/**").hasAuthority("ADMIN")
 		.anyRequest().authenticated()
 		.and()
 		.formLogin()
 		.loginPage("/login").permitAll().usernameParameter("user").passwordParameter("pass")
 		.successHandler(successHandler)
-		.failureForwardUrl("/loginFailed")
+		.failureHandler(failureHandler)
 		.and()
 		.rememberMe().tokenValiditySeconds(86400)
 		.key("uniqueAndSecret").rememberMeParameter("remember-me")

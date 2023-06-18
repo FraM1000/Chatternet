@@ -5,7 +5,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
 import com.chatternet.model.bean.Credenziale;
 import com.chatternet.model.dao.AppUserRepositoryInterface;
 
@@ -19,7 +18,7 @@ public class AppUserService implements UserDetailsService{
     @Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		Credenziale credenziale = appUserRepository.findByUsername(username);
-		if(username==null) {
+		if(credenziale==null) {
 			throw new UsernameNotFoundException(username);
 		}
 		return credenziale;
