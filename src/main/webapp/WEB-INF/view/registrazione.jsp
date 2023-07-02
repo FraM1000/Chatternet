@@ -13,7 +13,7 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
 		<link rel="icon" type="image/x-icon" href="/Icona">
-		<link rel="stylesheet" type="text/css" href="../css/registrazioneStyle.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/registrazione-style.css"/>
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 	</head>
 	<body>
@@ -24,7 +24,7 @@
 				<div class="intro">Ti aiutiamo a rimanere in contatto con i tuoi amici.</div>
 			</div>
 			<div class="grid-item enter">
-				<p class="errorReg"><c:if test="${registrazione eq false}">L'username scelto &eacute gi&aacute stato preso.</c:if></p>
+				<p class="error-reg"><c:if test="${registrazione eq false}">L'username scelto &eacute gi&aacute stato preso.</c:if></p>
 				<form class="fom" action="/registraUtente" method="post">
 					<input type="text" name="nome" placeholder="Nome" required>
 					<input type="text" name="cognome" placeholder="Cognome" required><br>
@@ -40,7 +40,7 @@
 					<label for="uomo">Uomo</label>
 					<input type="radio" id="donna" value="donna" name="sex" required>
 					<label for="donna">Donna</label><br><br>
-					<input type="submit" value="Registrati" class="pulsanteReg">
+					<input type="submit" value="Registrati" class="pulsante-reg">
 				</form> 
 			</div>
 			<div class="grid-item footer">
@@ -48,6 +48,6 @@
 			</div>
 		</div>
 		
-		<script type="text/javascript" src="../js/mostraPass.js"></script>
+		<script type="text/javascript" src="../js/mostra-password.js"></script>
 	</body>
 </html>

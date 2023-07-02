@@ -72,7 +72,7 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.23.0/moment.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 		<script type="text/javascript" src="../js/grafico.js"></script>
-		<script type="text/javascript" src="../js/ricercaUserAsAnAdmin.js"></script>
+		<script type="text/javascript" src="../js/ricerca-user-as-admin.js"></script>
 		<script type="text/javascript" src="../js/admin-menu-mobile.js"></script>
 	</body>
 </html>											

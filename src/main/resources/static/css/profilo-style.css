@@ -16,7 +16,7 @@
 	.spazio{
 		display: none;
 	}
-	.altroSpazio{
+	.altro-spazio{
 		display: none;
 	}
 	.footer{
@@ -86,40 +86,39 @@ h1{
 	grid-area: p;
 }
 
-.flexContainer{
+.flex-container{
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 }
 
-img.imgImpProfile{
+img.img-imp-profile{
 	height: 170px;
 	width: 170px;
 	border-radius: 50%;
 }
 
 @media screen and (max-width: 500px){
-img.imgImpProfile{
+img.img-imp-profile{
 	height: 150px;
 	width: 150px;
-	border-radius: 50%;
 }
 }
 
-.imgProfile{
+.img-profile{
 	height: 160px;
 	width: 170px;
 }
 
 @media screen and (max-width: 500px){
-.imgProfile{
+.img-profile{
 	height: 140px;
 	width: 150px;
 }
 }
 
-.delImgIcon{
+.del-img-icon{
 	position: relative;
 	top: -170px;
 	right: -40px;
@@ -139,23 +138,14 @@ img.imgImpProfile{
 }
 
 @media screen and (max-width: 500px){
-.delImgIcon{
-	position: relative;
+.del-img-icon{
 	top: -155px;
 	right: -35px;
-	background-color: white;
-	height: 15px;
-	width: 15px;
-	padding: 6px;
-	border-radius: 50%;
 }
 
 .bi-x{
-	position: absolute;
 	left: 0px;
 	top: 3px;
-	color: #ff0000;
-	cursor: pointer;
 }
 }
 
@@ -180,7 +170,7 @@ input[type=file]{
 	display: none;
 }
 
-.passButton{
+.pass-button{
 	font-family: 'Ubuntu', sans-serif;
 	text-decoration: none;
 	color: #ffffff;
@@ -192,16 +182,14 @@ input[type=file]{
 	margin: 5px;
 }
 
-.succMod {
+.succ-mod {
 	font-family: 'Ubuntu', sans-serif;
 	color: #00cc00;
 	font-size: 20px;
 }
 
 @media screen and (max-width: 500px){
-.succMod {
-	font-family: 'Ubuntu', sans-serif;
-	color: #00cc00;
+.succ-mod {
 	font-size: 15px;
 }
 }
@@ -231,11 +219,6 @@ input[type=file]{
 .popup{
 	width: 200px;
 	height: 300px;
-	background: #ffffff;
-	margin: 40px auto;
-	padding: 10px 15px;
-	position: relative;
-	color: #000000;
 }
 }
 
@@ -276,13 +259,9 @@ input[type=file]{
 
 @media screen and (max-width: 500px) {
 	.fom input[type=text],.fom input[type=password]{
-	border: 1px solid GrayText;
 	padding: 10px;
 	width: 160px;
-	margin: 4px;
-	border-radius: 10px;
 	font-size: 14px;
-	font-family: 'Ubuntu', sans-serif;
 }
 }
 
@@ -299,139 +278,79 @@ h3{
 
 @media screen and (max-width: 500px) and (max-height: 920px) {
 h1{
-	font-family: 'Ubuntu', sans-serif;
 	font-size: 50px;
-	font-weight: bold;
-	position: relative;
-	top: 25px;
-	left: 30px;
 }
 
 .bi {
 	font-size: 30px;
-	color: #1877f2;
 }
 
-img.imgImpProfile{
+img.img-imp-profile{
 	height: 190px;
 	width: 190px;
-	border-radius: 50%;
 }
 
-.imgProfile{
+.img-profile{
 	height: 180px;
 	width: 190px;
 }
 
-.delImgIcon{
-	position: relative;
+.del-img-icon{
 	top: -195px;
 	right: -45px;
-	background-color: white;
 	height: 22px;
 	width: 22px;
 	padding: 8px;
-	border-radius: 50%;
 }
 
 .bi-x{
-	position: absolute;
 	left: 2px;
 	top: 6px;
-	color: #ff0000;
-	cursor: pointer;
 }
 
 .mex{
-	font-family: 'Ubuntu', sans-serif;
-	text-decoration: none;
-	color: #ffffff;
-	background-color: #1877f2;
 	font-size: 20px;
-	padding: 10px 25px;
-	border-radius: 5px;
 	height: 25px;
 	width: 150px;
-	cursor: pointer;
-	margin: 10px;
 }
 
-.passButton{
-	font-family: 'Ubuntu', sans-serif;
-	text-decoration: none;
-	color: #ffffff;
-	background-color: #1877f2;
+.pass-button{
 	font-size: 17px;
-	padding: 10px 25px;
-	border-radius: 5px;
 	height: 25px;
 	width: 150px;
-	cursor: pointer;
-	margin: 5px;
 }
 
-.succMod {
-	font-family: 'Ubuntu', sans-serif;
-	color: #00cc00;
+.succ-mod {
 	font-size: 20px;
 }
 
 .popup{
 	width: 270px;
 	height: 390px;
-	background: #ffffff;
-	margin: 40px auto;
-	padding: 10px 15px;
-	position: relative;
-	color: #000000;
 }
 
 
 #errMex{
-	font-family: 'Ubuntu', sans-serif;
 	font-size: 18px;
-	color: #f02849;
-}
-
-.bi-x-lg{
-	position: absolute;
-	top: 10px;
-	right: 10px;
-	cursor: pointer;
 }
 
 .modifica{
-	font-family: 'Ubuntu', sans-serif;
-	background-color: #1877f2;
-	border: none;
-	padding: 10px;
 	height: 40px;
 	width: 130px;
-	border-radius: 5px;
 	font-size: 18px;
-	color: #ffffff;
-	cursor: pointer;
 }
 
 .fom input[type=text],.fom input[type=password]{
-	border: 1px solid GrayText;
-	padding: 10px;
 	height: 25px;
 	width: 180px;
-	margin: 4px;
-	border-radius: 10px;
 	font-size: 18px;
-	font-family: 'Ubuntu', sans-serif;
 }
 
 h2{
-	font-family: 'Ubuntu', sans-serif;
 	font-size: 40px;
-	color: #1877f2;
 }
 
 h3{
-	font-family: 'Ubuntu', sans-serif;
 	font-size: 30px;
 }	
 }
@@ -439,298 +358,156 @@ h3{
 @media screen and (max-width: 500px) and (max-height: 860px) {
 .bi {
 	font-size: 28px;
-	color: #1877f2;
 }
 
-.bi-x{
-	position: absolute;
-	left: 2px;
-	top: 6px;
-	color: #ff0000;
-	cursor: pointer;
-}
-
-.succMod {
-	font-family: 'Ubuntu', sans-serif;
-	color: #00cc00;
+.succ-mod {
 	font-size: 18px;
 }
 }
 
 @media screen and (max-width: 500px) and (max-height: 750px) {
 h1{
-	font-family: 'Ubuntu', sans-serif;
 	font-size: 40px;
-	font-weight: bold;
-	position: relative;
-	top: 25px;
-	left: 30px;
 }
 
 .bi {
 	font-size: 26px;
-	color: #1877f2;
 }
 
-img.imgImpProfile{
+img.img-imp-profile{
 	height: 170px;
 	width: 170px;
-	border-radius: 50%;
 }
 
-.imgProfile{
+.img-profile{
 	height: 160px;
 	width: 170px;
 }
 
-.delImgIcon{
-	position: relative;
+.del-img-icon{
 	top: -175px;
-	right: -45px;
-	background-color: white;
 	height: 20px;
 	width: 20px;
 	padding: 7px;
-	border-radius: 50%;
-}
-
-.bi-x{
-	position: absolute;
-	left: 2px;
-	top: 6px;
-	color: #ff0000;
-	cursor: pointer;
 }
 
 .mex{
-	font-family: 'Ubuntu', sans-serif;
-	text-decoration: none;
-	color: #ffffff;
-	background-color: #1877f2;
 	font-size: 17px;
 	padding: 10px 20px;
 	border-radius: 5px;
 	height: 22px;
 	width: 130px;
-	cursor: pointer;
-	margin: 10px;
 }
 
-.passButton{
-	font-family: 'Ubuntu', sans-serif;
-	text-decoration: none;
-	color: #ffffff;
-	background-color: #1877f2;
+.pass-button{
 	font-size: 15px;
-	padding: 10px 20px;
-	border-radius: 5px;
 	height: 22px;
 	width: 130px;
-	cursor: pointer;
-	margin: 5px;
 }
 
-.succMod {
-	font-family: 'Ubuntu', sans-serif;
-	color: #00cc00;
+.succ-mod {
 	font-size: 17px;
 }
 
 .popup{
 	width: 240px;
 	height: 360px;
-	background: #ffffff;
-	margin: 40px auto;
-	padding: 10px 15px;
-	position: relative;
-	color: #000000;
 }
 
 
 #errMex{
-	font-family: 'Ubuntu', sans-serif;
 	font-size: 17px;
-	color: #f02849;
-}
-
-.bi-x-lg{
-	position: absolute;
-	top: 10px;
-	right: 10px;
-	cursor: pointer;
 }
 
 .modifica{
-	font-family: 'Ubuntu', sans-serif;
-	background-color: #1877f2;
-	border: none;
-	padding: 10px;
 	height: 35px;
 	width: 115px;
-	border-radius: 5px;
 	font-size: 16px;
-	color: #ffffff;
-	cursor: pointer;
 }
 
 .fom input[type=text],.fom input[type=password]{
-	border: 1px solid GrayText;
-	padding: 10px;
 	height: 22px;
 	width: 160px;
-	margin: 4px;
-	border-radius: 10px;
 	font-size: 16px;
-	font-family: 'Ubuntu', sans-serif;
 }
 
 h2{
-	font-family: 'Ubuntu', sans-serif;
 	font-size: 35px;
-	color: #1877f2;
 }
 
 h3{
-	font-family: 'Ubuntu', sans-serif;
 	font-size: 25px;
 }
 }
 
 @media screen and (max-width: 500px) and (max-height: 675px) {
 h1{
-	font-family: 'Ubuntu', sans-serif;
 	font-size: 38px;
-	font-weight: bold;
-	position: relative;
-	top: 25px;
-	left: 30px;
 }
 
 .bi {
 	font-size: 25px;
-	color: #1877f2;
 }
 
-img.imgImpProfile{
+img.img-imp-profile{
 	height: 160px;
 	width: 160px;
-	border-radius: 50%;
 }
 
-.imgProfile{
+.img-profile{
 	height: 150px;
 	width: 160px;
 }
 
-.delImgIcon{
-	position: relative;
+.del-img-icon{
 	top: -165px;
 	right: -40px;
-	background-color: white;
-	height: 20px;
-	width: 20px;
 	padding: 6px;
-	border-radius: 50%;
-}
-
-.bi-x{
-	position: absolute;
-	left: 2px;
-	top: 6px;
-	color: #ff0000;
-	cursor: pointer;
 }
 
 .mex{
-	font-family: 'Ubuntu', sans-serif;
-	text-decoration: none;
-	color: #ffffff;
-	background-color: #1877f2;
 	font-size: 15px;
-	padding: 10px 20px;
-	border-radius: 5px;
 	height: 20px;
 	width: 115px;
-	cursor: pointer;
-	margin: 10px;
 }
 
-.passButton{
-	font-family: 'Ubuntu', sans-serif;
-	text-decoration: none;
-	color: #ffffff;
-	background-color: #1877f2;
+.pass-button{
 	font-size: 13px;
-	padding: 10px 20px;
-	border-radius: 5px;
 	height: 20px;
 	width: 115px;
-	cursor: pointer;
-	margin: 5px;
 }
 
-.succMod {
-	font-family: 'Ubuntu', sans-serif;
-	color: #00cc00;
+.succ-mod {
 	font-size: 15px;
 }
 
 .popup{
 	width: 220px;
 	height: 330px;
-	background: #ffffff;
-	margin: 40px auto;
-	padding: 10px 15px;
-	position: relative;
-	color: #000000;
 }
 
 
 #errMex{
-	font-family: 'Ubuntu', sans-serif;
 	font-size: 15px;
-	color: #f02849;
-}
-
-.bi-x-lg{
-	position: absolute;
-	top: 10px;
-	right: 10px;
-	cursor: pointer;
 }
 
 .modifica{
-	font-family: 'Ubuntu', sans-serif;
-	background-color: #1877f2;
-	border: none;
-	padding: 10px;
 	height: 32px;
 	width: 105px;
-	border-radius: 5px;
 	font-size: 14px;
-	color: #ffffff;
-	cursor: pointer;
 }
 
 .fom input[type=text],.fom input[type=password]{
-	border: 1px solid GrayText;
-	padding: 10px;
 	height: 20px;
 	width: 145px;
-	margin: 4px;
-	border-radius: 10px;
 	font-size: 15px;
-	font-family: 'Ubuntu', sans-serif;
 }
 
 h2{
-	font-family: 'Ubuntu', sans-serif;
 	font-size: 30px;
-	color: #1877f2;
 }
 
 h3{
-	font-family: 'Ubuntu', sans-serif;
 	font-size: 20px;
 }
 }
@@ -739,7 +516,7 @@ h3{
 	grid-area: s;
 }
 
-.altroSpazio{
+.altro-spazio{
 	grid-area: a;
 	background-color: #e6e6e6;
 }

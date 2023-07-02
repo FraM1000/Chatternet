@@ -16,7 +16,7 @@
 	.spazio{
 		display: none;
 	}
-	.altroSpazio{
+	.altro-spazio{
 		display: none;
 	}
 	.footer{
@@ -64,7 +64,7 @@
 	background-color: #ffffff;
 }
 
-.searchBar{
+.search-bar{
 	position: relative;
 	top: 25px;
 	left: 30px;
@@ -82,7 +82,7 @@
 	padding: 5px;
 }
 
-.searchButton{
+.search-button{
 	cursor: pointer;
 	position: absolute;
 	right: 20px;
@@ -117,12 +117,12 @@ h2{
 	font-size: 20px;
 }
 
-.imgUser{
+.img-user{
 	height: 50px;
 	width: 50px;
 }
 
-.imgExistUser{
+.img-exist-user{
 	height: 50px;
 	width: 50px;
 	border-radius: 50%;
@@ -136,7 +136,7 @@ h2{
 	border-radius: 10px;
 }
 
-.userOfResult{
+.user-of-result{
 	display: inline-block;
 	left: 10px;
 }
@@ -147,244 +147,162 @@ h2{
 }
 
 @media screen and (max-width: 500px) and (max-height: 920px) {
-.searchBar{
-	position: relative;
+.search-bar{
 	top: 20px;
 	left: 10px;
-	display:inline-block;
 }
 
 .search{
-	font-family: 'Ubuntu', sans-serif;
-	font-size: 20px;
-	border: 1px solid #1877f2;
-	border-radius: 10px;
 	width: 360px;
 	height: 45px;
-	margin: 5px;
-	padding: 5px;
 }
 
-.searchButton{
-	cursor: pointer;
-	position: absolute;
+.search-button{
 	right: 20px;
 	top: 18px;
 }
 
 .results{
-	position: relative;
 	top: 50px;
 	left: 30px;
-	overflow-y: auto;
 	height: 650px;
 }
 
 h1{
-	font-family: 'Ubuntu', sans-serif;
 	font-size: 28px;
 	position: relative;
 	left: 10px;
 }
 
 h2{
-	font-family: 'Ubuntu', sans-serif;
 	font-size: 20px;
 	position: relative;
 	left: 10px;
 }
 
 .resmex{
-	font-family: 'Ubuntu', sans-serif;
 	font-size: 25px;
 }
 
-.imgUser{
+.img-user{
 	height: 62px;
 	width: 62px;
 }
 
-.imgExistUser{
+.img-exist-user{
 	height: 62px;
 	width: 62px;
-	border-radius: 50%;
 }
 
 .user{
-	display: inline-block;
-	border: 1px solid #ccc;
-	padding: 5px;
 	height: 65px;
 	width: 280px;
-	border-radius: 10px;
 }	
 
 .bi {
 	font-size: 30px;
-	color: #1877f2;
 }
 }
 
 @media screen and (max-width: 500px) and (max-height: 860px) {
 .search{
-	font-family: 'Ubuntu', sans-serif;
-	font-size: 20px;
-	border: 1px solid #1877f2;
-	border-radius: 10px;
 	width: 345px;
-	height: 45px;
-	margin: 5px;
-	padding: 5px;
 }
 
 .results{
-	position: relative;
-	top: 50px;
-	left: 30px;
-	overflow-y: auto;
 	height: 610px;
 }
 
 .resmex{
-	font-family: 'Ubuntu', sans-serif;
 	font-size: 23px;
 }	
 
 .bi {
 	font-size: 28px;
-	color: #1877f2;
 }	
 }
 
 @media screen and (max-width: 500px) and (max-height: 750px) {
-.searchBar{
-	position: relative;
+.search-bar{
 	top: 16px;
 	left: 10px;
-	display:inline-block;
 }
 
 .search{
-	font-family: 'Ubuntu', sans-serif;
 	font-size: 18px;
-	border: 1px solid #1877f2;
-	border-radius: 10px;
 	width: 315px;
-	height: 45px;
-	margin: 5px;
-	padding: 5px;
 }
 
 .results{
-	position: relative;
-	top: 50px;
-	left: 30px;
-	overflow-y: auto;
 	height: 520px;
 }
 
 h1{
-	font-family: 'Ubuntu', sans-serif;
 	font-size: 24px;
-	position: relative;
-	left: 10px;
 }
 
 h2{
-	font-family: 'Ubuntu', sans-serif;
 	font-size: 16px;
-	position: relative;
-	left: 10px;
 }
 
 .resmex{
-	font-family: 'Ubuntu', sans-serif;
 	font-size: 21px;
 }
 
-.imgUser{
+.img-user{
 	height: 55px;
 	width: 55px;
 }
 
-.imgExistUser{
+.img-exist-user{
 	height: 55px;
 	width: 55px;
-	border-radius: 50%;
 }
 
 .user{
-	display: inline-block;
-	border: 1px solid #ccc;
-	padding: 5px;
 	height: 55px;
 	width: 260px;
-	border-radius: 10px;
 }	
 
 .bi {
 	font-size: 26px;
-	color: #1877f2;
 }	
 }
 
 @media screen and (max-width: 500px) and (max-height: 675px) {
 .search{
-	font-family: 'Ubuntu', sans-serif;
-	font-size: 18px;
-	border: 1px solid #1877f2;
-	border-radius: 10px;
 	width: 320px;
-	height: 45px;
-	margin: 5px;
-	padding: 5px;
 }
 
 .results{
-	position: relative;
-	top: 50px;
-	left: 30px;
-	overflow-y: auto;
 	height: 455px;
 }
 
 h1{
-	font-family: 'Ubuntu', sans-serif;
 	font-size: 22px;
-	position: relative;
-	left: 10px;
 }
 
 h2{
-	font-family: 'Ubuntu', sans-serif;
 	font-size: 14px;
-	position: relative;
-	left: 10px;
 }
 
-.imgUser{
+.img-user{
 	height: 50px;
 	width: 50px;
 }
 
-.imgExistUser{
+.img-exist-user{
 	height: 50px;
 	width: 50px;
-	border-radius: 50%;
 }
 
 .user{
-	display: inline-block;
-	border: 1px solid #ccc;
-	padding: 5px;
 	height: 50px;
 	width: 250px;
-	border-radius: 10px;
 }	
 
 .bi {
 	font-size: 25px;
-	color: #1877f2;
 }	
 }
 
@@ -400,7 +318,7 @@ h2{
 	grid-area: s;
 }
 
-.altroSpazio{
+.altro-spazio{
 	grid-area: a;
 	background-color: #e6e6e6;
 }

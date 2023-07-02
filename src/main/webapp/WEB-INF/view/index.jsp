@@ -13,7 +13,7 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
 		<link rel="icon" type="image/x-icon" href="/Icona">
-		<link rel="stylesheet" type="text/css" href="../css/loginStyle.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/login-style.css"/>
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 	</head>
 	<body>
@@ -23,8 +23,8 @@
 				<div class="intro">Ti aiutiamo a rimanere in contatto con i tuoi amici.</div>
 			</div>
 			<div class="grid-item enter">
-				<p class="succReg"><c:if test="${registrazione eq true}">Registrazione andata a buon fine. Puoi effettuare il login.</c:if></p>
-				<p class="failLog"><c:if test="${login eq false}"><c:out value="${loginErrorMessage}"/></c:if></p>
+				<p class="succ-reg"><c:if test="${registrazione eq true}">Registrazione andata a buon fine. Puoi effettuare il login.</c:if></p>
+				<p class="fail-log"><c:if test="${login eq false}"><c:out value="${loginErrorMessage}"/></c:if></p>
 				<form class="fom" action="/login" method="post">
 					<input type="text" name="user" placeholder="Username"><br>
 					<div class="input-group"><input type="password" name="pass" placeholder="Password" id="password">
@@ -40,6 +40,6 @@
 			</div>
 		</div>
 		
-		<script type="text/javascript" src="../js/mostraPass.js"></script>
+		<script type="text/javascript" src="../js/mostra-password.js"></script>
 	</body>
 </html>

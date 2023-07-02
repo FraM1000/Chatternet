@@ -13,8 +13,8 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
 		<link rel="icon" type="image/x-icon" href="/Icona">
-		<link rel="stylesheet" type="text/css" href="../css/profiloStyle.css">
-		<link rel="stylesheet" type="text/css" href="../css/menuStyle.css">
+		<link rel="stylesheet" type="text/css" href="../css/profilo-style.css">
+		<link rel="stylesheet" type="text/css" href="../css/menu-component.css">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 	</head>
 	<body>
@@ -26,15 +26,15 @@
 			<jsp:include page="/WEB-INF/view/components/menu.jsp"></jsp:include>
 			<div class="grid-item profilo">
 				<h1>Profilo</h1><br>
-				<div class ="flexContainer">
+				<div class ="flex-container">
 					<br><br>
 					<c:choose>
 						<c:when test="${foto != null}">
-							<img alt="Immagine Profilo" src="${foto}" class="imgImpProfile">
-							<div class="delImgIcon"><a href="" onclick="delImage()"><i class="bi bi-x"></i></a></div>
+							<img alt="Immagine Profilo" src="${foto}" class="img-imp-profile">
+							<div class="del-img-icon"><a href="" onclick="delImage()"><i class="bi bi-x"></i></a></div>
 						</c:when>
 						<c:otherwise>
-							<img class="imgProfile" alt="Immagine Profilo" src="/User"><br>
+							<img class="img-profile" alt="Immagine Profilo" src="/User"><br>
 							<label class="mex" for="avatar"><i class="bi-camera-fill"> Imposta foto</i></label>
 							<input onchange="insImage()" type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
 						</c:otherwise>
@@ -42,8 +42,8 @@
 					<h2><c:out value="${username}"/></h2>
 					<h3><c:out value="${nome}"/> <c:out value="${cognome}"/></h3>
 					<h3>Et&aacute: <c:out value="${eta}"/></h3>
-					<a class="passButton" id="passButt">Modifica password</a>
-					<p class="succMod"><c:if test="${passwordModificata eq true}">La password &eacute stata modificata con successo.</c:if></p>
+					<a class="pass-button" id="passButt">Modifica password</a>
+					<p class="succ-mod"><c:if test="${passwordModificata eq true}">La password &eacute stata modificata con successo.</c:if></p>
 				</div>
 				<div class="overlay" id="pop">
 					<div class="popup">
@@ -60,7 +60,7 @@
 			<div class="grid-item spazio">
 				
 			</div>
-			<div class="grid-item altroSpazio">
+			<div class="grid-item altro-spazio">
 				
 			</div>
 			<div class="grid-item footer">
@@ -70,8 +70,8 @@
 		
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
-		<script type="text/javascript" src="../js/fotoProfilo.js"></script>
-		<script type="text/javascript" src="../js/modificaPassword.js"></script>
+		<script type="text/javascript" src="../js/foto-profilo.js"></script>
+		<script type="text/javascript" src="../js/modifica-password.js"></script>
 		<script type="text/javascript" src="../js/notifiche.js"></script>
 	</body>
 </html>
