@@ -14,10 +14,10 @@ window.onload = () => {
 function mostraMessaggiRicevuti(messaggio){
 	let data = formattaData(new Date(messaggio.ora));
 	const messaggioRicevutoHtml = 
-	`<div class="mexageReceived">
-	<div class="mexageTextReceived">
+	`<div class="mexage-received">
+	<div class="mexage-text-received">
 	${messaggio.testo}
-	<br><small class="mexageDate">
+	<br><small class="mexage-date">
 	${data}
 	</small>
 	</div></div>` ;
@@ -61,10 +61,10 @@ function mostraMessaggiInviati(messaggio){
 	now.setHours(now.getHours());
 	let data = formattaData(now);
 	const messaggioInviatoHtml = 
-	`<div class="mexageSended">
-	<div class="mexageTextSended">
+	`<div class="mexage-sended">
+	<div class="mexage-text-sended">
 	${messaggio}
-	<br><small class="mexageDate">
+	<br><small class="mexage-date">
 	${data}
 	</small>
 	</div></div>` ;
