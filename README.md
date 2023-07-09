@@ -4,7 +4,8 @@ Chatternet is a web-based one-to-one messaging application which allows users to
 <img width="157" alt="image" src="https://github.com/FraM1000/Chatternet/assets/88930554/41562b25-f554-4c2d-b151-22c652f0ffa9">
 
 ## Installation
-***Prerequisites:***
+Prerequisites:
+
 * Java 8
 * Maven
 * MySQL database
