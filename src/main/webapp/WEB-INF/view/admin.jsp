@@ -20,24 +20,24 @@
 	</head>
 	<body>
 		<script>
-			let asseXGraficoAnnuale = "${yearlyChartDates}";
-			asseXGraficoAnnuale = asseXGraficoAnnuale.replace('[', '').replace(']', '');
-			asseXGraficoAnnuale = asseXGraficoAnnuale.split(",");
-			let asseYGraficoAnnuale = "${yearlyChartRegisteredUsers}";
-			asseYGraficoAnnuale = asseYGraficoAnnuale.replace('[', '').replace(']', '');
-			asseYGraficoAnnuale = asseYGraficoAnnuale.split(",");
-			let asseXGraficoMensile = "${monthlyChartDates}";
-			asseXGraficoMensile = asseXGraficoMensile.replace('[', '').replace(']', '');
-			asseXGraficoMensile = asseXGraficoMensile.split(",");
-			let asseYGraficoMensile = "${monthlyChartRegisteredUsers}";
-			asseYGraficoMensile = asseYGraficoMensile.replace('[', '').replace(']', '');
-			asseYGraficoMensile = asseYGraficoMensile.split(",");
-			let asseXGraficoSettimanale = "${weeklyChartDates}";
-			asseXGraficoSettimanale = asseXGraficoSettimanale.replace('[', '').replace(']', '');
-			asseXGraficoSettimanale = asseXGraficoSettimanale.split(",");
-			let asseYGraficoSettimanale = "${weeklyChartRegisteredUsers}";
-			asseYGraficoSettimanale = asseYGraficoSettimanale.replace('[', '').replace(']', '');
-			asseYGraficoSettimanale = asseYGraficoSettimanale.split(",");
+			let yearlyChartXAxis = "${yearlyChartDates}";
+			yearlyChartXAxis = yearlyChartXAxis.replace('[', '').replace(']', '');
+			yearlyChartXAxis = yearlyChartXAxis.split(",");
+			let yearlyChartYAxis = "${yearlyChartRegisteredUsers}";
+			yearlyChartYAxis = yearlyChartYAxis.replace('[', '').replace(']', '');
+			yearlyChartYAxis = yearlyChartYAxis.split(",");
+			let monthlyChartXAxis = "${monthlyChartDates}";
+			monthlyChartXAxis = monthlyChartXAxis.replace('[', '').replace(']', '');
+			monthlyChartXAxis = monthlyChartXAxis.split(",");
+			let monthlyChartYAxis = "${monthlyChartRegisteredUsers}";
+			monthlyChartYAxis = monthlyChartYAxis.replace('[', '').replace(']', '');
+			monthlyChartYAxis = monthlyChartYAxis.split(",");
+			let weeklyChartXAxis = "${weeklyChartDates}";
+			weeklyChartXAxis = weeklyChartXAxis.replace('[', '').replace(']', '');
+			weeklyChartXAxis = weeklyChartXAxis.split(",");
+			let weeklyChartYAxis = "${weeklyChartRegisteredUsers}";
+			weeklyChartYAxis = weeklyChartYAxis.replace('[', '').replace(']', '');
+			weeklyChartYAxis = weeklyChartYAxis.split(",");
 		</script> 
 		
 		<div class="grid-container">
@@ -71,8 +71,8 @@
 		
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.23.0/moment.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
-		<script type="text/javascript" src="../js/grafico.js"></script>
-		<script type="text/javascript" src="../js/ricerca-user-as-admin.js"></script>
+		<script type="text/javascript" src="../js/chart.js"></script>
+		<script type="text/javascript" src="../js/search-user-as-admin.js"></script>
 		<script type="text/javascript" src="../js/admin-menu-mobile.js"></script>
 	</body>
 </html>											

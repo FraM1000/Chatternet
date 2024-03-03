@@ -21,12 +21,12 @@ public class MostraPagineInizialiEFotoController {
 	
 	@GetMapping("/registrazione")
 	public String paginaRegistrazione() {
-		return "registrazione";
+		return "signup";
 	}
 	
 	@GetMapping("/ricerca")
 	public String paginaRicerca() {
-		return "ricerca";
+		return "search";
 	}
 	 
 	 @RequestMapping(value = "/Icona", method = RequestMethod.GET,

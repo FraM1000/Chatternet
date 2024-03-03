@@ -1,12 +1,12 @@
-const pulsante = document.getElementById("cercaUsBt");
-pulsante.addEventListener("click", cerca);
+const button = document.getElementById("cercaUsBt");
+button.addEventListener("click", search);
 
-function cerca() {
-	let utente = document.getElementById("cercaUser").value;
-	if (utente == "" || utente == " ") {
+function search() {
+	let user = document.getElementById("cercaUser").value;
+	if (user == "" || user == " ") {
 		return false;
 	} else {
-		pulsante.href = "/admin/cercaUtente?nomeUtente=" + utente;
+		button.href = "/admin/cercaUtente?nomeUtente=" + user;
 	}
 }
 

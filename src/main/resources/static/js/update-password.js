@@ -1,10 +1,10 @@
-let pulsante = document.getElementById("passButt");
-pulsante.addEventListener("click", () => {
+let button = document.getElementById("passButt");
+button.addEventListener("click", () => {
 	document.getElementById("pop").style.display = 'block';
 });
 
-let pulsClose = document.getElementById("closePopup");
-pulsClose.addEventListener("click", () => {
+let closeButton = document.getElementById("closePopup");
+closeButton.addEventListener("click", () => {
 	document.getElementById("pop").style.display = 'none';
 });
 

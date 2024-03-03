@@ -13,7 +13,7 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
 		<link rel="icon" type="image/x-icon" href="/Icona">
-		<link rel="stylesheet" type="text/css" href="../css/ricerca-style.css">
+		<link rel="stylesheet" type="text/css" href="../css/search-style.css">
 		<link rel="stylesheet" type="text/css" href="../css/menu-component.css">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 	</head>
@@ -68,7 +68,7 @@
 			
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.min.js"></script>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
-			<script type="text/javascript" src="../js/ricerca-user.js"></script>
-			<script type="text/javascript" src="../js/notifiche.js"></script>
+			<script type="text/javascript" src="../js/search-user.js"></script>
+			<script type="text/javascript" src="../js/notifications.js"></script>
 		</body>
 	</html>		

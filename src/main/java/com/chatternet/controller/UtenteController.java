@@ -93,7 +93,7 @@ public class UtenteController {
 		request.setAttribute("eta", eta);
 		request.setAttribute("foto", foto);
 		request.setAttribute("loggedUserId", udto.getId());
-		return "profilo";
+		return "profile";
 	}
 	
 	@PutMapping("/inserisciFoto")
@@ -165,7 +165,7 @@ public class UtenteController {
 			request.setAttribute("listaUtenti", lista);
 		}
 		request.setAttribute("loggedUserId", udto.getId());
-		return "ricerca";
+		return "search";
 	}
 	
 	@GetMapping("/ricercaUtentePerId")

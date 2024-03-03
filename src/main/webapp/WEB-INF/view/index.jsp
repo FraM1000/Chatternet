@@ -40,6 +40,6 @@
 			</div>
 		</div>
 		
-		<script type="text/javascript" src="../js/mostra-password.js"></script>
+		<script type="text/javascript" src="../js/show-password.js"></script>
 	</body>
 </html>

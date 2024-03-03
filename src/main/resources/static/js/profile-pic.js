@@ -19,8 +19,8 @@ function insImage() {
 }
 
 function delImage() {
-	let elimina = confirm("Vuoi eliminare la tua foto profilo?");
-	if (elimina == true) {
+	let toDelete = confirm("Vuoi eliminare la tua foto profilo?");
+	if (toDelete == true) {
 		let request = new XMLHttpRequest();
 		let url = 'http://localhost:8081/eliminaFoto';
 		request.open('DELETE', url);
