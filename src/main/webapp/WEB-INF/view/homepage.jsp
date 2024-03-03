@@ -19,7 +19,6 @@
 	</head>
 	<body>
 		<script>
-			let nessunaChat = false;
 			const loggedUserId = '${loggedUserId}';
 		</script>  
 		
