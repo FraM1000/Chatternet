@@ -21,7 +21,7 @@ public class UtenteDAOImpl implements UtenteDAO {
 	@Override
 	@Transactional
 	public void registraUtente(Utente utente) {
-		Query ins = em.createNativeQuery("INSERT INTO utente(nome,cognome,sesso,dataNascita) VALUES(?,?,?,?)");
+		Query ins = em.createNativeQuery("INSERT INTO user(name,surname,sex,birthDate) VALUES(?,?,?,?)");
 		ins.setParameter(1, utente.getNome());
 		ins.setParameter(2, utente.getCognome());
 		ins.setParameter(3, utente.getSesso());
@@ -38,7 +38,7 @@ public class UtenteDAOImpl implements UtenteDAO {
 	@Override
 	@Transactional
 	public void inserisciFoto(Utente utente) {
-		Query upd = em.createNativeQuery("UPDATE utente SET fotoProfilo = ? WHERE idUtente = ?");
+		Query upd = em.createNativeQuery("UPDATE user SET profilePhoto = ? WHERE idUser = ?");
 		upd.setParameter(1, utente.getFotoProfilo());
 		upd.setParameter(2, utente.getIdUtente());
 		int rs = upd.executeUpdate();
@@ -52,7 +52,7 @@ public class UtenteDAOImpl implements UtenteDAO {
 	@Override
 	@Transactional
 	public void eliminaFoto(Utente utente) {
-		Query upd = em.createNativeQuery("UPDATE utente SET fotoProfilo = null WHERE idUtente = ?");
+		Query upd = em.createNativeQuery("UPDATE user SET profilePhoto = null WHERE idUser = ?");
 		upd.setParameter(1, utente.getIdUtente());
 		int rs = upd.executeUpdate();
 		if(rs == 1) logger.info("rimossa immagine profilo dell'utente con id {} ", utente.getIdUtente());
@@ -60,7 +60,7 @@ public class UtenteDAOImpl implements UtenteDAO {
 
 	@Override
 	public Object prendiFoto(Utente utente) {
-		Query sel = em.createNativeQuery("SELECT fotoProfilo FROM utente WHERE idUtente = ?");
+		Query sel = em.createNativeQuery("SELECT profilePhoto FROM user WHERE idUser = ?");
 		sel.setParameter(1, utente.getIdUtente());
 		Object foto = sel.getSingleResult();
 		return foto;
@@ -68,12 +68,12 @@ public class UtenteDAOImpl implements UtenteDAO {
 
 	@Override
 	public List<Utente[]> ricercaUtente(String nomeUtente, String usernameResearcher) {
-		Query sel = em.createNativeQuery("SELECT c.username , u.idUtente , u.nome , u.cognome , u.fotoProfilo, c.accountBloccato \r\n"
-				+ "FROM credenziale c , utente u \r\n"
+		Query sel = em.createNativeQuery("SELECT c.username , u.idUser , u.name , u.surname , u.profilePhoto, c.blockedAccount \r\n"
+				+ "FROM credential c , user u \r\n"
 				+ "WHERE c.username LIKE ? \r\n"
-				+ "AND c.ruolo = ? \r\n"
+				+ "AND c.role = ? \r\n"
 				+ "AND NOT(c.username = ?) \r\n"
-				+ "AND u.FKcredenziale = c.idCredenziale");
+				+ "AND u.FKcredential = c.idCredential");
 		sel.setParameter(1, nomeUtente + "%");
 		sel.setParameter(2, "user");
 		sel.setParameter(3, usernameResearcher);
@@ -86,9 +86,9 @@ public class UtenteDAOImpl implements UtenteDAO {
 
 	@Override
 	public Object[] ricavaUtenteDaId(int id) {
-		Query sel = em.createNativeQuery("SELECT c.username , u.fotoProfilo, u.stato FROM credenziale c , utente u \r\n"
-				+ "WHERE u.idUtente = ? \r\n"
-				+ "AND u.FKcredenziale = c.idCredenziale");
+		Query sel = em.createNativeQuery("SELECT c.username , u.profilePhoto, u.state FROM credential c , user u \r\n"
+				+ "WHERE u.idUser = ? \r\n"
+				+ "AND u.FKcredential = c.idCredential");
 		sel.setParameter(1, id);
 		Object[] utente = (Object[]) sel.getSingleResult();
 		if(utente == null) {
@@ -100,7 +100,7 @@ public class UtenteDAOImpl implements UtenteDAO {
 	@Override
 	@Transactional
 	public void aggiornaStato(UserStatus stato, int id) {
-		Query upd = em.createNativeQuery("UPDATE utente SET stato = ? WHERE idUtente = ?");
+		Query upd = em.createNativeQuery("UPDATE user SET state = ? WHERE idUser = ?");
 		upd.setParameter(1, stato.toString());
 		upd.setParameter(2, id);
 		upd.executeUpdate();

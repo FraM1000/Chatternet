@@ -26,7 +26,7 @@ public class Credenziale implements UserDetails {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY )
-	@Column(name = "idCredenziale")
+	@Column(name = "idCredential")
 	private int idCredenziale;
 	
 	@Column(name = "username")
@@ -35,13 +35,13 @@ public class Credenziale implements UserDetails {
 	@Column(name = "password")
 	private String password;
 	
-	@Column(name = "ruolo")
+	@Column(name = "role")
 	private String ruolo;
 	
-	@Column(name = "dataRegistrazione")
+	@Column(name = "signupDate")
 	private String dataRegistrazione;
 	
-	@Column(name = "accountBloccato")
+	@Column(name = "blockedAccount")
 	private String accountBloccato;
 	
 	public Credenziale() {

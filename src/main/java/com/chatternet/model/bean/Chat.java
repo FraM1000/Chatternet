@@ -15,13 +15,13 @@ public class Chat {
 	@Column(name = "idChat")
 	private int idChat;
 	
-	@Column(name = "FKutenteUno")
+	@Column(name = "FKfirstUser")
 	private int FKutenteUno;
 	
-	@Column(name = "FKutenteDue")
+	@Column(name = "FKsecondUser")
 	private int FKutenteDue;
 	
-	@Column(name = "dataUltimoMessaggio")
+	@Column(name = "lastTextDate")
 	private String dataUltimoMessaggio;
 
 	public Chat() {

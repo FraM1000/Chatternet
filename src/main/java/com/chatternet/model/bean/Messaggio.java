@@ -12,22 +12,22 @@ public class Messaggio {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idMessaggio")
+	@Column(name = "idMessage")
 	private int idMessaggio;
 	
-	@Column(name = "testo", length = 65535, columnDefinition="TEXT")
+	@Column(name = "text", length = 65535, columnDefinition="TEXT")
 	private String testo;
 	
-	@Column(name = "ora")
+	@Column(name = "time")
 	private String ora;
 	
-	@Column(name = "FKutente")
+	@Column(name = "FKuser")
 	private int FKutente;
 	
 	@Column(name = "FKchat")
 	private int FKchat;
 	
-	@Column(name = "stato")
+	@Column(name = "state")
 	private MessageStatus stato;
 	
 	public Messaggio() {

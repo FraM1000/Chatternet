@@ -16,30 +16,30 @@ public class Utente {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idUtente")
+	@Column(name = "idUser")
 	private int idUtente;
 	
-	@Column(name = "nome")
+	@Column(name = "name")
 	private String nome;
 	
-	@Column(name = "cognome")
+	@Column(name = "surname")
 	private String cognome;
 	
-	@Column(name = "sesso")
+	@Column(name = "sex")
 	private String sesso;
 	
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-	@Column(name = "dataNascita")
+	@Column(name = "birthDate")
 	private Date dataNascita;
 	
-	@Column(name = "fotoProfilo")
+	@Column(name = "profilePhoto")
 	private String fotoProfilo;
 	
-	@Column(name = "stato")
+	@Column(name = "state")
 	private UserStatus stato;
 	
-	@Column(name = "FKcredenziale")
+	@Column(name = "FKcredential")
 	private int FKcredenziale;
 
 	public Utente() {

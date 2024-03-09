@@ -21,8 +21,8 @@ public class ChatDAOImpl implements ChatDAO {
 	@Override
 	public int cercaChatTraUtenti(int idInviante, int idRicevente) throws NoResultException {
 		Query sel = em.createNativeQuery("SELECT idChat FROM chat \r\n"
-				+ "WHERE FKutenteUno = ? AND FKutenteDue = ? \r\n" 
-				+ "OR FKutenteUno = ? AND FKutenteDue = ?;");
+				+ "WHERE FKfirstUser = ? AND FKsecondUser = ? \r\n" 
+				+ "OR FKfirstUser = ? AND FKsecondUser = ?;");
 		sel.setParameter(1, idInviante);
 		sel.setParameter(2, idRicevente);
 		sel.setParameter(3, idRicevente);
@@ -38,7 +38,7 @@ public class ChatDAOImpl implements ChatDAO {
 	@Override
 	@Transactional
 	public int creaChat(int idInviante, int idRicevente, String dataPrimoMessaggioInviato) {
-		Query ins = em.createNativeQuery("INSERT INTO chat(FKutenteUno,FKutenteDue,dataUltimoMessaggio) VALUES(?,?,?)");
+		Query ins = em.createNativeQuery("INSERT INTO chat(FKfirstUser,FKsecondUser,lastTextDate) VALUES(?,?,?)");
 		ins.setParameter(1, idInviante);
 		ins.setParameter(2, idRicevente);
 		ins.setParameter(3, dataPrimoMessaggioInviato);
@@ -52,8 +52,8 @@ public class ChatDAOImpl implements ChatDAO {
 	public int cercaChatTraUtentiSenzaCrearla(int idInviante, int idRicevente) {
 		int idChat = 0;
 		Query sel = em.createNativeQuery("SELECT idChat FROM chat \r\n"
-	            + "WHERE FKutenteUno = ? AND FKutenteDue = ? \r\n" 
-				+ "OR FKutenteUno = ? AND FKutenteDue = ?;");
+	            + "WHERE FKfirstUser = ? AND FKsecondUser = ? \r\n" 
+				+ "OR FKfirstUser = ? AND FKsecondUser = ?;");
 		sel.setParameter(1, idInviante);
 		sel.setParameter(2, idRicevente);
 		sel.setParameter(3, idRicevente);
@@ -69,22 +69,22 @@ public class ChatDAOImpl implements ChatDAO {
 
 	@Override
 	public List<Object[]> ricavaChatDaUsername(String username) {
-		Query sel = em.createNativeQuery("SELECT c.FKutenteDue, c.dataUltimoMessaggio, c.idChat \r\n"
-				+ "FROM chat c, utente u \r\n"
-				+ "WHERE c.FKutenteUno = (SELECT u.idUtente \r\n"
-				+ "FROM credenziale c,utente u \r\n"
+		Query sel = em.createNativeQuery("SELECT c.FKsecondUser, c.lastTextDate, c.idChat \r\n"
+				+ "FROM chat c, user u \r\n"
+				+ "WHERE c.FKfirstUser = (SELECT u.idUser \r\n"
+				+ "FROM credential c,user u \r\n"
 				+ "WHERE c.username = ? \r\n"
-				+ "AND u.FKcredenziale = c.idCredenziale) \r\n"
-				+ "AND c.FKutenteUno = u.idUtente \r\n"
+				+ "AND u.FKcredential = c.idCredential) \r\n"
+				+ "AND c.FKfirstUser = u.idUser \r\n"
 				+ "UNION \r\n"
-				+ "SELECT c.FKutenteUno, c.dataUltimoMessaggio, c.idChat \r\n"
-				+ "FROM chat c, utente u \r\n"
-				+ "WHERE c.FKutenteDue = (SELECT u.idUtente \r\n"
-				+ "FROM credenziale c,utente u \r\n"
+				+ "SELECT c.FKfirstUser, c.lastTextDate, c.idChat \r\n"
+				+ "FROM chat c, user u \r\n"
+				+ "WHERE c.FKsecondUser = (SELECT u.idUser \r\n"
+				+ "FROM credential c,user u \r\n"
 				+ "WHERE c.username = ? \r\n"
-				+ "AND u.FKcredenziale = c.idCredenziale) \r\n"
-				+ "AND c.FKutenteUno = u.idUtente \r\n"
-				+ "ORDER BY str_to_date(dataUltimoMessaggio, '%Y-%m-%d %T') DESC");
+				+ "AND u.FKcredential = c.idCredential) \r\n"
+				+ "AND c.FKfirstUser = u.idUser \r\n"
+				+ "ORDER BY str_to_date(lastTextDate, '%Y-%m-%d %T') DESC");
 		sel.setParameter(1, username);
 		sel.setParameter(2, username);
 		List<Object[]> chatResults = sel.getResultList();
@@ -103,7 +103,7 @@ public class ChatDAOImpl implements ChatDAO {
 	@Override
 	@Transactional
 	public void aggiornaDataUltimoMessaggioDellaChat(int idChat, String dataUltimoMessaggio) {
-		Query upd = em.createNativeQuery("UPDATE chat SET dataUltimoMessaggio = ? WHERE idChat = ?");
+		Query upd = em.createNativeQuery("UPDATE chat SET lastTextDate = ? WHERE idChat = ?");
 		upd.setParameter(1, dataUltimoMessaggio);
 		upd.setParameter(2, idChat);
 		upd.executeUpdate();
