@@ -16,13 +16,13 @@ public class Chat {
 	private int idChat;
 	
 	@Column(name = "FKfirstUser")
-	private int FKutenteUno;
+	private int FKfirstUser;
 	
 	@Column(name = "FKsecondUser")
-	private int FKutenteDue;
+	private int FKsecondUser;
 	
 	@Column(name = "lastTextDate")
-	private String dataUltimoMessaggio;
+	private String lastTextDate;
 
 	public Chat() {
 		
@@ -36,28 +36,28 @@ public class Chat {
 		this.idChat = idChat;
 	}
 
-	public int getFKutenteUno() {
-		return FKutenteUno;
+	public int getFKfirstUser() {
+		return FKfirstUser;
 	}
 
-	public void setFKutenteUno(int fKutenteUno) {
-		FKutenteUno = fKutenteUno;
+	public void setFKfirstUser(int fKfirstUser) {
+		FKfirstUser = fKfirstUser;
 	}
 
-	public int getFKutenteDue() {
-		return FKutenteDue;
+	public int getFKsecondUser() {
+		return FKsecondUser;
 	}
 
-	public void setFKutenteDue(int fKutenteDue) {
-		FKutenteDue = fKutenteDue;
+	public void setFKsecondUser(int fKsecondUser) {
+		FKsecondUser = fKsecondUser;
 	}
 
-	public String getDataUltimoMessaggio() {
-		return dataUltimoMessaggio;
+	public String getLastTextDate() {
+		return lastTextDate;
 	}
 
-	public void setDataUltimoMessaggio(String dataUltimoMessaggio) {
-		this.dataUltimoMessaggio = dataUltimoMessaggio;
+	public void setLastTextDate(String lastTextDate) {
+		this.lastTextDate = lastTextDate;
 	}
 
 	@Override
@@ -69,13 +69,13 @@ public class Chat {
 		if (getClass() != obj.getClass())
 			return false;
 		Chat other = (Chat) obj;
-		return FKutenteDue == other.FKutenteDue && FKutenteUno == other.FKutenteUno
-				&& Objects.equals(dataUltimoMessaggio, other.dataUltimoMessaggio) && idChat == other.idChat;
+		return FKsecondUser == other.FKsecondUser && FKfirstUser == other.FKfirstUser
+				&& Objects.equals(lastTextDate, other.lastTextDate) && idChat == other.idChat;
 	}
 
 	@Override
 	public String toString() {
-		return "Chat [idChat=" + idChat + ", FKutenteUno=" + FKutenteUno + ", FKutenteDue=" + FKutenteDue + ", dataUltimoMessaggio=" + dataUltimoMessaggio + "]";
+		return "Chat [idChat=" + idChat + ", FKfirstUser=" + FKfirstUser + ", FKsecondUser=" + FKsecondUser + ", lastTextDate=" + lastTextDate + "]";
 	}
 	
 }

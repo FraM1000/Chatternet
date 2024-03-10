@@ -2,13 +2,13 @@ package com.chatternet.model.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import com.chatternet.model.bean.Credenziale;
+import com.chatternet.model.bean.Credential;
 
 
 
 @Repository
-public interface AppUserRepositoryInterface extends JpaRepository<Credenziale, Integer>{
+public interface AppUserRepositoryInterface extends JpaRepository<Credential, Integer>{
 	
-	Credenziale findByUsername(String username);
+	Credential findByUsername(String username);
 
 }

@@ -1,22 +1,21 @@
 package com.chatternet.controller.service;
 
-import com.chatternet.model.bean.Credenziale;
-import com.chatternet.model.bean.Utente;
+import com.chatternet.model.bean.Credential;
 import com.chatternet.model.dto.MonthlyChartDTO;
 import com.chatternet.model.dto.WeeklyChartDTO;
 import com.chatternet.model.dto.YearlyChartDTO;
 
-public interface CredenzialeService {
+public interface CredentialService {
 	
-	public void registraCredenziale(Credenziale credenziale);
+	public void saveCredentials(Credential credential);
 	
-	public void inserisciFK(Credenziale credenziale, Utente utente);
+	public void insertForeignKey();
 	
-	public Object[] ricavaUtenteDaUsername(String username);
+	public Object[] getUserByUsername(String username);
 	
-	public void modificaPass(Credenziale credenziale);
+	public void updatePassword(Credential credential);
 	
-	public int ricavaIdCredenziale(int idUtente);
+	public int getIdCredential(int idUser);
 	
 	public YearlyChartDTO getYearlyChartData();
 	

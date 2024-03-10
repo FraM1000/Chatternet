@@ -16,7 +16,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 
 @Entity
-public class Credenziale implements UserDetails {
+public class Credential implements UserDetails {
 	
 
 	/**
@@ -27,7 +27,7 @@ public class Credenziale implements UserDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY )
 	@Column(name = "idCredential")
-	private int idCredenziale;
+	private int idCredential;
 	
 	@Column(name = "username")
 	private String username;
@@ -36,65 +36,89 @@ public class Credenziale implements UserDetails {
 	private String password;
 	
 	@Column(name = "role")
-	private String ruolo;
+	private String role;
 	
 	@Column(name = "signupDate")
-	private String dataRegistrazione;
+	private String signupDate;
 	
 	@Column(name = "blockedAccount")
-	private String accountBloccato;
+	private String blockedAccount;
 	
-	public Credenziale() {
+	public Credential() {
 		
 	}
 
-	public int getIdCredenziale() {
-		return idCredenziale;
+	public int getIdCredential() {
+		return idCredential;
 	}
 
-	public void setIdCredenziale(int idCredenziale) {
-		this.idCredenziale = idCredenziale;
+
+
+	public void setIdCredential(int idCredential) {
+		this.idCredential = idCredential;
 	}
+
+
 
 	public String getUsername() {
 		return username;
 	}
 
+
+
 	public void setUsername(String username) {
 		this.username = username;
 	}
+
+
 
 	public String getPassword() {
 		return password;
 	}
 
+
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
-	public String getRuolo() {
-		return ruolo;
+
+
+	public String getRole() {
+		return role;
 	}
 
-	public void setRuolo(String ruolo) {
-		this.ruolo = ruolo;
+
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 
-	public String getDataRegistrazione() {
-		return dataRegistrazione;
+
+
+	public String getSignupDate() {
+		return signupDate;
 	}
 
-	public void setDataRegistrazione(String dataRegistrazione) {
-		this.dataRegistrazione = dataRegistrazione;
-	}
-	
-	public String getAccountBloccato() {
-		return accountBloccato;
+
+
+	public void setSignupDate(String signupDate) {
+		this.signupDate = signupDate;
 	}
 
-	public void setAccountBloccato(String accountBloccato) {
-		this.accountBloccato = accountBloccato;
+
+
+	public String getBlockedAccount() {
+		return blockedAccount;
 	}
+
+
+
+	public void setBlockedAccount(String blockedAccount) {
+		this.blockedAccount = blockedAccount;
+	}
+
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -104,22 +128,22 @@ public class Credenziale implements UserDetails {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Credenziale other = (Credenziale) obj;
-		return Objects.equals(dataRegistrazione, other.dataRegistrazione) && idCredenziale == other.idCredenziale
-				&& Objects.equals(password, other.password) && Objects.equals(ruolo, other.ruolo)
+		Credential other = (Credential) obj;
+		return Objects.equals(signupDate, other.signupDate) && idCredential == other.idCredential
+				&& Objects.equals(password, other.password) && Objects.equals(role, other.role)
 				&& Objects.equals(username, other.username);
 	}
 
 	@Override
 	public String toString() {
-		return "Credenziale idCredenziale=" + idCredenziale + ", username=" + username + ", password=" + password
-				+ ", ruolo=" + ruolo + ", dataRegistrazione=" + dataRegistrazione + ", accountBloccato=" + accountBloccato;
+		return "Credential idCredential=" + idCredential + ", username=" + username + ", password=" + password
+				+ ", role=" + role + ", signupDate=" + signupDate + ", blockedAccount=" + blockedAccount;
 	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		List<SimpleGrantedAuthority> authorities = new ArrayList<SimpleGrantedAuthority>();
-		authorities.add(new SimpleGrantedAuthority(ruolo));
+		authorities.add(new SimpleGrantedAuthority(role));
 		return authorities;
 	}
 
@@ -130,7 +154,7 @@ public class Credenziale implements UserDetails {
 
 	@Override
 	public boolean isAccountNonLocked() {
-		return accountBloccato.equals("N");
+		return blockedAccount.equals("N");
 	}
 
 	@Override

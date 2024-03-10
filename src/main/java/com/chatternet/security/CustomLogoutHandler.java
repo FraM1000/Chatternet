@@ -9,9 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
 import org.springframework.stereotype.Service;
-import com.chatternet.controller.service.UtenteService;
+import com.chatternet.controller.service.UserService;
 import com.chatternet.model.bean.UserStatus;
-import com.chatternet.model.dto.UtenteDTO;
+import com.chatternet.model.dto.UserDTO;
 
 @Service
 public class CustomLogoutHandler implements LogoutHandler  {
@@ -21,21 +21,21 @@ public class CustomLogoutHandler implements LogoutHandler  {
 	}
 	
 	@Autowired
-	private UtenteService utenteService;
+	private UserService userService;
 	Logger logger = LoggerFactory.getLogger(CustomLogoutHandler.class);
 
 	@Override
 	public void logout(HttpServletRequest request, HttpServletResponse response, Authentication authentication) {
 		HttpSession mySession = request.getSession();
-		UtenteDTO loggedUser;
-		loggedUser = (UtenteDTO) mySession.getAttribute("utente");
+		UserDTO loggedUser;
+		loggedUser = (UserDTO) mySession.getAttribute("utente");
 		RememberMeSingleton rememberMeToken = null;
 		if(loggedUser == null) {
 			rememberMeToken = RememberMeSingleton.getToken();
-			loggedUser = (UtenteDTO) rememberMeToken.getTokenDatas().get("utente");
+			loggedUser = (UserDTO) rememberMeToken.getTokenDatas().get("utente");
 		}
-		utenteService.aggiornaStato(UserStatus.OFFLINE, loggedUser.getId());
-		logger.info("l'utente: {} {} si è disconnesso",loggedUser.getNome(),loggedUser.getCognome());
+		userService.updateStatus(UserStatus.OFFLINE, loggedUser.getId());
+		logger.info("l'utente: {} {} si è disconnesso",loggedUser.getName(),loggedUser.getSurname());
 		if(rememberMeToken != null) rememberMeToken.getTokenDatas().clear();
 	}
 

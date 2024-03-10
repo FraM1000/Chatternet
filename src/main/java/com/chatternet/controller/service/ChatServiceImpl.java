@@ -13,35 +13,35 @@ public class ChatServiceImpl implements ChatService {
 	private ChatDAO chatDAO;
 	
 	@Override
-	public int cercaChatTraUtenti(int idInviante, int idRicevente) throws NoResultException {
-		int idChat = chatDAO.cercaChatTraUtenti(idInviante, idRicevente);
+	public int findChatBetweenUserIfNotThrowNoResultException(int senderId, int receiverId) throws NoResultException {
+		int idChat = chatDAO.findChatBetweenUserIfNotThrowNoResultException(senderId, receiverId);
 		return idChat;
 	}
 
 	@Override
-	public int cercaChatTraUtentiSenzaCrearla(int idInviante, int idRicevente) {
-		return chatDAO.cercaChatTraUtentiSenzaCrearla(idInviante, idRicevente);
+	public int findChatBetweenUser(int senderId, int receiverId) {
+		return chatDAO.findChatBetweenUser(senderId, receiverId);
 		
 	}
 	
 	@Override
-	public int creaChat(int idInviante, int idRicevente, String dataPrimoMessaggioInviato) {
-		return chatDAO.creaChat(idInviante, idRicevente, dataPrimoMessaggioInviato);
+	public int createChat(int senderId, int receiverId, String dateOfTheFirstMessageSended) {
+		return chatDAO.createChat(senderId, receiverId, dateOfTheFirstMessageSended);
 	}
 
 	@Override
-	public List<Object[]> ricavaChatDaUsername(String username) {
-		return chatDAO.ricavaChatDaUsername(username);
+	public List<Object[]> findChatByUsername(String username) {
+		return chatDAO.findChatByUsername(username);
 	}
 
 	@Override
-	public void eliminaChat(int idChat) {
-		chatDAO.eliminaChat(idChat);
+	public void deleteChat(int idChat) {
+		chatDAO.deleteChat(idChat);
 	}
 
 	@Override
-	public void aggiornaDataUltimoMessaggioDellaChat(int idChat, String dataUltimoMessaggio) {
-		chatDAO.aggiornaDataUltimoMessaggioDellaChat(idChat, dataUltimoMessaggio);
+	public void updateChatLastSendedMessageDate(int idChat, String lastSendedMessageDate) {
+		chatDAO.updateChatLastSendedMessageDate(idChat, lastSendedMessageDate);
 	}
 
 }

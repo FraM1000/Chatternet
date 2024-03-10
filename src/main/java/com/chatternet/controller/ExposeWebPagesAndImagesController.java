@@ -12,26 +12,26 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping("/")
-public class MostraPagineInizialiEFotoController {
+public class ExposeWebPagesAndImagesController {
 	
 	@GetMapping("/login")
-	public String paginaLogin() {
+	public String loginPage() {
 		return "index";	
 	}
 	
 	@GetMapping("/registrazione")
-	public String paginaRegistrazione() {
+	public String signupPage() {
 		return "signup";
 	}
 	
 	@GetMapping("/ricerca")
-	public String paginaRicerca() {
+	public String searchPage() {
 		return "search";
 	}
 	 
 	 @RequestMapping(value = "/Icona", method = RequestMethod.GET,
 	            produces = MediaType.IMAGE_JPEG_VALUE)
-	    public void getImageIcona(HttpServletResponse response) throws IOException {
+	    public void getImageIcon(HttpServletResponse response) throws IOException {
 
 	        ClassPathResource imgFile = new ClassPathResource("static/images/Icona.jpg");
 

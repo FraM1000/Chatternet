@@ -8,37 +8,37 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import com.chatternet.controller.service.CredenzialeService;
-import com.chatternet.model.bean.Credenziale;
-import com.chatternet.model.dto.UtenteDTO;
+import com.chatternet.controller.service.CredentialService;
+import com.chatternet.model.bean.Credential;
+import com.chatternet.model.dto.UserDTO;
 import com.chatternet.security.RememberMeSingleton;
 
 @Controller
 @RequestMapping("/")
-public class CredenzialeController {
+public class CredentialController {
 	
 	@Autowired
-	private CredenzialeService credenzialeService;
+	private CredentialService credentialService;
 	
 	@PostMapping("/modificaPassword")
-	public String modificaPassword(RedirectAttributes redirectAttributes,
+	public String updatePassword(RedirectAttributes redirectAttributes,
 			@RequestParam("pass") String password1,
 			@RequestParam("passFinale") String password2,
-			Credenziale credenziale,
+			Credential credential,
 			HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		UtenteDTO udto;
-		udto = (UtenteDTO) session.getAttribute("utente");
+		UserDTO udto;
+		udto = (UserDTO) session.getAttribute("utente");
 		if(udto == null) {
 			RememberMeSingleton rememberMeToken = RememberMeSingleton.getToken();
-			udto = (UtenteDTO) rememberMeToken.getTokenDatas().get("utente");
+			udto = (UserDTO) rememberMeToken.getTokenDatas().get("utente");
 		}
-		int idUtente = udto.getId();
+		int userId = udto.getId();
 		if(password1.equals(password2)) {
-			int idCredenziale = credenzialeService.ricavaIdCredenziale(idUtente);
-			credenziale.setPassword(password2);
-			credenziale.setIdCredenziale(idCredenziale);
-			credenzialeService.modificaPass(credenziale);
+			int credentialId = credentialService.getIdCredential(userId);
+			credential.setPassword(password2);
+			credential.setIdCredential(credentialId);
+			credentialService.updatePassword(credential);
 			redirectAttributes.addFlashAttribute("passwordModificata", true);
 		}
 		return "redirect:/paginaProfilo";

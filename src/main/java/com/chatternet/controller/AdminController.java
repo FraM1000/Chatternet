@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import com.chatternet.controller.service.CredenzialeService;
-import com.chatternet.controller.service.UtenteService;
-import com.chatternet.model.bean.Utente;
+import com.chatternet.controller.service.CredentialService;
+import com.chatternet.controller.service.UserService;
+import com.chatternet.model.bean.User;
 import com.chatternet.model.dto.MonthlyChartDTO;
-import com.chatternet.model.dto.UtenteDTO;
+import com.chatternet.model.dto.UserDTO;
 import com.chatternet.model.dto.WeeklyChartDTO;
 import com.chatternet.model.dto.YearlyChartDTO;
 import com.chatternet.security.RememberMeSingleton;
@@ -26,24 +26,24 @@ import com.chatternet.security.RememberMeSingleton;
 public class AdminController {
 	
 	@Autowired
-	private CredenzialeService credenzialeService;
+	private CredentialService credentialService;
 	
 	@Autowired
-	private UtenteService utenteService;
+	private UserService userService;
 
 	@GetMapping("/dashboard")
-	public String paginaAdmin(HttpServletRequest request) {
+	public String adminPage(HttpServletRequest request) {
 		HttpSession mySession = request.getSession();
-		UtenteDTO loggedUser;
-		loggedUser = (UtenteDTO) mySession.getAttribute("utente");
+		UserDTO loggedUser;
+		loggedUser = (UserDTO) mySession.getAttribute("utente");
 		if (loggedUser == null) {
 			RememberMeSingleton rememberMeToken = RememberMeSingleton.getToken();
-			loggedUser = (UtenteDTO) rememberMeToken.getTokenDatas().get("utente");
+			loggedUser = (UserDTO) rememberMeToken.getTokenDatas().get("utente");
 		}
-		YearlyChartDTO yearlyChart = credenzialeService.getYearlyChartData();
-		MonthlyChartDTO monthlyChart = credenzialeService.getMonthlyChartData();
-		WeeklyChartDTO weeklyChart = credenzialeService.getWeeklyChartData();
-		request.setAttribute("loggedUserName", loggedUser.getNome());
+		YearlyChartDTO yearlyChart = credentialService.getYearlyChartData();
+		MonthlyChartDTO monthlyChart = credentialService.getMonthlyChartData();
+		WeeklyChartDTO weeklyChart = credentialService.getWeeklyChartData();
+		request.setAttribute("loggedUserName", loggedUser.getName());
 		request.setAttribute("yearlyChartDates", Arrays.toString(yearlyChart.getPastYear()));
 		request.setAttribute("yearlyChartRegisteredUsers", Arrays.toString(yearlyChart.getRegisteredUsers()));
 		request.setAttribute("monthlyChartDates", Arrays.toString(monthlyChart.getPastMonth()));
@@ -54,36 +54,36 @@ public class AdminController {
 	}
 	
 	@GetMapping("/cercaUtente")
-	public String cercaUtenteERitornaDashboard(HttpServletRequest request, @RequestParam("nomeUtente") String username) {
+	public String searchUserAndReturnDashboard(HttpServletRequest request, @RequestParam("nomeUtente") String username) {
 		HttpSession mySession = request.getSession();
-		UtenteDTO loggedUser;
-		loggedUser = (UtenteDTO) mySession.getAttribute("utente");
+		UserDTO loggedUser;
+		loggedUser = (UserDTO) mySession.getAttribute("utente");
 		if(loggedUser == null) {
 			RememberMeSingleton rememberMeToken = RememberMeSingleton.getToken();
-			loggedUser = (UtenteDTO) rememberMeToken.getTokenDatas().get("utente");
+			loggedUser = (UserDTO) rememberMeToken.getTokenDatas().get("utente");
 		}
-		List<Utente[]> users = utenteService.ricercaUtente(username, loggedUser.getUsername());
-		YearlyChartDTO yearlyChart = credenzialeService.getYearlyChartData();
-		MonthlyChartDTO monthlyChart = credenzialeService.getMonthlyChartData();
-		WeeklyChartDTO weeklyChart = credenzialeService.getWeeklyChartData();
+		List<User[]> users = userService.findUser(username, loggedUser.getUsername());
+		YearlyChartDTO yearlyChart = credentialService.getYearlyChartData();
+		MonthlyChartDTO monthlyChart = credentialService.getMonthlyChartData();
+		WeeklyChartDTO weeklyChart = credentialService.getWeeklyChartData();
 		if (users.isEmpty()) {
 			request.setAttribute("listaUtenti", null);
 		} else {
-			ArrayList<UtenteDTO> list = new ArrayList<UtenteDTO>();
+			ArrayList<UserDTO> list = new ArrayList<UserDTO>();
 			for (Object[] user : users) {
-				UtenteDTO userDto = new UtenteDTO();
+				UserDTO userDto = new UserDTO();
 				userDto.setUsername((String) user[0]);
-				userDto.setNome((String) user[2]);
-				userDto.setCognome((String) user[3]);
+				userDto.setName((String) user[2]);
+				userDto.setSurname((String) user[3]);
 				userDto.setId((int) user[1]);
-				userDto.setFoto((String) user[4]);
-				String accountBloccato = (String) user[5];
-				userDto.setAccountBloccato(accountBloccato.equals("Y"));
+				userDto.setPhoto((String) user[4]);
+				String blockedAccount = (String) user[5];
+				userDto.setBlockedAccount(blockedAccount.equals("Y"));
 				list.add(userDto);
 			}
 			request.setAttribute("listaUtenti", list);
 		}
-		request.setAttribute("loggedUserName", loggedUser.getNome());
+		request.setAttribute("loggedUserName", loggedUser.getName());
 		request.setAttribute("yearlyChartDates", Arrays.toString(yearlyChart.getPastYear()));
 		request.setAttribute("yearlyChartRegisteredUsers", Arrays.toString(yearlyChart.getRegisteredUsers()));
 		request.setAttribute("monthlyChartDates", Arrays.toString(monthlyChart.getPastMonth()));
@@ -97,7 +97,7 @@ public class AdminController {
 	@ResponseBody
 	public String lockOrUnlockUserAccount(HttpServletRequest request, @RequestParam("username") String username, 
 			@RequestParam("accountLockChoice") String accountLockChoice) {
-		credenzialeService.lockOrUnlockUserAccount(username, accountLockChoice);
+		credentialService.lockOrUnlockUserAccount(username, accountLockChoice);
 		return "admin";
 	}
 }

@@ -48,10 +48,10 @@ function sendMessage(message) {
 	var now = new Date();
 	now.setHours(now.getHours() + 1);
 	const theMessage = {
-		testo: message,
-		ora: now,
-		utenteInviante: loggedUserId,
-		utenteRicevente: userToChatWithId
+		text: message,
+		time: now,
+		sender: loggedUserId,
+		receiver: userToChatWithId
 	};
 	stompClient.send("/app/chat", {}, JSON.stringify(theMessage));
 }

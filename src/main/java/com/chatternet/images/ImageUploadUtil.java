@@ -6,9 +6,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.multipart.MultipartFile;
 
-public class ImmagineUploadUtil {
+public class ImageUploadUtil {
 	
-	static Logger LOGGER = LoggerFactory.getLogger(ImmagineUploadUtil.class);
+	static Logger LOGGER = LoggerFactory.getLogger(ImageUploadUtil.class);
 	
 	 public static void saveFile(String uploadDir, String fileName,
 	            MultipartFile multipartFile) throws IOException {

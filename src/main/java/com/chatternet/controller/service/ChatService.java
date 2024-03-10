@@ -5,16 +5,16 @@ import javax.persistence.NoResultException;
 
 public interface ChatService {
 	
-	public int cercaChatTraUtenti(int idInviante, int idRicevente) throws NoResultException;
+	public int findChatBetweenUserIfNotThrowNoResultException(int senderId, int receiverId) throws NoResultException;
 	
-	public int cercaChatTraUtentiSenzaCrearla(int idInviante, int idRicevente);
+	public int findChatBetweenUser(int senderId, int receiverId);
 	
-	public int creaChat(int idInviante, int idRicevente, String dataPrimoMessaggioInviato);
+	public int createChat(int senderId, int receiverId, String dateOfTheFirstMessageSended);
 	
-	public List<Object[]> ricavaChatDaUsername(String username);
+	public List<Object[]> findChatByUsername(String username);
 	
-	public void eliminaChat(int idChat);
+	public void deleteChat(int idChat);
 	
-	public void aggiornaDataUltimoMessaggioDellaChat(int idChat, String dataUltimoMessaggio);
+	public void updateChatLastSendedMessageDate(int idChat, String lastSendedMessageDate);
 
 }

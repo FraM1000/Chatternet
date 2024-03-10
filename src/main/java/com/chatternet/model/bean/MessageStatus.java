@@ -2,7 +2,7 @@ package com.chatternet.model.bean;
 
 public enum MessageStatus {
 	
-	LETTO,
-	NONLETTO
+	READ,
+	NOT_READ
 
 }
