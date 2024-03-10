@@ -39,15 +39,15 @@
 									<div class="user">
 										<a href="/mostraChat?id=<c:out value="${utente.id}"/>" id="usLink">
 											<c:choose>
-												<c:when test="${utente.foto != null}">
-													<img alt="Immagine Profilo" src="${utente.fotoPath}" class="img-exist-user">
+												<c:when test="${utente.photo != null}">
+													<img alt="Immagine Profilo" src="${utente.photoPath}" class="img-exist-user">
 												</c:when>
 												<c:otherwise>
 													<img class="img-user" alt="Immagine Profilo" src="/User">
 												</c:otherwise>
 											</c:choose>
 											<span class="user-of-result"><h1><c:out value="${utente.username}"/></h1>
-											<h2><c:out value="${utente.nome}"/> <c:out value="${utente.cognome}"/></h2></span>
+											<h2><c:out value="${utente.name}"/> <c:out value="${utente.surname}"/></h2></span>
 										</a>
 									</div><br>
 								</c:forEach>

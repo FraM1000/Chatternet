@@ -33,15 +33,15 @@
 								<div class="user">
 									<a href="/mostraChat?id=<c:out value="${user.id}"/>" id="usLink">
 										<c:choose>
-											<c:when test="${user.foto != null}">
-												<img alt="Immagine Profilo" src="${user.fotoPath}" class="img-exist-user">
+											<c:when test="${user.photo != null}">
+												<img alt="Immagine Profilo" src="${user.photoPath}" class="img-exist-user">
 											</c:when>
 											<c:otherwise>
 												<img class="img-user" alt="Immagine Profilo" src="/User">
 											</c:otherwise>
 										</c:choose>
 										<h1><c:out value="${user.username}"/></h1>
-										<c:if test="${user.messaggiRicevutiNonLetti != 0}"><h3 class="alert-new-mexs"><c:out value="${user.messaggiRicevutiNonLetti}"/> nuovi messaggi !</h3></c:if>
+										<c:if test="${user.unreadReceivedMessages != 0}"><h3 class="alert-new-mexs"><c:out value="${user.unreadReceivedMessages}"/> nuovi messaggi !</h3></c:if>
 										<a href="javascript:void(0);" onclick="deleteChat(${user.id}, '${user.username}')"><i class="bi bi-trash"></i></a>
 									</a>
 								</div><br>

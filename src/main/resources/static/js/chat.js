@@ -12,11 +12,11 @@ window.onload = () => {
 }
 
 function printReceivedMessages(message){
-	let date = formatDate(new Date(message.ora));
+	let date = formatDate(new Date(message.time));
 	const receivedMessageHtml = 
 	`<div class="mexage-received">
 	<div class="mexage-text-received">
-	${message.testo}
+	${message.text}
 	<br><small class="mexage-date">
 	${date}
 	</small>

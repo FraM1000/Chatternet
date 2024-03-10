@@ -30,8 +30,8 @@
 						<div class="aUser">
 							<a href="#" onclick="history.back()"><i class="bi bi-arrow-left"></i></a>
 							<c:choose>
-								<c:when test="${utenteConCuiChattare.foto != null}">
-									<img alt="Immagine" src="${utenteConCuiChattare.fotoPath}" class="img-exist-user">
+								<c:when test="${utenteConCuiChattare.photo != null}">
+									<img alt="Immagine" src="${utenteConCuiChattare.photoPath}" class="img-exist-user">
 								</c:when>
 								<c:otherwise>
 									<img class="img-user" alt="Immagine" src="/User">
@@ -45,21 +45,21 @@
 							<c:if test="${listaMessaggi != null}">
 								<c:forEach var="messaggio" items="${listaMessaggi}">
 									<c:choose>
-										<c:when test="${messaggio.utenteInviante != loggedUserId}">
+										<c:when test="${messaggio.sender != loggedUserId}">
 											<div class="mexage-received">
 												<div class="mexage-text-received">
-													<c:out value="${messaggio.testo}"/>
+													<c:out value="${messaggio.text}"/>
 													<br><small class="mexage-date">
-														<c:out value="${messaggio.ora}"/>
+														<c:out value="${messaggio.time}"/>
 													</small>
 												</div></div>
 										</c:when>
 										<c:otherwise>
 											<div class="mexage-sended">
 												<div class="mexage-text-sended">
-													<c:out value="${messaggio.testo}"/>
+													<c:out value="${messaggio.text}"/>
 													<br><small class="mexage-date">
-														<c:out value="${messaggio.ora}"/>
+														<c:out value="${messaggio.time}"/>
 													</small>
 												</div></div>
 										</c:otherwise>
@@ -80,8 +80,8 @@
 			<div class="aUser-mob">
 				<a href="#" onclick="history.back()"><i class="bi bi-arrow-left"></i></a>
 				<c:choose>
-					<c:when test="${utenteConCuiChattare.foto != null}">
-						<img alt="Immagine" src="${utenteConCuiChattare.fotoPath}" class="img-exist-user">
+					<c:when test="${utenteConCuiChattare.photo != null}">
+						<img alt="Immagine" src="${utenteConCuiChattare.photoPath}" class="img-exist-user">
 					</c:when>
 					<c:otherwise>
 						<img class="img-user" alt="Immagine" src="/User">
@@ -95,21 +95,21 @@
 				<c:if test="${listaMessaggi != null}">
 					<c:forEach var="messaggio" items="${listaMessaggi}">
 						<c:choose>
-							<c:when test="${messaggio.utenteInviante != loggedUserId}">
+							<c:when test="${messaggio.sender != loggedUserId}">
 								<div class="mexage-received">
 									<div class="mexage-text-received">
-										<c:out value="${messaggio.testo}"/>
+										<c:out value="${messaggio.text}"/>
 										<br><small class="mexage-date">
-											<c:out value="${messaggio.ora}"/>
+											<c:out value="${messaggio.time}"/>
 										</small>
 									</div></div>
 							</c:when>
 							<c:otherwise>
 								<div class="mexage-sended">
 									<div class="mexage-text-sended">
-										<c:out value="${messaggio.testo}"/>
+										<c:out value="${messaggio.text}"/>
 										<br><small class="mexage-date">
-											<c:out value="${messaggio.ora}"/>
+											<c:out value="${messaggio.time}"/>
 										</small>
 									</div></div>
 							</c:otherwise>

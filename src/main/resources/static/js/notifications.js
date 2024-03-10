@@ -15,15 +15,15 @@ Notification.requestPermission().then(permission => {
 
 function sendNotification(message){
 	let request = new XMLHttpRequest();
-	let url = 'http://localhost:8081/ricercaUtentePerId?idUtente=' + message.utenteInviante;
+	let url = 'http://localhost:8081/ricercaUtentePerId?idUtente=' + message.sender;
 	request.open('GET',url);
 	request.send();
 	request.onload = function() {
     	if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
     		let user = JSON.parse(request.responseText);
     		new Notification(user.username + " ti ha inviato un messaggio!", {
-				body: message.testo,
-				icon: "/user-photos/" + message.utenteInviante + "/" + user.foto,
+				body: message.text,
+				icon: "/user-photos/" + message.sender + "/" + user.photo,
 			});
     	}
 	}
